@@ -1,27 +1,37 @@
 let TODOS = [
   {
     id: 1,
-    category: "프로그래밍",
+    date: 21,
+    month: 3,
+    year: 2020,
     contents: "javascript",
   },
   {
     id: 2,
-    category: "프로그래밍",
+    date: 20,
+    month: 3,
+    year: 2020,
     contents: "css",
   },
   {
     id: 3,
-    category: "프로그래밍",
+    date: 1,
+    month: 12,
+    year: 2019,
     contents: "HTML",
   },
   {
     id: 4,
-    category: "취미",
+    date: 21,
+    month: 3,
+    year: 2020,
     contents: "헬스",
   },
   {
     id: 5,
-    category: "취미",
+    date: 21,
+    month: 3,
+    year: 2020,
     contents: "수영",
   },
 ];

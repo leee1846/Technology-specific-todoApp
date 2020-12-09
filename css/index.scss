@@ -28,13 +28,14 @@ body {
           color: $gray-font-color;
           font-size: 0.75rem;
           cursor: pointer;
-          transition: 0.3s linear;
+          transition: 0.2s linear;
           &:hover {
             color: $white-font-color;
           }
         }
         .category-active {
           border-bottom: 2px solid dodgerblue;
+          transition: 0s;
         }
       }
       #todo-date {
