@@ -118,7 +118,7 @@ body {
             color: $white-font-color;
             font-size: 0.65rem;
           }
-          #additinal-list {
+          .additinal-list {
             position: absolute;
             right: 0;
             i {
@@ -126,11 +126,12 @@ body {
               font-size: 0.7rem;
               transition: 0.2s linear;
               cursor: pointer;
+              z-index: 1;
               &:hover {
                 color: $white-font-color;
               }
             }
-            #additional-pocket {
+            .additional-pocket {
               position: absolute;
               top: 25px;
               right: -6px;
@@ -138,6 +139,7 @@ body {
               padding: 4px 12px;
               border-radius: 5px;
               box-shadow: 0 0 3px rgb(36, 36, 36);
+              z-index: 10;
               display: none;
               &:before {
                 content: "";

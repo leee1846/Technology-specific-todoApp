@@ -70,14 +70,31 @@ const makeTodoElement = function (contents) {
   const todoBoxElement = document.createElement("div");
   const todoCheckBoxElement = document.createElement("input");
   const todoContentElement = document.createElement("p");
+  const todoIconBox = document.createElement("div");
   const todoIcon = document.createElement("i");
+  const pocketBox = document.createElement("div");
+  const pocket = document.createElement("div");
+  const pocketIcon = document.createElement("i");
+  const pocketContent = document.createElement("span");
+
+  pocketIcon.className = "far fa-trash-alt";
+  pocket.className = "additional-box";
+  pocketBox.className = "additional-pocket";
   todoBoxElement.className = "todo-list";
+  todoIconBox.className = "additinal-list";
   todoCheckBoxElement.type = "checkbox";
   todoIcon.className = "fas fa-ellipsis-h";
   todoContentElement.textContent = contents;
+  pocketContent.textContent = "Delete";
+
+  pocket.appendChild(pocketIcon);
+  pocketIcon.after(pocketContent);
+  pocketBox.appendChild(pocket);
+  todoIconBox.appendChild(todoIcon);
+  todoIcon.after(pocketBox);
   todoBoxElement.appendChild(todoCheckBoxElement);
   todoCheckBoxElement.after(todoContentElement);
-  todoContentElement.after(todoIcon);
+  todoContentElement.after(todoIconBox);
   todoListContainer.appendChild(todoBoxElement);
 };
 
@@ -91,6 +108,7 @@ inputAddButton.addEventListener("click", function () {
 
   const newTodo = {
     id,
+    //추후 수정
     date: newDate.getDate(),
     month: newDate.getMonth() + 1,
     year: newDate.getFullYear(),
@@ -104,3 +122,7 @@ inputAddButton.addEventListener("click", function () {
   //클릭 후 인풋창 empty하기
   todoInputElement.value = "";
 });
+
+//리스트 삭제 아이콘 클릭
+const todoAdditionalIcon = document.querySelector(".additional-icon");
+console.log(todoAdditionalIcon);
