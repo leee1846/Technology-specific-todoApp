@@ -47,6 +47,10 @@ body #container #todo-container #todo-categories .category:hover {
   color: #c6cfd6;
 }
 
+body #container #todo-container #todo-categories .category-active {
+  border-bottom: 2px solid dodgerblue;
+}
+
 body #container #todo-container #todo-date {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -136,7 +140,7 @@ body #container #add-list-container #todo-lists {
   padding: 20px 0 30px 0;
 }
 
-body #container #add-list-container #todo-lists #todo-list {
+body #container #add-list-container #todo-lists .todo-list {
   padding: 7px 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -148,13 +152,13 @@ body #container #add-list-container #todo-lists #todo-list {
   position: relative;
 }
 
-body #container #add-list-container #todo-lists #todo-list p {
+body #container #add-list-container #todo-lists .todo-list p {
   padding-left: 5px;
   color: #c6cfd6;
   font-size: 0.65rem;
 }
 
-body #container #add-list-container #todo-lists #todo-list i {
+body #container #add-list-container #todo-lists .todo-list i {
   color: #6a717a;
   font-size: 0.7rem;
   position: absolute;
@@ -164,7 +168,7 @@ body #container #add-list-container #todo-lists #todo-list i {
   cursor: pointer;
 }
 
-body #container #add-list-container #todo-lists #todo-list i:hover {
+body #container #add-list-container #todo-lists .todo-list i:hover {
   color: #c6cfd6;
 }
 /*# sourceMappingURL=index.css.map */
