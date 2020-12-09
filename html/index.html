@@ -21,12 +21,12 @@
           <li class="category">Year</li>
         </ul>
         <div id="todo-date">
-          <i class="fas fa-angle-left left"></i>
+          <i id="left-date" class="fas fa-angle-left left"></i>
           <div class="dates">
             <p>Monday</p>
             <span id="todo-dates">Mar 23, 2017</span>
           </div>
-          <i class="fas fa-angle-right right"></i>
+          <i id="right-date" class="fas fa-angle-right right"></i>
         </div>
       </div>
       <div id="add-list-container">
@@ -38,7 +38,15 @@
           <div class="todo-list">
             <input type="checkbox" name="" id="" />
             <p>내용</p>
-            <i class="fas fa-ellipsis-h"></i>
+            <div id="additinal-list">
+              <i class="fas fa-ellipsis-h"></i>
+              <div id="additional-pocket">
+                <div class="additional-box">
+                  <i class="far fa-trash-alt"></i>
+                  <span>Delete</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

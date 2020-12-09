@@ -38,6 +38,7 @@ body #container #todo-container #todo-categories .category {
   line-height: 40px;
   color: #6a717a;
   font-size: 0.75rem;
+  padding: 0 8px;
   cursor: pointer;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
@@ -48,6 +49,8 @@ body #container #todo-container #todo-categories .category:hover {
 }
 
 body #container #todo-container #todo-categories .category-active {
+  font-weight: 900;
+  color: #c6cfd6;
   border-bottom: 2px solid dodgerblue;
   -webkit-transition: 0s;
   transition: 0s;
@@ -160,17 +163,75 @@ body #container #add-list-container #todo-lists .todo-list p {
   font-size: 0.65rem;
 }
 
-body #container #add-list-container #todo-lists .todo-list i {
-  color: #6a717a;
-  font-size: 0.7rem;
+body #container #add-list-container #todo-lists .todo-list #additinal-list {
   position: absolute;
   right: 0;
+}
+
+body #container #add-list-container #todo-lists .todo-list #additinal-list i {
+  color: #6a717a;
+  font-size: 0.7rem;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
   cursor: pointer;
 }
 
-body #container #add-list-container #todo-lists .todo-list i:hover {
+body #container #add-list-container #todo-lists .todo-list #additinal-list i:hover {
   color: #c6cfd6;
+}
+
+body #container #add-list-container #todo-lists .todo-list #additinal-list #additional-pocket {
+  position: absolute;
+  top: 25px;
+  right: -6px;
+  background-color: #3a3a3a;
+  padding: 4px 12px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 3px #242424;
+          box-shadow: 0 0 3px #242424;
+  display: none;
+}
+
+body #container #add-list-container #todo-lists .todo-list #additinal-list #additional-pocket:before {
+  content: "";
+  position: absolute;
+  left: 60px;
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  background-color: #3a3a3a;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+body #container #add-list-container #todo-lists .todo-list #additinal-list #additional-pocket .additional-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+body #container #add-list-container #todo-lists .todo-list #additinal-list #additional-pocket .additional-box:hover span,
+body #container #add-list-container #todo-lists .todo-list #additinal-list #additional-pocket .additional-box:hover i {
+  color: #c6cfd6;
+}
+
+body #container #add-list-container #todo-lists .todo-list #additinal-list #additional-pocket .additional-box i {
+  color: #aab0b6;
+  font-size: 0.5rem;
+  padding-right: 10px;
+  -webkit-transition: 0.1s linear;
+  transition: 0.1s linear;
+}
+
+body #container #add-list-container #todo-lists .todo-list #additinal-list #additional-pocket .additional-box span {
+  color: #aab0b6;
+  font-size: 0.6rem;
+  -webkit-transition: 0.1s linear;
+  transition: 0.1s linear;
 }
 /*# sourceMappingURL=index.css.map */

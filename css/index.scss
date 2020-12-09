@@ -27,6 +27,7 @@ body {
           line-height: 40px;
           color: $gray-font-color;
           font-size: 0.75rem;
+          padding: 0 8px;
           cursor: pointer;
           transition: 0.2s linear;
           &:hover {
@@ -34,6 +35,8 @@ body {
           }
         }
         .category-active {
+          font-weight: 900;
+          color: $white-font-color;
           border-bottom: 2px solid dodgerblue;
           transition: 0s;
         }
@@ -115,15 +118,58 @@ body {
             color: $white-font-color;
             font-size: 0.65rem;
           }
-          i {
-            color: $gray-font-color;
-            font-size: 0.7rem;
+          #additinal-list {
             position: absolute;
             right: 0;
-            transition: 0.2s linear;
-            cursor: pointer;
-            &:hover {
-              color: $white-font-color;
+            i {
+              color: $gray-font-color;
+              font-size: 0.7rem;
+              transition: 0.2s linear;
+              cursor: pointer;
+              &:hover {
+                color: $white-font-color;
+              }
+            }
+            #additional-pocket {
+              position: absolute;
+              top: 25px;
+              right: -6px;
+              background-color: rgb(58, 58, 58);
+              padding: 4px 12px;
+              border-radius: 5px;
+              box-shadow: 0 0 3px rgb(36, 36, 36);
+              display: none;
+              &:before {
+                content: "";
+                position: absolute;
+                left: 60px;
+                top: -4px;
+                width: 8px;
+                height: 8px;
+                background-color: rgb(58, 58, 58);
+                transform: rotate(45deg);
+              }
+              .additional-box {
+                display: flex;
+                align-items: center;
+                margin: 8px 0;
+                cursor: pointer;
+                &:hover span,
+                &:hover i {
+                  color: $white-font-color;
+                }
+                i {
+                  color: #aab0b6;
+                  font-size: 0.5rem;
+                  padding-right: 10px;
+                  transition: 0.1s linear;
+                }
+                span {
+                  color: #aab0b6;
+                  font-size: 0.6rem;
+                  transition: 0.1s linear;
+                }
+              }
             }
           }
         }
