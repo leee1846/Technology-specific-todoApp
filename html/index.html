@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/e759c493a3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <title>todo-List</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="todo-container">
+        <ul id="todo-categories">
+          <li class="category">Day</li>
+          <li class="category">Week</li>
+          <li class="category">Month</li>
+          <li class="category">Year</li>
+        </ul>
+        <div id="todo-date">
+          <i class="fas fa-angle-left left"></i>
+          <div class="dates">
+            <p>Monday</p>
+            <span>Mar 23, 2017</span>
+          </div>
+          <i class="fas fa-angle-right right"></i>
+        </div>
+      </div>
+      <div id="add-list-container">
+        <div id="todo-add-container">
+          <input type="text" placeholder="할일을 추가하세요..." />
+          <i class="fas fa-plus"></i>
+        </div>
+        <div id="todo-lists">
+          <div class="todo-list">
+            <input type="checkbox" name="" id="" />
+            <p>내용</p>
+            <i class="fas fa-ellipsis-h"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../data/todo.data.js"></script>
+    <script src="../js/app.js"></script>
+  </body>
+</html>
