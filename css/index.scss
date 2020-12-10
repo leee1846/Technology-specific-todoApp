@@ -118,6 +118,9 @@ body {
             color: $white-font-color;
             font-size: 0.65rem;
           }
+          span {
+            color: transparent;
+          }
           .additional-list {
             position: absolute;
             right: 0;

@@ -163,6 +163,10 @@ body #container #add-list-container #todo-lists .todo-list p {
   font-size: 0.65rem;
 }
 
+body #container #add-list-container #todo-lists .todo-list span {
+  color: transparent;
+}
+
 body #container #add-list-container #todo-lists .todo-list .additional-list {
   position: absolute;
   right: 0;

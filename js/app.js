@@ -6,10 +6,11 @@ const thisMonth = newDate.getMonth() + 1;
 const thisDate = newDate.getDate();
 
 //추가 엘리먼트 함수
-const makeTodoElement = function (contents) {
+const makeTodoElement = function (contents, id) {
   const todoBoxElement = document.createElement("div");
   const todoCheckBoxElement = document.createElement("input");
   const todoContentElement = document.createElement("p");
+  const todoContentElementId = document.createElement("span");
   const todoIconBox = document.createElement("div");
   const todoIcon = document.createElement("i");
   const pocketBox = document.createElement("div");
@@ -17,6 +18,7 @@ const makeTodoElement = function (contents) {
   const pocketIcon = document.createElement("i");
   const pocketContent = document.createElement("span");
 
+  todoContentElementId.textContent = id;
   pocketIcon.className = "far fa-trash-alt";
   pocket.className = "delete-box";
   pocketBox.className = "additional-pocket";
@@ -35,7 +37,8 @@ const makeTodoElement = function (contents) {
   todoIcon.after(pocketBox);
   todoBoxElement.appendChild(todoCheckBoxElement);
   todoCheckBoxElement.after(todoContentElement);
-  todoContentElement.after(todoIconBox);
+  todoContentElement.after(todoContentElementId);
+  todoContentElementId.after(todoIconBox);
   todoListContainer.appendChild(todoBoxElement);
 };
 
@@ -48,8 +51,8 @@ const todayTodoElements = TODOS.filter(function (TODO) {
   return TODO.date === today;
 });
 
-todayTodoElements.forEach(function ({ contents }) {
-  makeTodoElement(contents);
+todayTodoElements.forEach(function ({ contents, id }) {
+  makeTodoElement(contents, id);
 });
 
 //날짜 선택 구성
@@ -98,7 +101,7 @@ const todoInputElement = document.querySelector("#todo-add-container > input");
 
 inputAddButton.addEventListener("click", function () {
   const contents = todoInputElement.value;
-  const id = TODOS.sort((a, b) => b.id - a.id)[0].id + 1;
+  let id = TODOS.sort((a, b) => b.id - a.id)[0].id + 1;
 
   const newTodo = {
     id,
@@ -109,7 +112,7 @@ inputAddButton.addEventListener("click", function () {
 
   TODOS.push(newTodo);
 
-  makeTodoElement(newTodo.contents);
+  makeTodoElement(newTodo.contents, newTodo.id);
 
   //클릭 후 인풋창 empty하기
   todoInputElement.value = "";
@@ -141,19 +144,20 @@ todoListContainer.addEventListener("click", function (event) {
         event.target.parentNode.parentNode.parentNode.parentNode;
       const currentListContent =
         event.target.parentNode.parentNode.parentNode.previousSibling;
+      const currentContentId = currentListContent.childNodes;
 
       //HTML에서 삭제
       event.stopPropagation();
       currentSelectedTodoList.remove();
 
       //TODOS에서 삭제
-      const newTODOS = TODOS.filter(function ({ date, contents }) {
-        if (date !== today || contents !== currentListContent.textContent) {
-          return true;
-        }
+      const newTODOS = TODOS.filter(function ({ id }) {
+        return currentListContent.textContent != id;
       });
 
       TODOS = [...newTODOS];
+      console.log(newTODOS);
+      console.log(TODOS);
       return;
     });
   });
