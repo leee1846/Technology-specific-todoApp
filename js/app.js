@@ -1,9 +1,5 @@
 const todoCategoryElements = Array.from(document.querySelectorAll(".category"));
 const todoListContainer = document.querySelector("#todo-lists");
-const newDate = new Date();
-const thisYear = newDate.getFullYear();
-const thisMonth = newDate.getMonth() + 1;
-const thisDate = newDate.getDate();
 
 //추가 엘리먼트 함수
 const makeTodoElement = function (contents, id) {
@@ -43,55 +39,92 @@ const makeTodoElement = function (contents, id) {
 };
 
 //처음 로드시 나올 화면 구성
+
+//날짜 선택 구성
+const newDate = new Date();
+const thisYear = newDate.getFullYear();
+const thisMonth = newDate.getMonth() + 1;
+let thisDate = newDate.getDate();
+const thisDay = newDate.getDay();
+
+const todoDateElement = document.querySelector("#todo-dates");
+const today = `${thisMonth}, ${thisDate}, ${thisYear}`;
 const defaultSelectedCategory = todoCategoryElements[0];
+
+//첫화면 date
+todoDateElement.textContent = today;
 defaultSelectedCategory.classList.add("category-active");
 
-const today = `${thisMonth} ${thisDate}, ${thisYear}`;
+//첫화면 todo list
 const todayTodoElements = TODOS.filter(function (TODO) {
-  return TODO.date === today;
+  if (
+    TODO.month === thisMonth &&
+    TODO.date === thisDate &&
+    TODO.year === thisYear
+  ) {
+    return true;
+  }
 });
 
 todayTodoElements.forEach(function ({ contents, id }) {
   makeTodoElement(contents, id);
 });
 
-//날짜 선택 구성
-// const currentDatesElement = document.querySelector("#todo-dates");
-// const getDay = newDate.getDay();
-// console.log(newDate.setDate(10));
-// const makeDates = function (minusDate, minusMonth, minusYear) {
-//   const today = `${getMonth} ${getDate}, ${getYear}`;
-//   return today;
-// };
-
-// currentDatesElement.textContent = newDate.setDate(1);
-
-//날짜 화살표 이벤트
-// const dateLeftArrow = document.querySelector("#left-date");
-// let dateNumber = 1;
-// dateLeftArrow.addEventListener("click", function () {
-//   const selectedCategoryValue = todoCategoryElements.find(function (element) {
-//     return element.className !== "category";
-//   }).textContent;
-
-//   if (selectedCategoryValue === "Day") {
-//     currentDatesElement.textContent = makeDates(dateNumber++, 0, 0);
-//     console.log(makeDates.getDate);
-//   }
-// });
-
-const daterightArrow = document.querySelector("#right-date");
+const dateRightArrow = document.querySelector("#right-date");
+const dateLeftArrow = document.querySelector("#left-date");
 
 //최상단 카테고리 클릭 이벤트
 todoCategoryElements.forEach(function (todoCategoryElement) {
   todoCategoryElement.addEventListener("click", function () {
     //상단 카테고리 click이벤트 (border-bottom) 추가
     const currentSelectedCategory = document.querySelector(".category-active");
+    const todoLists = Array.from(todoListContainer.children);
 
     if (currentSelectedCategory) {
       currentSelectedCategory.classList.remove("category-active");
     }
     this.classList.add("category-active");
+
+    //Year카테고리 클릭시 todolist appear
+    if (this.textContent === "Year") {
+      const thisYearTodoElements = TODOS.filter(function (TODO) {
+        return TODO.year === thisYear;
+      });
+
+      todoLists.forEach(function (todoList) {
+        todoList.remove();
+      });
+
+      thisYearTodoElements.forEach(function ({ contents, id }) {
+        makeTodoElement(contents, id);
+      });
+    }
+
+    //Month카테고리 클릭시 todolist appear
+    if (this.textContent === "Month") {
+      const thisMonthTodoElements = TODOS.filter(function (TODO) {
+        return TODO.month === thisMonth;
+      });
+
+      todoLists.forEach(function (todoList) {
+        todoList.remove();
+      });
+
+      thisMonthTodoElements.forEach(function ({ contents, id }) {
+        makeTodoElement(contents, id);
+      });
+    }
+
+    //Day카테고리 클릭시 todolist appear
+    if (this.textContent === "Day") {
+      todoLists.forEach(function (todoList) {
+        todoList.remove();
+      });
+
+      todayTodoElements.forEach(function ({ contents, id }) {
+        makeTodoElement(contents, id);
+      });
+    }
   });
 });
 
@@ -106,7 +139,9 @@ inputAddButton.addEventListener("click", function () {
   const newTodo = {
     id,
     //추후 수정
-    date: today,
+    month: thisMonth,
+    date: thisDate,
+    year: thisYear,
     contents,
   };
 
@@ -140,24 +175,25 @@ todoListContainer.addEventListener("click", function (event) {
 
   deleteButton.forEach(function (deleteBtn) {
     deleteBtn.addEventListener("click", function (event) {
-      const currentSelectedTodoList =
-        event.target.parentNode.parentNode.parentNode.parentNode;
-      const currentListContent =
-        event.target.parentNode.parentNode.parentNode.previousSibling;
-      const currentContentId = currentListContent.childNodes;
-
-      //HTML에서 삭제
       event.stopPropagation();
-      currentSelectedTodoList.remove();
+
+      const currentDeleteContainer = event.currentTarget;
+      const currentSelectedTodoList =
+        currentDeleteContainer.parentNode.parentNode.parentNode;
+      const currentListContent =
+        currentDeleteContainer.parentNode.parentNode.previousSibling;
 
       //TODOS에서 삭제
       const newTODOS = TODOS.filter(function ({ id }) {
-        return currentListContent.textContent != id;
+        return Number(currentListContent.textContent) !== id;
       });
-
       TODOS = [...newTODOS];
-      console.log(newTODOS);
-      console.log(TODOS);
+
+      //HTML에서 삭제
+      if (currentSelectedTodoList.className === "todo-list") {
+        currentSelectedTodoList.remove();
+      }
+
       return;
     });
   });
