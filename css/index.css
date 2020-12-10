@@ -163,26 +163,28 @@ body #container #add-list-container #todo-lists .todo-list p {
   font-size: 0.65rem;
 }
 
-body #container #add-list-container #todo-lists .todo-list .additinal-list {
+body #container #add-list-container #todo-lists .todo-list .additional-list {
   position: absolute;
   right: 0;
 }
 
-body #container #add-list-container #todo-lists .todo-list .additinal-list i {
+body #container #add-list-container #todo-lists .todo-list .additional-list i {
   color: #6a717a;
   font-size: 0.7rem;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
+  padding: 5px 8px;
   cursor: pointer;
   z-index: 1;
 }
 
-body #container #add-list-container #todo-lists .todo-list .additinal-list i:hover {
+body #container #add-list-container #todo-lists .todo-list .additional-list i:hover {
   color: #c6cfd6;
 }
 
-body #container #add-list-container #todo-lists .todo-list .additinal-list .additional-pocket {
+body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket {
   position: absolute;
+  display: none;
   top: 25px;
   right: -6px;
   background-color: #3a3a3a;
@@ -191,10 +193,9 @@ body #container #add-list-container #todo-lists .todo-list .additinal-list .addi
   -webkit-box-shadow: 0 0 3px #242424;
           box-shadow: 0 0 3px #242424;
   z-index: 10;
-  display: none;
 }
 
-body #container #add-list-container #todo-lists .todo-list .additinal-list .additional-pocket:before {
+body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket:before {
   content: "";
   position: absolute;
   left: 60px;
@@ -206,7 +207,7 @@ body #container #add-list-container #todo-lists .todo-list .additinal-list .addi
           transform: rotate(45deg);
 }
 
-body #container #add-list-container #todo-lists .todo-list .additinal-list .additional-pocket .additional-box {
+body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .additional-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -217,12 +218,12 @@ body #container #add-list-container #todo-lists .todo-list .additinal-list .addi
   cursor: pointer;
 }
 
-body #container #add-list-container #todo-lists .todo-list .additinal-list .additional-pocket .additional-box:hover span,
-body #container #add-list-container #todo-lists .todo-list .additinal-list .additional-pocket .additional-box:hover i {
+body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .additional-box:hover span,
+body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .additional-box:hover i {
   color: #c6cfd6;
 }
 
-body #container #add-list-container #todo-lists .todo-list .additinal-list .additional-pocket .additional-box i {
+body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .additional-box i {
   color: #aab0b6;
   font-size: 0.5rem;
   padding-right: 10px;
@@ -230,7 +231,7 @@ body #container #add-list-container #todo-lists .todo-list .additinal-list .addi
   transition: 0.1s linear;
 }
 
-body #container #add-list-container #todo-lists .todo-list .additinal-list .additional-pocket .additional-box span {
+body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .additional-box span {
   color: #aab0b6;
   font-size: 0.6rem;
   -webkit-transition: 0.1s linear;

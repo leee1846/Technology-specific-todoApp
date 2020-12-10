@@ -118,13 +118,14 @@ body {
             color: $white-font-color;
             font-size: 0.65rem;
           }
-          .additinal-list {
+          .additional-list {
             position: absolute;
             right: 0;
             i {
               color: $gray-font-color;
               font-size: 0.7rem;
               transition: 0.2s linear;
+              padding: 5px 8px;
               cursor: pointer;
               z-index: 1;
               &:hover {
@@ -133,6 +134,7 @@ body {
             }
             .additional-pocket {
               position: absolute;
+              display: none;
               top: 25px;
               right: -6px;
               background-color: rgb(58, 58, 58);
@@ -140,7 +142,6 @@ body {
               border-radius: 5px;
               box-shadow: 0 0 3px rgb(36, 36, 36);
               z-index: 10;
-              display: none;
               &:before {
                 content: "";
                 position: absolute;

@@ -1,35 +1,62 @@
 const todoCategoryElements = Array.from(document.querySelectorAll(".category"));
 const todoListContainer = document.querySelector("#todo-lists");
+const newDate = new Date();
+const thisYear = newDate.getFullYear();
+const thisMonth = newDate.getMonth() + 1;
+const thisDate = newDate.getDate();
 
-// //추가 엘리먼트 함수
-// const makeTodoElement = function (contents) {
-//   const todoBoxElement = document.createElement("div");
-//   const todoCheckBoxElement = document.createElement("input");
-//   const todoContentElement = document.createElement("p");
-//   const todoIcon = document.createElement("i");
-//   todoBoxElement.className = "todo-list";
-//   todoCheckBoxElement.type = "checkbox";
-//   todoIcon.className = "fas fa-ellipsis-h";
-//   todoContentElement.textContent = contents;
-//   todoBoxElement.appendChild(todoCheckBoxElement);
-//   todoCheckBoxElement.after(todoContentElement);
-//   todoContentElement.after(todoIcon);
-//   todoListContainer.appendChild(todoBoxElement);
-// };
+//추가 엘리먼트 함수
+const makeTodoElement = function (contents) {
+  const todoBoxElement = document.createElement("div");
+  const todoCheckBoxElement = document.createElement("input");
+  const todoContentElement = document.createElement("p");
+  const todoIconBox = document.createElement("div");
+  const todoIcon = document.createElement("i");
+  const pocketBox = document.createElement("div");
+  const pocket = document.createElement("div");
+  const pocketIcon = document.createElement("i");
+  const pocketContent = document.createElement("span");
+
+  pocketIcon.className = "far fa-trash-alt";
+  pocket.className = "additional-box";
+  pocketBox.className = "additional-pocket";
+  todoBoxElement.className = "todo-list";
+  todoIconBox.className = "additional-list";
+  todoCheckBoxElement.type = "checkbox";
+  todoIcon.className = "fas fa-ellipsis-h";
+  todoIcon.classList.add("additional-icon");
+  todoContentElement.textContent = contents;
+  pocketContent.textContent = "Delete";
+
+  pocket.appendChild(pocketIcon);
+  pocketIcon.after(pocketContent);
+  pocketBox.appendChild(pocket);
+  todoIconBox.appendChild(todoIcon);
+  todoIcon.after(pocketBox);
+  todoBoxElement.appendChild(todoCheckBoxElement);
+  todoCheckBoxElement.after(todoContentElement);
+  todoContentElement.after(todoIconBox);
+  todoListContainer.appendChild(todoBoxElement);
+};
 
 //처음 로드시 나올 화면 구성
 const defaultSelectedCategory = todoCategoryElements[0];
 defaultSelectedCategory.classList.add("category-active");
 
+const today = `${thisMonth} ${thisDate}, ${thisYear}`;
+const todayTodoElements = TODOS.filter(function (TODO) {
+  return TODO.date === today;
+});
+
+todayTodoElements.forEach(function ({ contents }) {
+  makeTodoElement(contents);
+});
+
 //날짜 선택 구성
 // const currentDatesElement = document.querySelector("#todo-dates");
-const newDate = new Date();
 // const getDay = newDate.getDay();
 // console.log(newDate.setDate(10));
 // const makeDates = function (minusDate, minusMonth, minusYear) {
-//   const getDate = newDate.getDate() - minusDate;
-//   const getMonth = newDate.getMonth() + 1 - minusMonth;
-//   const getYear = newDate.getFullYear() - minusYear;
 //   const today = `${getMonth} ${getDate}, ${getYear}`;
 //   return today;
 // };
@@ -65,39 +92,6 @@ todoCategoryElements.forEach(function (todoCategoryElement) {
   });
 });
 
-//추가 엘리먼트 함수
-const makeTodoElement = function (contents) {
-  const todoBoxElement = document.createElement("div");
-  const todoCheckBoxElement = document.createElement("input");
-  const todoContentElement = document.createElement("p");
-  const todoIconBox = document.createElement("div");
-  const todoIcon = document.createElement("i");
-  const pocketBox = document.createElement("div");
-  const pocket = document.createElement("div");
-  const pocketIcon = document.createElement("i");
-  const pocketContent = document.createElement("span");
-
-  pocketIcon.className = "far fa-trash-alt";
-  pocket.className = "additional-box";
-  pocketBox.className = "additional-pocket";
-  todoBoxElement.className = "todo-list";
-  todoIconBox.className = "additinal-list";
-  todoCheckBoxElement.type = "checkbox";
-  todoIcon.className = "fas fa-ellipsis-h";
-  todoContentElement.textContent = contents;
-  pocketContent.textContent = "Delete";
-
-  pocket.appendChild(pocketIcon);
-  pocketIcon.after(pocketContent);
-  pocketBox.appendChild(pocket);
-  todoIconBox.appendChild(todoIcon);
-  todoIcon.after(pocketBox);
-  todoBoxElement.appendChild(todoCheckBoxElement);
-  todoCheckBoxElement.after(todoContentElement);
-  todoContentElement.after(todoIconBox);
-  todoListContainer.appendChild(todoBoxElement);
-};
-
 //인풋내용 추가
 const inputAddButton = document.querySelector("#todo-add-container>i");
 const todoInputElement = document.querySelector("#todo-add-container > input");
@@ -109,9 +103,7 @@ inputAddButton.addEventListener("click", function () {
   const newTodo = {
     id,
     //추후 수정
-    date: newDate.getDate(),
-    month: newDate.getMonth() + 1,
-    year: newDate.getFullYear(),
+    date: today,
     contents,
   };
 
@@ -123,6 +115,26 @@ inputAddButton.addEventListener("click", function () {
   todoInputElement.value = "";
 });
 
-//리스트 삭제 아이콘 클릭
-const todoAdditionalIcon = document.querySelector(".additional-icon");
-console.log(todoAdditionalIcon);
+//클릭 additional-pocket appear/disappear이벤트
+todoListContainer.addEventListener("click", function (event) {
+  if (event.target.className === "fas fa-ellipsis-h additional-icon") {
+    const currentAdditionalPocket = event.target.nextElementSibling;
+
+    if (window.getComputedStyle(currentAdditionalPocket).display === "none") {
+      const additionalPockets = document.querySelectorAll(".additional-pocket");
+      additionalPockets.forEach(function (pocket) {
+        pocket.style.display = "none";
+      });
+
+      currentAdditionalPocket.style.display = "block";
+    } else {
+      currentAdditionalPocket.style.display = "none";
+    }
+  }
+});
+
+// //리스트 삭제 이벤트
+// const deleteButton = document.querySelectorAll(".additional-box");
+// deleteButton.addEventListener("click", function () {
+//   console.log(123);
+// });
