@@ -18,7 +18,7 @@ const makeTodoElement = function (contents) {
   const pocketContent = document.createElement("span");
 
   pocketIcon.className = "far fa-trash-alt";
-  pocket.className = "additional-box";
+  pocket.className = "delete-box";
   pocketBox.className = "additional-pocket";
   todoBoxElement.className = "todo-list";
   todoIconBox.className = "additional-list";
@@ -117,9 +117,9 @@ inputAddButton.addEventListener("click", function () {
 
 //클릭 additional-pocket appear/disappear이벤트
 todoListContainer.addEventListener("click", function (event) {
-  if (event.target.className === "fas fa-ellipsis-h additional-icon") {
-    const currentAdditionalPocket = event.target.nextElementSibling;
+  const currentAdditionalPocket = event.target.nextElementSibling;
 
+  if (event.target.className === "fas fa-ellipsis-h additional-icon") {
     if (window.getComputedStyle(currentAdditionalPocket).display === "none") {
       const additionalPockets = document.querySelectorAll(".additional-pocket");
       additionalPockets.forEach(function (pocket) {
@@ -131,10 +131,30 @@ todoListContainer.addEventListener("click", function (event) {
       currentAdditionalPocket.style.display = "none";
     }
   }
-});
 
-// //리스트 삭제 이벤트
-// const deleteButton = document.querySelectorAll(".additional-box");
-// deleteButton.addEventListener("click", function () {
-//   console.log(123);
-// });
+  //리스트 삭제 이벤트
+  const deleteButton = document.querySelectorAll(".delete-box");
+
+  deleteButton.forEach(function (deleteBtn) {
+    deleteBtn.addEventListener("click", function (event) {
+      const currentSelectedTodoList =
+        event.target.parentNode.parentNode.parentNode.parentNode;
+      const currentListContent =
+        event.target.parentNode.parentNode.parentNode.previousSibling;
+
+      //HTML에서 삭제
+      event.stopPropagation();
+      currentSelectedTodoList.remove();
+
+      //TODOS에서 삭제
+      const newTODOS = TODOS.filter(function ({ date, contents }) {
+        if (date !== today || contents !== currentListContent.textContent) {
+          return true;
+        }
+      });
+
+      TODOS = [...newTODOS];
+      return;
+    });
+  });
+});

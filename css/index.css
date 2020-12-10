@@ -207,7 +207,7 @@ body #container #add-list-container #todo-lists .todo-list .additional-list .add
           transform: rotate(45deg);
 }
 
-body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .additional-box {
+body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .delete-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -218,12 +218,12 @@ body #container #add-list-container #todo-lists .todo-list .additional-list .add
   cursor: pointer;
 }
 
-body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .additional-box:hover span,
-body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .additional-box:hover i {
+body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .delete-box:hover span,
+body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .delete-box:hover i {
   color: #c6cfd6;
 }
 
-body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .additional-box i {
+body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .delete-box i {
   color: #aab0b6;
   font-size: 0.5rem;
   padding-right: 10px;
@@ -231,7 +231,7 @@ body #container #add-list-container #todo-lists .todo-list .additional-list .add
   transition: 0.1s linear;
 }
 
-body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .additional-box span {
+body #container #add-list-container #todo-lists .todo-list .additional-list .additional-pocket .delete-box span {
   color: #aab0b6;
   font-size: 0.6rem;
   -webkit-transition: 0.1s linear;
