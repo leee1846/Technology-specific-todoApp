@@ -70,6 +70,7 @@ todayTodoElements.forEach(function ({ contents, id }) {
   makeTodoElement(contents, id);
 });
 
+//화살표 엘리먼트
 const dateRightArrow = document.querySelector("#right-date");
 const dateLeftArrow = document.querySelector("#left-date");
 
@@ -117,11 +118,15 @@ todoCategoryElements.forEach(function (todoCategoryElement) {
 
     //Day카테고리 클릭시 todolist appear
     if (this.textContent === "Day") {
+      const thisDayTodoElements = TODOS.filter(function (TODO) {
+        return TODO.date === thisDate;
+      });
+
       todoLists.forEach(function (todoList) {
         todoList.remove();
       });
 
-      todayTodoElements.forEach(function ({ contents, id }) {
+      thisDayTodoElements.forEach(function ({ contents, id }) {
         makeTodoElement(contents, id);
       });
     }
