@@ -1,7 +1,12 @@
 const todoCategoryElements = Array.from(document.querySelectorAll(".category"));
+const todoDateElement = document.querySelector("#todo-dates");
 const todoListContainer = document.querySelector("#todo-lists");
+const dateRightArrow = document.querySelector("#right-date");
+const dateLeftArrow = document.querySelector("#left-date");
+const inputAddButton = document.querySelector("#todo-add-container>i");
+const todoInputElement = document.querySelector("#todo-add-container > input");
 
-//추가 엘리먼트 함수
+//todo리스트 추가 엘리먼트 함수
 const makeTodoElement = function (contents, id) {
   const todoBoxElement = document.createElement("div");
   const todoCheckBoxElement = document.createElement("input");
@@ -38,101 +43,60 @@ const makeTodoElement = function (contents, id) {
   todoListContainer.appendChild(todoBoxElement);
 };
 
-//처음 로드시 나올 화면 구성
+//카테고리 클릭시 리스트 변경되는 함수
+const todoListChangeByCategory = function () {
+  //상단 카테고리 click이벤트 (border-bottom) 추가
+  const currentSelectedCategory = document.querySelector(".category-active");
+  const todoLists = Array.from(todoListContainer.children);
 
-//날짜 선택 구성
-const newDate = new Date();
-const thisYear = newDate.getFullYear();
-const thisMonth = newDate.getMonth() + 1;
-let thisDate = newDate.getDate();
-const thisDay = newDate.getDay();
-
-const todoDateElement = document.querySelector("#todo-dates");
-const today = `${thisMonth}, ${thisDate}, ${thisYear}`;
-const defaultSelectedCategory = todoCategoryElements[0];
-
-//첫화면 date
-todoDateElement.textContent = today;
-defaultSelectedCategory.classList.add("category-active");
-
-//첫화면 todo list
-const todayTodoElements = TODOS.filter(function (TODO) {
-  if (
-    TODO.month === thisMonth &&
-    TODO.date === thisDate &&
-    TODO.year === thisYear
-  ) {
-    return true;
+  if (currentSelectedCategory) {
+    currentSelectedCategory.classList.remove("category-active");
   }
-});
+  this.classList.add("category-active");
 
-todayTodoElements.forEach(function ({ contents, id }) {
-  makeTodoElement(contents, id);
-});
+  //Year카테고리 클릭시 todolist appear
+  if (this.textContent === "Year") {
+    const thisYearTodoElements = TODOS.filter(function (TODO) {
+      return TODO.year === thisYear;
+    });
 
-const dateRightArrow = document.querySelector("#right-date");
-const dateLeftArrow = document.querySelector("#left-date");
+    todoLists.forEach(function (todoList) {
+      todoList.remove();
+    });
 
-//최상단 카테고리 클릭 이벤트
-todoCategoryElements.forEach(function (todoCategoryElement) {
-  todoCategoryElement.addEventListener("click", function () {
-    //상단 카테고리 click이벤트 (border-bottom) 추가
-    const currentSelectedCategory = document.querySelector(".category-active");
-    const todoLists = Array.from(todoListContainer.children);
+    thisYearTodoElements.forEach(function ({ contents, id }) {
+      makeTodoElement(contents, id);
+    });
+  }
 
-    if (currentSelectedCategory) {
-      currentSelectedCategory.classList.remove("category-active");
-    }
-    this.classList.add("category-active");
+  //Month카테고리 클릭시 todolist appear
+  if (this.textContent === "Month") {
+    const thisMonthTodoElements = TODOS.filter(function (TODO) {
+      return TODO.month === thisMonth;
+    });
 
-    //Year카테고리 클릭시 todolist appear
-    if (this.textContent === "Year") {
-      const thisYearTodoElements = TODOS.filter(function (TODO) {
-        return TODO.year === thisYear;
-      });
+    todoLists.forEach(function (todoList) {
+      todoList.remove();
+    });
 
-      todoLists.forEach(function (todoList) {
-        todoList.remove();
-      });
+    thisMonthTodoElements.forEach(function ({ contents, id }) {
+      makeTodoElement(contents, id);
+    });
+  }
 
-      thisYearTodoElements.forEach(function ({ contents, id }) {
-        makeTodoElement(contents, id);
-      });
-    }
+  //Day카테고리 클릭시 todolist appear
+  if (this.textContent === "Day") {
+    todoLists.forEach(function (todoList) {
+      todoList.remove();
+    });
+    todayTodoElements.forEach(function ({ contents, id }) {
+      makeTodoElement(contents, id);
+    });
+  }
+};
 
-    //Month카테고리 클릭시 todolist appear
-    if (this.textContent === "Month") {
-      const thisMonthTodoElements = TODOS.filter(function (TODO) {
-        return TODO.month === thisMonth;
-      });
-
-      todoLists.forEach(function (todoList) {
-        todoList.remove();
-      });
-
-      thisMonthTodoElements.forEach(function ({ contents, id }) {
-        makeTodoElement(contents, id);
-      });
-    }
-
-    //Day카테고리 클릭시 todolist appear
-    if (this.textContent === "Day") {
-      todoLists.forEach(function (todoList) {
-        todoList.remove();
-      });
-
-      todayTodoElements.forEach(function ({ contents, id }) {
-        makeTodoElement(contents, id);
-      });
-    }
-  });
-});
-
-//인풋내용 추가
-const inputAddButton = document.querySelector("#todo-add-container>i");
-const todoInputElement = document.querySelector("#todo-add-container > input");
-
-inputAddButton.addEventListener("click", function () {
+//리스트 추가 함수
+const addMoreList = function () {
   const contents = todoInputElement.value;
   let id = TODOS.sort((a, b) => b.id - a.id)[0].id + 1;
 
@@ -151,10 +115,10 @@ inputAddButton.addEventListener("click", function () {
 
   //클릭 후 인풋창 empty하기
   todoInputElement.value = "";
-});
+};
 
-//클릭 additional-pocket appear/disappear이벤트
-todoListContainer.addEventListener("click", function (event) {
+//리스트 삭제 함수
+const editTodoList = function (event) {
   const currentAdditionalPocket = event.target.nextElementSibling;
 
   if (event.target.className === "fas fa-ellipsis-h additional-icon") {
@@ -197,4 +161,74 @@ todoListContainer.addEventListener("click", function (event) {
       return;
     });
   });
+};
+
+//날짜 선택 구성
+const newDate = new Date();
+let thisYear = newDate.getFullYear();
+let thisMonth = newDate.getMonth() + 1;
+let thisDate = newDate.getDate();
+let thisDay = newDate.getDay();
+const today = newDate.toDateString();
+
+//첫 화면 월 구하기
+const todoMonthElement = document.querySelector("#today-category");
+const Months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+todoMonthElement.textContent = Months[thisMonth - 1];
+
+//왼쪽 화살표 누를시(Day)
+
+const lastDay = new Date(
+  newDate.getFullYear(),
+  newDate.getMonth() + 1,
+  0
+).getDate();
+
+dateLeftArrow.addEventListener("click", function () {
+  console.log(1);
 });
+
+// dateRightArrow;
+
+////// 처음 로드시 나올 화면 구성
+//첫화면 date
+todoDateElement.textContent = today;
+//첫화면 카테고리 파란선
+const defaultSelectedCategory = todoCategoryElements[0];
+defaultSelectedCategory.classList.add("category-active");
+//첫화면 todo list
+const todayTodoElements = TODOS.filter(function (TODO) {
+  if (
+    TODO.month === thisMonth &&
+    TODO.date === thisDate &&
+    TODO.year === thisYear
+  ) {
+    return true;
+  }
+});
+
+todayTodoElements.forEach(function ({ contents, id }) {
+  makeTodoElement(contents, id);
+});
+
+//---- 최상단 카테고리 클릭 이벤트
+todoCategoryElements.forEach(function (todoCategoryElement) {
+  todoCategoryElement.addEventListener("click", todoListChangeByCategory);
+});
+//---- 인풋내용 추가
+inputAddButton.addEventListener("click", addMoreList);
+//----클릭 additional-pocket appear/disappear이벤트
+todoListContainer.addEventListener("click", editTodoList);
