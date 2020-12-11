@@ -171,6 +171,7 @@ let thisDate = newDate.getDate();
 let thisDay = newDate.getDay();
 const today = newDate.toDateString();
 
+////// 처음 로드시 나올 화면 구성
 //첫 화면 월 구하기
 const todoMonthElement = document.querySelector("#today-category");
 const Months = [
@@ -189,21 +190,6 @@ const Months = [
 ];
 todoMonthElement.textContent = Months[thisMonth - 1];
 
-//왼쪽 화살표 누를시(Day)
-
-const lastDay = new Date(
-  newDate.getFullYear(),
-  newDate.getMonth() + 1,
-  0
-).getDate();
-
-dateLeftArrow.addEventListener("click", function () {
-  console.log(1);
-});
-
-// dateRightArrow;
-
-////// 처음 로드시 나올 화면 구성
 //첫화면 date
 todoDateElement.textContent = today;
 //첫화면 카테고리 파란선
