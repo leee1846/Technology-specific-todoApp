@@ -2,7 +2,7 @@ let TODOS = [
   {
     id: 1,
     month: 10,
-    date: 11,
+    date: 13,
     year: 2020,
     contents: "javascript 공부",
   },
