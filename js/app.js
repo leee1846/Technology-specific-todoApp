@@ -50,20 +50,7 @@ const editTodoList = function (event) {
   todoListEditDisplayToggle(event);
 
   //리스트 삭제 이벤트
-  const deleteButton = document.querySelectorAll(".delete-box");
-
-  deleteButton.forEach(function (deleteBtn) {
-    deleteBtn.addEventListener("click", function (event) {
-      event.stopPropagation();
-
-      //TODOS에서 삭제
-      DeleteListFromTODOS(event);
-
-      //HTML에서 삭제
-      deleteListFromHTML(event);
-      return;
-    });
-  });
+  deleteTodoListClickHandeler();
 };
 
 ////// 처음 로드시 나올 화면 구성

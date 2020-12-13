@@ -120,3 +120,20 @@ const deleteListFromHTML = (event) => {
     currentSelectedTodoList.remove();
   }
 };
+
+//delete버튼 클릭시 삭제되는 이벤트 함수 [todoList 공통]
+const deleteTodoListClickHandeler = () => {
+  const deleteButton = document.querySelectorAll(".delete-box");
+  deleteButton.forEach(function (deleteBtn) {
+    deleteBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+
+      //TODOS에서 삭제
+      DeleteListFromTODOS(event);
+
+      //HTML에서 삭제
+      deleteListFromHTML(event);
+      return;
+    });
+  });
+};
