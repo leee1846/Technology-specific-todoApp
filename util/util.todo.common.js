@@ -137,3 +137,23 @@ const deleteTodoListClickHandeler = () => {
     });
   });
 };
+
+//첫화면에 나타나는 요일 함수 [todoList 공통]
+const firstDefaultDay = () => {
+  const todoMonthElement = document.querySelector("#today-category");
+  const Months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  todoMonthElement.textContent = Months[thisMonth - 1];
+};

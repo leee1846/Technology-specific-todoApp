@@ -1,5 +1,4 @@
 const todoCategoryElements = Array.from(document.querySelectorAll(".category"));
-const todoDateElement = document.querySelector("#todo-dates");
 const todoListContainer = document.querySelector("#todo-lists");
 const dateRightArrow = document.querySelector("#right-date");
 const dateLeftArrow = document.querySelector("#left-date");
@@ -7,7 +6,7 @@ const inputAddButton = document.querySelector("#todo-add-container>i");
 const todoInputElement = document.querySelector("#todo-add-container > input");
 
 //카테고리 클릭시 리스트 변경되는 함수 [core]
-const todoListChangeByCategory = function () {
+const resetTodoListByCategory = function () {
   //상단 카테고리 파란색 보더 삭제/추가
   removeCategoryBorderBottom();
   this.classList.add("category-active");
@@ -23,7 +22,7 @@ const todoListChangeByCategory = function () {
 };
 
 //리스트 추가 함수 [core]
-const addMoreList = function () {
+const addNewList = function () {
   const contents = todoInputElement.value;
   const id = TODOS.sort((a, b) => b.id - a.id)[0].id + 1;
 
@@ -54,25 +53,12 @@ const editTodoList = function (event) {
 };
 
 ////// 처음 로드시 나올 화면 구성
+
 //첫 화면 월 구하기
-const todoMonthElement = document.querySelector("#today-category");
-const Months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-todoMonthElement.textContent = Months[thisMonth - 1];
+firstDefaultDay();
 
 //첫화면 date
+const todoDateElement = document.querySelector("#todo-dates");
 todoDateElement.textContent = today;
 //첫화면 카테고리 파란선
 const defaultSelectedCategory = todoCategoryElements[0];
@@ -94,9 +80,9 @@ todayTodoElements.forEach(function ({ contents, id }) {
 
 //---- 최상단 카테고리 클릭 이벤트
 todoCategoryElements.forEach(function (todoCategoryElement) {
-  todoCategoryElement.addEventListener("click", todoListChangeByCategory);
+  todoCategoryElement.addEventListener("click", resetTodoListByCategory);
 });
 //---- 인풋내용 추가
-inputAddButton.addEventListener("click", addMoreList);
+inputAddButton.addEventListener("click", addNewList);
 //----클릭 additional-pocket appear/disappear이벤트
 todoListContainer.addEventListener("click", editTodoList);
