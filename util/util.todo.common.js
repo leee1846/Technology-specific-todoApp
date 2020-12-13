@@ -97,3 +97,26 @@ const todoListEditDisplayToggle = (event) => {
     }
   }
 };
+
+//TODOS에서 리스트 삭제 함수 [todoList 공통]
+const DeleteListFromTODOS = (event) => {
+  const currentDeleteContainer = event.currentTarget;
+  const currentListContent =
+    currentDeleteContainer.parentNode.parentNode.previousSibling;
+
+  const newTODOS = TODOS.filter(function ({ id }) {
+    return Number(currentListContent.textContent) !== id;
+  });
+  TODOS = [...newTODOS];
+};
+
+//HTML에서 리스트 삭제 함수 [todoList 공통]
+const deleteListFromHTML = (event) => {
+  const currentDeleteContainer = event.currentTarget;
+  const currentSelectedTodoList =
+    currentDeleteContainer.parentNode.parentNode.parentNode;
+
+  if (currentSelectedTodoList.className === "todo-list") {
+    currentSelectedTodoList.remove();
+  }
+};

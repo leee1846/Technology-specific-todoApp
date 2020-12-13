@@ -56,23 +56,11 @@ const editTodoList = function (event) {
     deleteBtn.addEventListener("click", function (event) {
       event.stopPropagation();
 
-      const currentDeleteContainer = event.currentTarget;
-      const currentSelectedTodoList =
-        currentDeleteContainer.parentNode.parentNode.parentNode;
-      const currentListContent =
-        currentDeleteContainer.parentNode.parentNode.previousSibling;
-
       //TODOS에서 삭제
-      const newTODOS = TODOS.filter(function ({ id }) {
-        return Number(currentListContent.textContent) !== id;
-      });
-      TODOS = [...newTODOS];
+      DeleteListFromTODOS(event);
 
       //HTML에서 삭제
-      if (currentSelectedTodoList.className === "todo-list") {
-        currentSelectedTodoList.remove();
-      }
-
+      deleteListFromHTML(event);
       return;
     });
   });
