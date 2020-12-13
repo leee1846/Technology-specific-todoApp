@@ -12,8 +12,10 @@ const initApp = () => {
   todoCategoryElements.forEach(function (todoCategoryElement) {
     todoCategoryElement.addEventListener("click", resetTodoListByCategory);
   });
+
   // 인풋내용 추가
   inputAddButton.addEventListener("click", addNewList);
+
   //클릭 additional-pocket appear/disappear이벤트
   todoListContainer.addEventListener("click", editTodoList);
 };
