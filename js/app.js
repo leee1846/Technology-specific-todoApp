@@ -35,7 +35,7 @@ const addMoreList = function () {
     year: thisYear,
     contents,
   };
-
+  TODOS.sort((a, b) => a.id - b.id);
   TODOS.push(newTodo);
 
   createTodoElement(newTodo.contents, newTodo.id);
@@ -95,7 +95,6 @@ const newDate = new Date();
 let thisYear = newDate.getFullYear();
 let thisMonth = newDate.getMonth() + 1;
 let thisDate = newDate.getDate();
-let thisDay = newDate.getDay();
 const today = newDate.toDateString();
 
 ////// 처음 로드시 나올 화면 구성
