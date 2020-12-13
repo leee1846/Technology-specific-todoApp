@@ -14,6 +14,17 @@ const removeCategoryBorderBottom = () => {
   }
 };
 
+//TODOS에서 카테고리 이름과 같은 리스트 요소 가져온 후 엘리먼트 만들기
+const getListOfSelectedCategory = (timeFromTODOS, time) => {
+  const SelectedListFromTODOS = TODOS.filter(function (TODO) {
+    return TODO[timeFromTODOS] === time;
+  });
+
+  SelectedListFromTODOS.forEach(function ({ contents, id }) {
+    createTodoElement(contents, id);
+  });
+};
+
 //카테고리 클릭시 리스트 변경되는 함수
 const todoListChangeByCategory = function () {
   const todoLists = Array.from(todoListContainer.children);
@@ -24,32 +35,20 @@ const todoListChangeByCategory = function () {
 
   //Year카테고리 클릭시 todolist appear
   if (this.textContent === "Year") {
-    const thisYearTodoElements = TODOS.filter(function (TODO) {
-      return TODO.year === thisYear;
-    });
-
     todoLists.forEach(function (todoList) {
       todoList.remove();
     });
 
-    thisYearTodoElements.forEach(function ({ contents, id }) {
-      createTodoElement(contents, id);
-    });
+    getListOfSelectedCategory("year", thisYear);
   }
 
   //Month카테고리 클릭시 todolist appear
   if (this.textContent === "Month") {
-    const thisMonthTodoElements = TODOS.filter(function (TODO) {
-      return TODO.month === thisMonth;
-    });
-
     todoLists.forEach(function (todoList) {
       todoList.remove();
     });
 
-    thisMonthTodoElements.forEach(function ({ contents, id }) {
-      createTodoElement(contents, id);
-    });
+    getListOfSelectedCategory("month", thisMonth);
   }
 
   //Day카테고리 클릭시 todolist appear
@@ -57,9 +56,7 @@ const todoListChangeByCategory = function () {
     todoLists.forEach(function (todoList) {
       todoList.remove();
     });
-    todayTodoElements.forEach(function ({ contents, id }) {
-      createTodoElement(contents, id);
-    });
+    getListOfSelectedCategory("date", thisDate);
   }
 };
 
@@ -186,7 +183,3 @@ todoCategoryElements.forEach(function (todoCategoryElement) {
 inputAddButton.addEventListener("click", addMoreList);
 //----클릭 additional-pocket appear/disappear이벤트
 todoListContainer.addEventListener("click", editTodoList);
-
-const a = document.querySelector(".prac");
-
-// a.addEventListener('click',function() )
