@@ -65,18 +65,22 @@ const createTodoListToHTML = (categoryPeriod) => {
   });
 };
 
+//삭제주머니 전부 지우는 함수
+const deleteAllAdditionalPocket = () => {
+  const additionalPockets = document.querySelectorAll(".additional-pocket");
+
+  additionalPockets.forEach(function (pocket) {
+    pocket.style.display = "none";
+  });
+};
+
 //투두리스트 삭제주머니 디스플레이 유/무 함수 [todoList 공통]
 const todoListEditDisplayToggle = (event) => {
   const currentAdditionalPocket = event.target.nextElementSibling;
 
   if (event.target.className === "fas fa-ellipsis-h additional-icon") {
     if (window.getComputedStyle(currentAdditionalPocket).display === "none") {
-      const additionalPockets = document.querySelectorAll(".additional-pocket");
-
-      additionalPockets.forEach(function (pocket) {
-        pocket.style.display = "none";
-      });
-
+      deleteAllAdditionalPocket();
       currentAdditionalPocket.style.display = "block";
     } else {
       currentAdditionalPocket.style.display = "none";
@@ -93,6 +97,7 @@ const DeleteListFromTODOS = (event) => {
   const newTODOS = TODOS.filter(function ({ id }) {
     return Number(currentListContent.textContent) !== id;
   });
+
   TODOS = [...newTODOS];
 };
 
