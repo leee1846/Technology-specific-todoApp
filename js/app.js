@@ -6,54 +6,20 @@ const dateLeftArrow = document.querySelector("#left-date");
 const inputAddButton = document.querySelector("#todo-add-container>i");
 const todoInputElement = document.querySelector("#todo-add-container > input");
 
-//todo리스트 추가 엘리먼트 함수
-const createTodoElement = (contents, id) => {
-  let childElement;
-  const createTagAndAppendChild = (tagName, className, tagToAppend) => {
-    childElement = document.createElement(tagName);
-
-    className
-      ? (childElement.className = className)
-      : (childElement.type = "checkbox");
-
-    tagToAppend.appendChild(childElement);
-    return childElement;
-  };
-
-  const createTagAndAfter = (tagName, text, tagToAfter) => {
-    childElement = document.createElement(tagName);
-    if (text) {
-      childElement.textContent = text;
-    }
-    tagToAfter.after(childElement);
-    return childElement;
-  };
-
-  createTagAndAppendChild("div", "todo-list", todoListContainer);
-  createTagAndAppendChild("input", null, childElement);
-  createTagAndAfter("p", contents, childElement);
-  createTagAndAfter("span", id, childElement);
-  createTagAndAfter("div", null, childElement);
-  childElement.className = "additional-list";
-  createTagAndAppendChild("i", null, childElement);
-  childElement.className = "fas fa-ellipsis-h";
-  childElement.classList.add("additional-icon");
-  createTagAndAfter("div", null, childElement);
-  childElement.className = "additional-pocket";
-  createTagAndAppendChild("div", "delete-box", childElement);
-  createTagAndAppendChild("i", "far fa-trash-alt", childElement);
-  createTagAndAfter("span", "Delete", childElement);
+//카테고리 클릭시 파란색 보더 삭제 함수 [todo 공통]
+const removeCategoryBorderBottom = () => {
+  const currentSelectedCategory = document.querySelector(".category-active");
+  if (currentSelectedCategory) {
+    currentSelectedCategory.classList.remove("category-active");
+  }
 };
 
 //카테고리 클릭시 리스트 변경되는 함수
 const todoListChangeByCategory = function () {
-  //상단 카테고리 click이벤트 (border-bottom) 추가
-  const currentSelectedCategory = document.querySelector(".category-active");
   const todoLists = Array.from(todoListContainer.children);
 
-  if (currentSelectedCategory) {
-    currentSelectedCategory.classList.remove("category-active");
-  }
+  //상단 카테고리 파란색 보더 삭제/추가
+  removeCategoryBorderBottom();
   this.classList.add("category-active");
 
   //Year카테고리 클릭시 todolist appear
@@ -220,3 +186,7 @@ todoCategoryElements.forEach(function (todoCategoryElement) {
 inputAddButton.addEventListener("click", addMoreList);
 //----클릭 additional-pocket appear/disappear이벤트
 todoListContainer.addEventListener("click", editTodoList);
+
+const a = document.querySelector(".prac");
+
+// a.addEventListener('click',function() )
