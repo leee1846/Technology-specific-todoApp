@@ -7,40 +7,42 @@ const inputAddButton = document.querySelector("#todo-add-container>i");
 const todoInputElement = document.querySelector("#todo-add-container > input");
 
 //todo리스트 추가 엘리먼트 함수
-const makeTodoElement = function (contents, id) {
-  const todoBoxElement = document.createElement("div");
-  const todoCheckBoxElement = document.createElement("input");
-  const todoContentElement = document.createElement("p");
-  const todoContentElementId = document.createElement("span");
-  const todoIconBox = document.createElement("div");
-  const todoIcon = document.createElement("i");
-  const pocketBox = document.createElement("div");
-  const pocket = document.createElement("div");
-  const pocketIcon = document.createElement("i");
-  const pocketContent = document.createElement("span");
+const createTodoElement = (contents, id) => {
+  let childElement;
+  const createTagAndAppendChild = (tagName, className, tagToAppend) => {
+    childElement = document.createElement(tagName);
 
-  todoContentElementId.textContent = id;
-  pocketIcon.className = "far fa-trash-alt";
-  pocket.className = "delete-box";
-  pocketBox.className = "additional-pocket";
-  todoBoxElement.className = "todo-list";
-  todoIconBox.className = "additional-list";
-  todoCheckBoxElement.type = "checkbox";
-  todoIcon.className = "fas fa-ellipsis-h";
-  todoIcon.classList.add("additional-icon");
-  todoContentElement.textContent = contents;
-  pocketContent.textContent = "Delete";
+    className
+      ? (childElement.className = className)
+      : (childElement.type = "checkbox");
 
-  pocket.appendChild(pocketIcon);
-  pocketIcon.after(pocketContent);
-  pocketBox.appendChild(pocket);
-  todoIconBox.appendChild(todoIcon);
-  todoIcon.after(pocketBox);
-  todoBoxElement.appendChild(todoCheckBoxElement);
-  todoCheckBoxElement.after(todoContentElement);
-  todoContentElement.after(todoContentElementId);
-  todoContentElementId.after(todoIconBox);
-  todoListContainer.appendChild(todoBoxElement);
+    tagToAppend.appendChild(childElement);
+    return childElement;
+  };
+
+  const createTagAndAfter = (tagName, text, tagToAfter) => {
+    childElement = document.createElement(tagName);
+    if (text) {
+      childElement.textContent = text;
+    }
+    tagToAfter.after(childElement);
+    return childElement;
+  };
+
+  createTagAndAppendChild("div", "todo-list", todoListContainer);
+  createTagAndAppendChild("input", null, childElement);
+  createTagAndAfter("p", contents, childElement);
+  createTagAndAfter("span", id, childElement);
+  createTagAndAfter("div", null, childElement);
+  childElement.className = "additional-list";
+  createTagAndAppendChild("i", null, childElement);
+  childElement.className = "fas fa-ellipsis-h";
+  childElement.classList.add("additional-icon");
+  createTagAndAfter("div", null, childElement);
+  childElement.className = "additional-pocket";
+  createTagAndAppendChild("div", "delete-box", childElement);
+  createTagAndAppendChild("i", "far fa-trash-alt", childElement);
+  createTagAndAfter("span", "Delete", childElement);
 };
 
 //카테고리 클릭시 리스트 변경되는 함수
@@ -65,7 +67,7 @@ const todoListChangeByCategory = function () {
     });
 
     thisYearTodoElements.forEach(function ({ contents, id }) {
-      makeTodoElement(contents, id);
+      createTodoElement(contents, id);
     });
   }
 
@@ -80,7 +82,7 @@ const todoListChangeByCategory = function () {
     });
 
     thisMonthTodoElements.forEach(function ({ contents, id }) {
-      makeTodoElement(contents, id);
+      createTodoElement(contents, id);
     });
   }
 
@@ -90,7 +92,7 @@ const todoListChangeByCategory = function () {
       todoList.remove();
     });
     todayTodoElements.forEach(function ({ contents, id }) {
-      makeTodoElement(contents, id);
+      createTodoElement(contents, id);
     });
   }
 };
@@ -111,7 +113,7 @@ const addMoreList = function () {
 
   TODOS.push(newTodo);
 
-  makeTodoElement(newTodo.contents, newTodo.id);
+  createTodoElement(newTodo.contents, newTodo.id);
 
   //클릭 후 인풋창 empty하기
   todoInputElement.value = "";
@@ -207,7 +209,7 @@ const todayTodoElements = TODOS.filter(function (TODO) {
 });
 
 todayTodoElements.forEach(function ({ contents, id }) {
-  makeTodoElement(contents, id);
+  createTodoElement(contents, id);
 });
 
 //---- 최상단 카테고리 클릭 이벤트
