@@ -14,10 +14,10 @@ const removeCategoryBorderBottom = () => {
   }
 };
 
-//TODOS에서 카테고리 이름과 같은 리스트 요소 가져온 후 엘리먼트 만들기
-const getListOfSelectedCategory = (timeFromTODOS, time) => {
+//TODOS에서 카테고리 이름과 같은 리스트 요소 가져온 후 엘리먼트 만들기 [todo 공통]
+const getListOfSelectedCategory = (timeFromTODOS, thisTime) => {
   const SelectedListFromTODOS = TODOS.filter(function (TODO) {
-    return TODO[timeFromTODOS] === time;
+    return TODO[timeFromTODOS] === thisTime;
   });
 
   SelectedListFromTODOS.forEach(function ({ contents, id }) {
@@ -25,39 +25,42 @@ const getListOfSelectedCategory = (timeFromTODOS, time) => {
   });
 };
 
+//화면에 기존 카테고리 todolists지우기 [todo 공통]
+const editPreviousLists = () => {
+  const todoLists = Array.from(todoListContainer.children);
+  todoLists.forEach(function (todoList) {
+    todoList.remove();
+  });
+};
+
+//카테고리에 맞는 리스트 가져오기 [todo 공통]
+const getCategoryTodoLists = (
+  clickedCategory,
+  categoryName,
+  timeFromTODOS,
+  thisTime
+) => {
+  if (clickedCategory.textContent === categoryName) {
+    editPreviousLists();
+
+    getListOfSelectedCategory(timeFromTODOS, thisTime);
+  }
+};
+
 //카테고리 클릭시 리스트 변경되는 함수
 const todoListChangeByCategory = function () {
-  const todoLists = Array.from(todoListContainer.children);
-
   //상단 카테고리 파란색 보더 삭제/추가
   removeCategoryBorderBottom();
   this.classList.add("category-active");
 
   //Year카테고리 클릭시 todolist appear
-  if (this.textContent === "Year") {
-    todoLists.forEach(function (todoList) {
-      todoList.remove();
-    });
-
-    getListOfSelectedCategory("year", thisYear);
-  }
+  getCategoryTodoLists(this, "Year", "year", thisYear);
 
   //Month카테고리 클릭시 todolist appear
-  if (this.textContent === "Month") {
-    todoLists.forEach(function (todoList) {
-      todoList.remove();
-    });
-
-    getListOfSelectedCategory("month", thisMonth);
-  }
+  getCategoryTodoLists(this, "Month", "month", thisMonth);
 
   //Day카테고리 클릭시 todolist appear
-  if (this.textContent === "Day") {
-    todoLists.forEach(function (todoList) {
-      todoList.remove();
-    });
-    getListOfSelectedCategory("date", thisDate);
-  }
+  getCategoryTodoLists(this, "Day", "date", thisDate);
 };
 
 //리스트 추가 함수
