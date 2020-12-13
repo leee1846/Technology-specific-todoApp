@@ -35,7 +35,7 @@ const resetTodoListByCategory = function () {
 };
 
 //리스트 추가 함수 [core]
-const addNewList = function () {
+const addNewList = () => {
   const todoInputElement = document.querySelector(
     "#todo-add-container > input"
   );
@@ -58,7 +58,7 @@ const addNewList = function () {
 };
 
 //투두리스트 삭제 함수 [core]
-const editTodoList = function (event) {
+const editTodoList = (event) => {
   //투두리스트 삭제주머니 디스플레이 유/무
   todoListEditDisplayToggle(event);
 
