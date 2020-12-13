@@ -46,23 +46,22 @@ const removeCategoryBorderBottom = () => {
   }
 };
 
-//카테고리 클릭시 나올 투두리스트 만들기 함수
-const createTodoListToHTML = (categoryPeriod) => {
+//기존 투두리스트 모두 삭제 함수
+const deleteAllTodoLists = () => {
   const todoLists = Array.from(todoListContainer.children);
   todoLists.forEach(function (todoList) {
     todoList.remove();
-  });
-
-  categoryPeriod.forEach(function ({ contents, id }) {
-    createTodoElement(contents, id);
   });
 };
 
-//화면에 기존 카테고리 todolists지우기 [todoList 공통]
-const editPreviousLists = () => {
-  const todoLists = Array.from(todoListContainer.children);
-  todoLists.forEach(function (todoList) {
-    todoList.remove();
+//카테고리 클릭시 나올 투두리스트 만들기 함수
+const createTodoListToHTML = (categoryPeriod) => {
+  //기존 투두리스트 모두 삭제
+  deleteAllTodoLists();
+
+  //카테고리에 맞는 투두리스트 HTML에 적용
+  categoryPeriod.forEach(function ({ contents, id }) {
+    createTodoElement(contents, id);
   });
 };
 
