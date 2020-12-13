@@ -157,28 +157,3 @@ const firstDefaultDay = () => {
   ];
   todoMonthElement.textContent = Months[thisMonth - 1];
 };
-
-//처음에 나올 화면 함수 [todoList 공통]
-const firstDefaultActions = () => {
-  //첫 화면 월 구하기
-  firstDefaultDay();
-  //첫화면 date
-  const todoDateElement = document.querySelector("#todo-dates");
-  todoDateElement.textContent = today;
-  //첫화면 카테고리 파란선
-  const defaultSelectedCategory = todoCategoryElements[0];
-  defaultSelectedCategory.classList.add("category-active");
-  //첫화면 todo list
-  const todayTodoElements = TODOS.filter(function (TODO) {
-    if (
-      TODO.month === thisMonth &&
-      TODO.date === thisDate &&
-      TODO.year === thisYear
-    ) {
-      return true;
-    }
-  });
-  todayTodoElements.forEach(function ({ contents, id }) {
-    createTodoElement(contents, id);
-  });
-};
