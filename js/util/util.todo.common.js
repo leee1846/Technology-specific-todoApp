@@ -46,13 +46,14 @@ const removeCategoryBorderBottom = () => {
   }
 };
 
-//TODOS에서 카테고리 이름과 같은 리스트 요소 가져온 후 엘리먼트 만들기 [todoList 공통]
-const getListOfSelectedCategory = (timeFromTODOS, thisTime) => {
-  const SelectedListFromTODOS = TODOS.filter(function (TODO) {
-    return TODO[timeFromTODOS] === thisTime;
+//카테고리 클릭시 나올 투두리스트 만들기 함수
+const createTodoListToHTML = (categoryPeriod) => {
+  const todoLists = Array.from(todoListContainer.children);
+  todoLists.forEach(function (todoList) {
+    todoList.remove();
   });
 
-  SelectedListFromTODOS.forEach(function ({ contents, id }) {
+  categoryPeriod.forEach(function ({ contents, id }) {
     createTodoElement(contents, id);
   });
 };
@@ -63,20 +64,6 @@ const editPreviousLists = () => {
   todoLists.forEach(function (todoList) {
     todoList.remove();
   });
-};
-
-//카테고리에 맞는 리스트 가져오기 [todoList 공통]
-const getCategoryTodoLists = (
-  clickedCategory,
-  categoryName,
-  timeFromTODOS,
-  thisTime
-) => {
-  if (clickedCategory.textContent === categoryName) {
-    editPreviousLists();
-
-    getListOfSelectedCategory(timeFromTODOS, thisTime);
-  }
 };
 
 //투두리스트 삭제주머니 디스플레이 유/무 함수 [todoList 공통]
