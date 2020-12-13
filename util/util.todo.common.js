@@ -78,3 +78,22 @@ const getCategoryTodoLists = (
     getListOfSelectedCategory(timeFromTODOS, thisTime);
   }
 };
+
+//투두리스트 삭제주머니 디스플레이 유/무 함수 [todoList 공통]
+const todoListEditDisplayToggle = (event) => {
+  const currentAdditionalPocket = event.target.nextElementSibling;
+
+  if (event.target.className === "fas fa-ellipsis-h additional-icon") {
+    if (window.getComputedStyle(currentAdditionalPocket).display === "none") {
+      const additionalPockets = document.querySelectorAll(".additional-pocket");
+
+      additionalPockets.forEach(function (pocket) {
+        pocket.style.display = "none";
+      });
+
+      currentAdditionalPocket.style.display = "block";
+    } else {
+      currentAdditionalPocket.style.display = "none";
+    }
+  }
+};

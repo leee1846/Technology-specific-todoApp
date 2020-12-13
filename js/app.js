@@ -44,22 +44,10 @@ const addMoreList = function () {
   todoInputElement.value = "";
 };
 
-//리스트 삭제 함수
+//투두리스트 삭제 함수 [core]
 const editTodoList = function (event) {
-  const currentAdditionalPocket = event.target.nextElementSibling;
-
-  if (event.target.className === "fas fa-ellipsis-h additional-icon") {
-    if (window.getComputedStyle(currentAdditionalPocket).display === "none") {
-      const additionalPockets = document.querySelectorAll(".additional-pocket");
-      additionalPockets.forEach(function (pocket) {
-        pocket.style.display = "none";
-      });
-
-      currentAdditionalPocket.style.display = "block";
-    } else {
-      currentAdditionalPocket.style.display = "none";
-    }
-  }
+  //투두리스트 삭제주머니 디스플레이 유/무
+  todoListEditDisplayToggle(event);
 
   //리스트 삭제 이벤트
   const deleteButton = document.querySelectorAll(".delete-box");
