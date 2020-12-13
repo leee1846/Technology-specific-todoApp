@@ -6,7 +6,7 @@ const dateLeftArrow = document.querySelector("#left-date");
 const inputAddButton = document.querySelector("#todo-add-container>i");
 const todoInputElement = document.querySelector("#todo-add-container > input");
 
-//카테고리 클릭시 리스트 변경되는 함수
+//카테고리 클릭시 리스트 변경되는 함수 [core]
 const todoListChangeByCategory = function () {
   //상단 카테고리 파란색 보더 삭제/추가
   removeCategoryBorderBottom();
@@ -22,10 +22,10 @@ const todoListChangeByCategory = function () {
   getCategoryTodoLists(this, "Day", "date", thisDate);
 };
 
-//리스트 추가 함수
+//리스트 추가 함수 [core]
 const addMoreList = function () {
   const contents = todoInputElement.value;
-  let id = TODOS.sort((a, b) => b.id - a.id)[0].id + 1;
+  const id = TODOS.sort((a, b) => b.id - a.id)[0].id + 1;
 
   const newTodo = {
     id,
@@ -89,13 +89,6 @@ const editTodoList = function (event) {
     });
   });
 };
-
-//날짜 선택 구성
-const newDate = new Date();
-let thisYear = newDate.getFullYear();
-let thisMonth = newDate.getMonth() + 1;
-let thisDate = newDate.getDate();
-const today = newDate.toDateString();
 
 ////// 처음 로드시 나올 화면 구성
 //첫 화면 월 구하기

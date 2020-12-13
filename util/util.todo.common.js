@@ -38,7 +38,7 @@ const createTodoElement = (contents, id) => {
   createTagAndAfter("span", "Delete", childElement);
 };
 
-//카테고리 클릭시 파란색 보더 삭제 함수 [todo 공통]
+//카테고리 클릭시 파란색 보더 삭제 함수 [todoList 공통]
 const removeCategoryBorderBottom = () => {
   const currentSelectedCategory = document.querySelector(".category-active");
   if (currentSelectedCategory) {
@@ -46,7 +46,7 @@ const removeCategoryBorderBottom = () => {
   }
 };
 
-//TODOS에서 카테고리 이름과 같은 리스트 요소 가져온 후 엘리먼트 만들기 [todo 공통]
+//TODOS에서 카테고리 이름과 같은 리스트 요소 가져온 후 엘리먼트 만들기 [todoList 공통]
 const getListOfSelectedCategory = (timeFromTODOS, thisTime) => {
   const SelectedListFromTODOS = TODOS.filter(function (TODO) {
     return TODO[timeFromTODOS] === thisTime;
@@ -57,7 +57,7 @@ const getListOfSelectedCategory = (timeFromTODOS, thisTime) => {
   });
 };
 
-//화면에 기존 카테고리 todolists지우기 [todo 공통]
+//화면에 기존 카테고리 todolists지우기 [todoList 공통]
 const editPreviousLists = () => {
   const todoLists = Array.from(todoListContainer.children);
   todoLists.forEach(function (todoList) {
@@ -65,7 +65,7 @@ const editPreviousLists = () => {
   });
 };
 
-//카테고리에 맞는 리스트 가져오기 [todo 공통]
+//카테고리에 맞는 리스트 가져오기 [todoList 공통]
 const getCategoryTodoLists = (
   clickedCategory,
   categoryName,
