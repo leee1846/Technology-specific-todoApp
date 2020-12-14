@@ -57,16 +57,13 @@ body #container #todo-container #todo-categories .category-active {
 }
 
 body #container #todo-container #todo-date {
+  padding: 40px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 40px 170px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 body #container #todo-container #todo-date i {
@@ -82,17 +79,11 @@ body #container #todo-container #todo-date i:hover {
 }
 
 body #container #todo-container #todo-date .dates {
-  text-align: center;
+  margin: 0 30px;
 }
 
 body #container #todo-container #todo-date .dates p {
   color: #c6cfd6;
-  font-weight: 900;
-}
-
-body #container #todo-container #todo-date .dates span {
-  color: #6a717a;
-  font-size: 0.65rem;
   font-weight: 900;
 }
 

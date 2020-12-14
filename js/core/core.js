@@ -1,7 +1,5 @@
 //카테고리 클릭시 리스트 변경되는 함수 [core]
 const resetTodoListByCategory = function () {
-  const todoDateElement = document.querySelector("#todo-dates");
-
   //상단 카테고리 파란색 보더 삭제/추가
   removeCategoryBorderBottom();
   this.classList.add("category-active");
@@ -26,7 +24,6 @@ const resetTodoListByCategory = function () {
     createTodoListToHTML(thisMonthTodoElements);
 
     changeDateElementTextToMonth();
-    // todoDateElement.textContent = "";
   }
 
   //Day카테고리 클릭시 todolist appear

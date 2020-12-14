@@ -42,10 +42,9 @@ body {
         }
       }
       #todo-date {
+        padding: 40px 0;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 40px 170px;
+        justify-content: center;
         i {
           color: $gray-font-color;
           font-size: 1.3rem;
@@ -56,16 +55,16 @@ body {
           }
         }
         .dates {
-          text-align: center;
+          margin: 0 30px;
           p {
             color: $white-font-color;
             font-weight: 900;
           }
-          span {
-            color: $gray-font-color;
-            font-size: 0.65rem;
-            font-weight: 900;
-          }
+          // span {
+          //   color: $gray-font-color;
+          //   font-size: 0.65rem;
+          //   font-weight: 900;
+          // }
         }
       }
     }
