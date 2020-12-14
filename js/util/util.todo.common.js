@@ -129,22 +129,33 @@ const deleteTodoListClickHandeler = () => {
   });
 };
 
-//첫화면에 나타나는 요일 함수 [todoList 공통]
-const firstDefaultDay = () => {
-  const todoMonthElement = document.querySelector("#today-category");
-  const Months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  todoMonthElement.textContent = Months[thisMonth - 1];
+//화면 월단위태그 HTML에 붙이기  [todoList 공통]
+const todoDateElement = document.querySelector("#today-category");
+const Months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+const getThisMonth = () => {
+  todoDateElement.textContent = `${Months[thisMonth - 1]} ${thisYear}`;
+};
+
+getThisDay = () => {
+  todoDateElement.textContent = `${thisDate} , ${
+    Months[thisMonth - 1]
+  } ${thisYear}`;
+};
+
+const getThisYear = () => {
+  todoDateElement.textContent = thisYear;
 };
