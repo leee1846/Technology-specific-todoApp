@@ -14,7 +14,7 @@ const resetTodoListByCategory = function () {
 
     createTodoListToHTML(thisYearTodoElements);
 
-    getThisYear();
+    changeDateElementTextToYear();
   }
 
   //Month카테고리 클릭시 todolist appear
@@ -25,7 +25,7 @@ const resetTodoListByCategory = function () {
 
     createTodoListToHTML(thisMonthTodoElements);
 
-    getThisMonth();
+    changeDateElementTextToMonth();
     // todoDateElement.textContent = "";
   }
 
@@ -39,7 +39,7 @@ const resetTodoListByCategory = function () {
     );
     createTodoListToHTML(todayTodoElements);
 
-    getThisDay();
+    changeDateElementTextToDate();
   }
 };
 
@@ -78,10 +78,10 @@ const editTodoList = (event) => {
 //처음에 나올 화면 함수 [core]
 const firstDefaultActions = () => {
   //첫 화면 Day 구하기
-  getThisDay();
+  changeDateElementTextToDate();
 
-  //첫화면 date
-  const todoDateElement = document.querySelector("#todo-dates");
+  //첫화면 date (보류)
+  // const todoDateElement = document.querySelector("#todo-dates");
   // todoDateElement.textContent = today;
 
   //첫화면 카테고리 파란선

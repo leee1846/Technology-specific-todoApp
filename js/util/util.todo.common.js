@@ -146,16 +146,16 @@ const Months = [
   "Dec",
 ];
 
-const getThisMonth = () => {
+const changeDateElementTextToMonth = () => {
   todoDateElement.textContent = `${Months[thisMonth - 1]} ${thisYear}`;
 };
 
-getThisDay = () => {
+changeDateElementTextToDate = () => {
   todoDateElement.textContent = `${thisDate} , ${
     Months[thisMonth - 1]
   } ${thisYear}`;
 };
 
-const getThisYear = () => {
+const changeDateElementTextToYear = () => {
   todoDateElement.textContent = thisYear;
 };
