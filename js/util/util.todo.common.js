@@ -1,7 +1,5 @@
 //todo리스트 추가 엘리먼트 함수 [todoList 공통]
-const createTodoElement = (contents, id) => {
-  let childElement;
-
+const createTodoElement = (contents, id, year, month, date) => {
   const createTagAndAppendChild = (tagName, className, tagToAppend) => {
     childElement = document.createElement(tagName);
 
@@ -25,7 +23,10 @@ const createTodoElement = (contents, id) => {
   createTagAndAppendChild("div", "todo-list", todoListContainer);
   createTagAndAppendChild("input", null, childElement);
   createTagAndAfter("p", contents, childElement);
+  createTagAndAfter("span", `${year}년 ${month}월 ${date}일`, childElement);
+  childElement.className = "TODOS-dates";
   createTagAndAfter("span", id, childElement);
+  childElement.className = "TODOS-id";
   createTagAndAfter("div", null, childElement);
   childElement.className = "additional-list";
   createTagAndAppendChild("i", null, childElement);
@@ -60,8 +61,8 @@ const createTodoListToHTML = (categoryPeriod) => {
   deleteAllTodoLists();
 
   //카테고리에 맞는 투두리스트 HTML에 적용
-  categoryPeriod.forEach(function ({ contents, id }) {
-    createTodoElement(contents, id);
+  categoryPeriod.forEach(function ({ contents, id, year, month, date }) {
+    createTodoElement(contents, id, year, month, date);
   });
 };
 
@@ -131,31 +132,16 @@ const deleteTodoListClickHandeler = () => {
 
 //화면 월단위태그 HTML에 붙이기  [todoList 공통]
 const todoDateElement = document.querySelector("#today-category");
-const Months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
+let monthNameNumber = thisMonth - 1;
 
 const changeDateElementTextToMonth = () => {
-  todoDateElement.textContent = `${Months[thisMonth - 1]} ${thisYear}`;
+  todoDateElement.textContent = `${thisYear}년 ${thisMonth}월`;
 };
 
 changeDateElementTextToDate = () => {
-  todoDateElement.textContent = `${thisDate} , ${
-    Months[thisMonth - 1]
-  } ${thisYear}`;
+  todoDateElement.textContent = `${thisYear}년 ${thisMonth}월 ${thisDate}일`;
 };
 
 const changeDateElementTextToYear = () => {
-  todoDateElement.textContent = thisYear;
+  todoDateElement.textContent = `${thisYear}년`;
 };

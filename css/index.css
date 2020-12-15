@@ -87,6 +87,47 @@ body #container #todo-container #todo-date .dates p {
   font-weight: 900;
 }
 
+body #container #todo-find-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 7px;
+}
+
+body #container #todo-find-container input {
+  width: 100%;
+  height: 35px;
+  padding-left: 10px;
+  background-color: #22272e;
+  outline: none;
+  border: 1px solid #1e2329;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  font-size: 0.6rem;
+  color: #c6cfd6;
+}
+
+body #container #todo-find-container i {
+  background-color: #22272e;
+  color: #6a717a;
+  border: 1px solid #1e2329;
+  border-left: none;
+  height: 35px;
+  width: 7%;
+  font-size: 0.8rem;
+  line-height: 35px;
+  padding-right: 5px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+body #container #todo-find-container i:hover {
+  color: #c6cfd6;
+}
+
 body #container #add-list-container {
   width: 100%;
   padding: 0 40px;
@@ -154,7 +195,13 @@ body #container #add-list-container #todo-lists .todo-list p {
   font-size: 0.65rem;
 }
 
-body #container #add-list-container #todo-lists .todo-list span {
+body #container #add-list-container #todo-lists .todo-list .TODOS-dates {
+  padding-left: 6px;
+  font-size: 0.51rem;
+  color: #6a717a;
+}
+
+body #container #add-list-container #todo-lists .todo-list .TODOS-id {
   color: transparent;
 }
 

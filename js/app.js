@@ -3,6 +3,7 @@ const todoListContainer = document.querySelector("#todo-lists");
 const dateRightArrow = document.querySelector("#right-date");
 const dateLeftArrow = document.querySelector("#left-date");
 const inputAddButton = document.querySelector("#todo-add-container>i");
+const lookForTodoListsButton = document.querySelector("#todo-find-container>i");
 
 const initApp = () => {
   //처음 로드시 나올 화면 구성
@@ -18,6 +19,12 @@ const initApp = () => {
 
   //클릭 additional-pocket appear/disappear이벤트
   todoListContainer.addEventListener("click", editTodoList);
+
+  //화살표 클릭시 바뀌는 날짜 이벤트
+  dateRightArrow.addEventListener("click", a);
+
+  //투두리스트 찾기 버튼 이벤트
+  lookForTodoListsButton.addEventListener("click", lookForTodoLists);
 };
 
 initApp();
