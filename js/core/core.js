@@ -114,12 +114,12 @@ const lookForTodoLists = () => {
   if (foundTodoLists.length > 0) {
     deleteAllTodoLists();
     foundTodoLists.forEach(({ contents, id, year, month, date }) => {
-      createTodoElement2(contents, id, year, month, date);
+      createTodoElement(contents, id, year, month, date);
     });
+  } else {
+    //리스트모음이 없다면 알림
+    window.alert("검색된 todo리스트가 존재하지 않습니다.");
   }
-
-  //리스트모음이 없다면 알림
-  window.alert("검색된 todo리스트가 존재하지 않습니다.");
 };
 
 //보류 클로저 질문????????
