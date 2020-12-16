@@ -42,19 +42,21 @@ const addNewListclickHandeler = () => {
       "#todo-add-container > input"
     );
     const contents = todoInputElement.value;
-    const id = TODOS.sort((a, b) => b.id - a.id)[0].id + 1;
+    const id = TODOS.findIndex((TODO) => {
+      return TODO.id === TODOS[TODOS.length - 1].id;
+    });
+
     const isYear = thisYear;
     const isMonth = thisMonth;
     const isDate = thisDate;
     const newTodo = {
-      id,
+      id: id + 2,
       //추후 수정
       month: isMonth,
       date: isDate,
       year: isYear,
       contents,
     };
-    TODOS.sort((a, b) => a.id - b.id);
 
     //TODOS로 추가
     TODOS.push(newTodo);
