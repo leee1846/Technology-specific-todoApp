@@ -112,6 +112,11 @@ const lookForTodoListsClickHandeler = () => {
   });
 };
 
+const foo = () => {
+  console.log(123);
+};
+module.exports = foo;
+
 /////////////////////////////////////////////////////////
 //보류 클로저 질문????????
 //isDate가 함수안으로 들어오고 클로저 사용방법?
