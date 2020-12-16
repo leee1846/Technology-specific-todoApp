@@ -12,21 +12,19 @@ const initApp = () => {
   firstDefaultActions();
 
   // 최상단 카테고리 클릭 이벤트
-  todoCategoryElements.forEach(function (todoCategoryElement) {
-    todoCategoryElement.addEventListener("click", resetTodoListByCategory);
-  });
+  resetTodoListByCategoryClickHandeler();
 
   // 인풋내용 추가
-  inputAddButtonElement.addEventListener("click", addNewList);
+  addNewListclickHandeler();
 
   //클릭 additional-pocket appear/disappear이벤트
-  todoListContainerElement.addEventListener("click", editTodoList);
+  editTodoListClickHandeler();
 
   //화살표 클릭시 바뀌는 날짜 이벤트
   // dateRightArrow.addEventListener("click", a);
 
   //투두리스트 찾기 버튼 이벤트
-  lookForTodoListsButtonElement.addEventListener("click", lookForTodoLists);
+  lookForTodoListsClickHandeler();
 };
 
 initApp();
