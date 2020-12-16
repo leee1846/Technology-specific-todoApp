@@ -132,18 +132,22 @@ const deleteTodoListClickHandeler = () => {
 
 //화면 월단위태그 HTML에 붙이기  [todoList 공통]
 const todoDateElement = document.querySelector("#today-category");
-let monthNameNumber = thisMonth - 1;
+const dateCollection = {
+  thisYear,
+  thisMonth,
+  thisDate,
+};
 
 const changeDateElementTextToMonth = () => {
-  todoDateElement.textContent = `${thisYear}년 ${thisMonth}월`;
+  todoDateElement.textContent = `${dateCollection.thisYear}년 ${dateCollection.thisMonth}월`;
 };
 
 changeDateElementTextToDate = () => {
-  todoDateElement.textContent = `${thisYear}년 ${thisMonth}월 ${thisDate}일`;
+  todoDateElement.textContent = `${dateCollection.thisYear}년 ${dateCollection.thisMonth}월 ${dateCollection.thisDate}일`;
 };
 
 const changeDateElementTextToYear = () => {
-  todoDateElement.textContent = `${thisYear}년`;
+  todoDateElement.textContent = `${dateCollection.thisYear}년`;
 };
 
 // todoListContainer

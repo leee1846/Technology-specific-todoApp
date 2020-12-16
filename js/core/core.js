@@ -1,5 +1,9 @@
 //처음에 나올 화면 함수 [core]
 const firstDefaultActions = () => {
+  const isYear = thisYear;
+  const isMonth = thisMonth;
+  const isDate = thisDate;
+
   //첫 화면 Day 구하기
   changeDateElementTextToDate();
 
@@ -10,9 +14,7 @@ const firstDefaultActions = () => {
   //첫화면 todo list
   const todayTodoElements = TODOS.filter(
     (TODO) =>
-      TODO.month === thisMonth &&
-      TODO.date === thisDate &&
-      TODO.year === thisYear
+      TODO.month === isMonth && TODO.date === isDate && TODO.year === isYear
   );
   todayTodoElements.forEach(function ({ contents, id, year, month, date }) {
     createTodoElement(contents, id, year, month, date);
@@ -23,6 +25,10 @@ const firstDefaultActions = () => {
 const resetTodoListByCategoryClickHandeler = () => {
   todoCategoryElements.forEach(function (todoCategoryElement) {
     todoCategoryElement.addEventListener("click", function (event) {
+      const isYear = thisYear;
+      const isMonth = thisMonth;
+      const isDate = thisDate;
+
       //상단 카테고리 파란색 보더 삭제/추가
       removeCategoryBorderBottom();
       this.classList.add("category-active");
@@ -30,7 +36,7 @@ const resetTodoListByCategoryClickHandeler = () => {
       //Year카테고리 클릭시 todolist appear
       if (this.textContent === "Year") {
         const thisYearTodoElements = TODOS.filter(function (TODO) {
-          return TODO.year === thisYear;
+          return TODO.year === isYear;
         });
 
         createTodoListToHTML(thisYearTodoElements);
@@ -41,7 +47,7 @@ const resetTodoListByCategoryClickHandeler = () => {
       //Month카테고리 클릭시 todolist appear
       if (this.textContent === "Month") {
         const thisMonthTodoElements = TODOS.filter(
-          (TODO) => TODO.month === thisMonth && TODO.year === thisYear
+          (TODO) => TODO.month === isMonth && TODO.year === isYear
         );
 
         createTodoListToHTML(thisMonthTodoElements);
@@ -53,9 +59,9 @@ const resetTodoListByCategoryClickHandeler = () => {
       if (this.textContent === "Day") {
         const todayTodoElements = TODOS.filter(
           (TODO) =>
-            TODO.month === thisMonth &&
-            TODO.date === thisDate &&
-            TODO.year === thisYear
+            TODO.month === isMonth &&
+            TODO.date === isDate &&
+            TODO.year === isYear
         );
         createTodoListToHTML(todayTodoElements);
 
@@ -73,16 +79,23 @@ const addNewListclickHandeler = () => {
     );
     const contents = todoInputElement.value;
     const id = TODOS.sort((a, b) => b.id - a.id)[0].id + 1;
+    const isYear = thisYear;
+    const isMonth = thisMonth;
+    const isDate = thisDate;
     const newTodo = {
       id,
       //추후 수정
-      month: thisMonth,
-      date: thisDate,
-      year: thisYear,
+      month: isMonth,
+      date: isDate,
+      year: isYear,
       contents,
     };
     TODOS.sort((a, b) => a.id - b.id);
+
+    //TODOS로 추가
     TODOS.push(newTodo);
+
+    //HTML로 추가
     createTodoElement(
       newTodo.contents,
       newTodo.id,
@@ -150,3 +163,4 @@ const lookForTodoListsClickHandeler = () => {
 //   };
 // };
 ///////////////////////////////////////////////////////
+this;

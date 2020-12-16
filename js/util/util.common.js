@@ -1,5 +1,5 @@
 //날짜 선택 구성
 const newDate = new Date();
-let thisYear = newDate.getFullYear();
-let thisMonth = newDate.getMonth() + 1;
-let thisDate = newDate.getDate();
+const thisYear = newDate.getFullYear();
+const thisMonth = newDate.getMonth() + 1;
+const thisDate = newDate.getDate();
