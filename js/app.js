@@ -1,11 +1,9 @@
 const todoCategoryElements = Array.from(document.querySelectorAll(".category"));
-const todoListContainerElement = document.querySelector("#todo-lists");
-const dateRightArrowElement = document.querySelector("#right-date");
-const dateLeftArrowElement = document.querySelector("#left-date");
-const inputAddButtonElement = document.querySelector("#todo-add-container>i");
-const lookForTodoListsButtonElement = document.querySelector(
-  "#todo-find-container>i"
-);
+const todoListContainer = document.querySelector("#todo-lists");
+const dateRightArrow = document.querySelector("#right-date");
+const dateLeftArrow = document.querySelector("#left-date");
+const inputAddButton = document.querySelector("#todo-add-container>i");
+const lookForTodoListsButton = document.querySelector("#todo-find-container>i");
 
 const initApp = () => {
   //처음 로드시 나올 화면 구성
@@ -17,16 +15,16 @@ const initApp = () => {
   });
 
   // 인풋내용 추가
-  inputAddButtonElement.addEventListener("click", addNewList);
+  inputAddButton.addEventListener("click", addNewList);
 
   //클릭 additional-pocket appear/disappear이벤트
-  todoListContainerElement.addEventListener("click", editTodoList);
+  todoListContainer.addEventListener("click", editTodoList);
 
   //화살표 클릭시 바뀌는 날짜 이벤트
-  dateRightArrowElement.addEventListener("click", a);
+  dateRightArrow.addEventListener("click", a);
 
   //투두리스트 찾기 버튼 이벤트
-  lookForTodoListsButtonElement.addEventListener("click", lookForTodoLists);
+  lookForTodoListsButton.addEventListener("click", lookForTodoLists);
 };
 
 initApp();
