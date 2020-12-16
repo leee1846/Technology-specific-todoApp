@@ -120,17 +120,23 @@ const lookForTodoLists = () => {
     //리스트모음이 없다면 알림
     window.alert("검색된 todo리스트가 존재하지 않습니다.");
   }
+  //체크 후 인풋 포커스 없애기
+  lookForInput.value = "";
 };
 
 //보류 클로저 질문????????
 //isDate가 함수안으로 들어오고 클로저 사용방법?
-let isDate = thisDate;
-a = () => {
-  const categoryName = document.querySelector(".category-active").textContent;
-  if (categoryName === "Day") {
-    todoDateElement.textContent =
-      (isDate -= 1) + ", " + Months[monthNameNumber] + " " + thisYear;
-    console.log(thisDate);
-  }
-  console.log(TODOS);
+let num = 0;
+const a = () => {
+  num += 1;
+  console.log(num);
+};
+
+const a = () => {
+  let num = 0;
+  const bb =() => {
+    num += 1;
+    console.log(num);
+  };
+
 };
