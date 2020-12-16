@@ -1,17 +1,17 @@
 //todo리스트 추가 엘리먼트 함수 [todoList 공통]
 const createTodoElement = (contents, id, year, month, date) => {
-  const createTagAndAppendChild = (tagName, className, tagToAppend) => {
+  const _createTagAndAppendChild = (tagName, className, tagToAppend) => {
     childElement = document.createElement(tagName);
 
-    className
-      ? (childElement.className = className)
-      : (childElement.type = "checkbox");
+    if (className) {
+      childElement.className = className;
+    }
 
     tagToAppend.appendChild(childElement);
     return childElement;
   };
 
-  const createTagAndAfter = (tagName, text, tagToAfter) => {
+  const _createTagAndAfter = (tagName, text, tagToAfter) => {
     childElement = document.createElement(tagName);
     if (text) {
       childElement.textContent = text;
@@ -20,23 +20,65 @@ const createTodoElement = (contents, id, year, month, date) => {
     return childElement;
   };
 
-  createTagAndAppendChild("div", "todo-list", todoListContainerElement);
-  createTagAndAppendChild("input", null, childElement);
-  createTagAndAfter("p", contents, childElement);
-  createTagAndAfter("span", `${year}년 ${month}월 ${date}일`, childElement);
-  childElement.className = "TODOS-dates";
-  createTagAndAfter("span", id, childElement);
-  childElement.className = "TODOS-id";
-  createTagAndAfter("div", null, childElement);
-  childElement.className = "additional-list";
-  createTagAndAppendChild("i", null, childElement);
-  childElement.className = "fas fa-ellipsis-h";
-  childElement.classList.add("additional-icon");
-  createTagAndAfter("div", null, childElement);
-  childElement.className = "additional-pocket";
-  createTagAndAppendChild("div", "delete-box", childElement);
-  createTagAndAppendChild("i", "far fa-trash-alt", childElement);
-  createTagAndAfter("span", "Delete", childElement);
+  const todoListContainerTag = _createTagAndAppendChild(
+    "div",
+    "todo-list",
+    todoListContainerElement
+  );
+  const todoListCheckBoxTag = _createTagAndAppendChild(
+    "input",
+    null,
+    todoListContainerTag
+  );
+  todoListCheckBoxTag.type = "checkbox";
+  const todoListContentTag = _createTagAndAfter(
+    "p",
+    contents,
+    todoListCheckBoxTag
+  );
+  const todoListDateContentTag = _createTagAndAfter(
+    "span",
+    `${year}년 ${month}월 ${date}일`,
+    todoListContentTag
+  );
+  todoListDateContentTag.className = "TODOS-dates";
+  const todoListIdTag = _createTagAndAfter("span", id, childElement);
+  todoListIdTag.className = "TODOS-id";
+  const todoListEditContainerTag = _createTagAndAfter(
+    "div",
+    null,
+    todoListIdTag
+  );
+  todoListEditContainerTag.className = "additional-list";
+  const todoListTripleDotIconTag = _createTagAndAppendChild(
+    "i",
+    null,
+    todoListEditContainerTag
+  );
+  todoListTripleDotIconTag.className = "fas fa-ellipsis-h";
+  todoListTripleDotIconTag.classList.add("additional-icon");
+  const todoListEditPocketTag = _createTagAndAfter(
+    "div",
+    null,
+    todoListTripleDotIconTag
+  );
+  todoListEditPocketTag.className = "additional-pocket";
+  const todoListEditIconContainerTag = _createTagAndAppendChild(
+    "div",
+    "delete-box",
+    todoListEditPocketTag
+  );
+  const todoListEditIconTag = _createTagAndAppendChild(
+    "i",
+    "far fa-trash-alt",
+    todoListEditIconContainerTag
+  );
+  const todoListEditContentTag = _createTagAndAfter(
+    "span",
+    "Delete",
+    todoListEditIconTag
+  );
+  return;
 };
 
 //카테고리 클릭시 파란색 보더 삭제 함수 [todoList 공통]
@@ -142,7 +184,7 @@ const changeDateElementTextToMonth = () => {
   todoDateElement.textContent = `${dateCollection.thisYear}년 ${dateCollection.thisMonth}월`;
 };
 
-changeDateElementTextToDate = () => {
+const changeDateElementTextToDate = () => {
   todoDateElement.textContent = `${dateCollection.thisYear}년 ${dateCollection.thisMonth}월 ${dateCollection.thisDate}일`;
 };
 
@@ -150,4 +192,33 @@ const changeDateElementTextToYear = () => {
   todoDateElement.textContent = `${dateCollection.thisYear}년`;
 };
 
-// todoListContainer
+//카테고리클릭 후 투두리스트변경과 날짜변경 함수
+const changeTodoListOfCategory = function (categoryName) {
+  let thisDateTodoElements;
+  const isYear = thisYear;
+  const isMonth = thisMonth;
+  const isDate = thisDate;
+
+  if (categoryName.textContent === "Year") {
+    thisDateTodoElements = TODOS.filter(function (TODO) {
+      return TODO.year === isYear;
+    });
+    createTodoListToHTML(thisDateTodoElements);
+    changeDateElementTextToYear();
+  }
+  if (categoryName.textContent === "Month") {
+    thisDateTodoElements = TODOS.filter(
+      (TODO) => TODO.month === isMonth && TODO.year === isYear
+    );
+    createTodoListToHTML(thisDateTodoElements);
+    changeDateElementTextToMonth();
+  }
+  if (categoryName.textContent === "Day") {
+    thisDateTodoElements = TODOS.filter(
+      (TODO) =>
+        TODO.month === isMonth && TODO.date === isDate && TODO.year === isYear
+    );
+    createTodoListToHTML(thisDateTodoElements);
+    changeDateElementTextToDate();
+  }
+};

@@ -25,48 +25,12 @@ const firstDefaultActions = () => {
 const resetTodoListByCategoryClickHandeler = () => {
   todoCategoryElements.forEach(function (todoCategoryElement) {
     todoCategoryElement.addEventListener("click", function (event) {
-      const isYear = thisYear;
-      const isMonth = thisMonth;
-      const isDate = thisDate;
-
       //상단 카테고리 파란색 보더 삭제/추가
       removeCategoryBorderBottom();
       this.classList.add("category-active");
 
-      //Year카테고리 클릭시 todolist appear
-      if (this.textContent === "Year") {
-        const thisYearTodoElements = TODOS.filter(function (TODO) {
-          return TODO.year === isYear;
-        });
-
-        createTodoListToHTML(thisYearTodoElements);
-
-        changeDateElementTextToYear();
-      }
-
-      //Month카테고리 클릭시 todolist appear
-      if (this.textContent === "Month") {
-        const thisMonthTodoElements = TODOS.filter(
-          (TODO) => TODO.month === isMonth && TODO.year === isYear
-        );
-
-        createTodoListToHTML(thisMonthTodoElements);
-
-        changeDateElementTextToMonth();
-      }
-
-      //Day카테고리 클릭시 todolist appear
-      if (this.textContent === "Day") {
-        const todayTodoElements = TODOS.filter(
-          (TODO) =>
-            TODO.month === isMonth &&
-            TODO.date === isDate &&
-            TODO.year === isYear
-        );
-        createTodoListToHTML(todayTodoElements);
-
-        changeDateElementTextToDate();
-      }
+      //카테고리 클릭시 todolist appear
+      changeTodoListOfCategory(this);
     });
   });
 };
@@ -163,4 +127,3 @@ const lookForTodoListsClickHandeler = () => {
 //   };
 // };
 ///////////////////////////////////////////////////////
-this;
