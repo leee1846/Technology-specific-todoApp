@@ -20,7 +20,7 @@ const createTodoElement = (contents, id, year, month, date) => {
     return childElement;
   };
 
-  createTagAndAppendChild("div", "todo-list", todoListContainer);
+  createTagAndAppendChild("div", "todo-list", todoListContainerElement);
   createTagAndAppendChild("input", null, childElement);
   createTagAndAfter("p", contents, childElement);
   createTagAndAfter("span", `${year}년 ${month}월 ${date}일`, childElement);
@@ -49,7 +49,7 @@ const removeCategoryBorderBottom = () => {
 
 //기존 투두리스트 모두 삭제 함수
 const deleteAllTodoLists = () => {
-  const todoLists = Array.from(todoListContainer.children);
+  const todoLists = Array.from(todoListContainerElement.children);
   todoLists.forEach(function (todoList) {
     todoList.remove();
   });
@@ -145,3 +145,5 @@ changeDateElementTextToDate = () => {
 const changeDateElementTextToYear = () => {
   todoDateElement.textContent = `${thisYear}년`;
 };
+
+// todoListContainer

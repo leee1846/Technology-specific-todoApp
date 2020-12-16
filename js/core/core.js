@@ -47,7 +47,6 @@ const addNewList = () => {
   );
   const contents = todoInputElement.value;
   const id = TODOS.sort((a, b) => b.id - a.id)[0].id + 1;
-  console.log(monthNameNumber);
   const newTodo = {
     id,
     //추후 수정
@@ -139,3 +138,5 @@ const lookForTodoLists = () => {
 //     console.log(num);
 //   };
 // };
+
+// todoCategoryElements
