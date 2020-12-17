@@ -1,5 +1,3 @@
-// const foo = require("./core/core");
-
 const todoCategoryElements = Array.from(document.querySelectorAll(".category"));
 const todoListContainerElement = document.querySelector("#todo-lists");
 const dateRightArrowElement = document.querySelector("#right-date");
