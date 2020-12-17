@@ -111,26 +111,3 @@ const lookForTodoListsClickHandeler = () => {
     lookForInput.value = "";
   });
 };
-
-const foo = () => {
-  console.log(123);
-};
-module.exports = foo;
-
-/////////////////////////////////////////////////////////
-//보류 클로저 질문????????
-//isDate가 함수안으로 들어오고 클로저 사용방법?
-// let num = 0;
-// const a = () => {
-//   num += 1;
-//   console.log(num);
-// };
-
-// const a = () => {
-//   let num = 0;
-//   const bb = () => {
-//     num += 1;
-//     console.log(num);
-//   };
-// };
-///////////////////////////////////////////////////////
