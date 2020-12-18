@@ -6,7 +6,7 @@ body {
 
 body #container {
   position: relative;
-  top: 250px;
+  top: 100px;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
