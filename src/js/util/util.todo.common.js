@@ -1,3 +1,5 @@
+import { thisYear, thisMonth, thisDate } from "./util.common";
+
 //todo리스트 추가 엘리먼트 함수 [todoList 공통]
 const todoListContainerElement = document.querySelector("#todo-lists");
 const createTodoElement = (contents, id, year, month, date) => {
@@ -222,4 +224,14 @@ const changeTodoListOfCategory = function (categoryName) {
     createTodoListToHTML(thisDateTodoElements);
     changeDateElementTextToDate();
   }
+};
+
+export {
+  createTodoElement,
+  removeCategoryBorderBottom,
+  deleteAllTodoLists,
+  todoListEditDisplayToggle,
+  deleteTodoListClickHandeler,
+  changeDateElementTextToDate,
+  changeTodoListOfCategory,
 };

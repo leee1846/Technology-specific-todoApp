@@ -1,5 +1,12 @@
 import "../css/reset.css";
 import "../css/index.css";
+import {
+  firstDefaultActions,
+  resetTodoListByCategoryClickHandeler,
+  addNewListclickHandeler,
+  editTodoListClickHandeler,
+  lookForTodoListsClickHandeler,
+} from "./core/core";
 
 const initApp = () => {
   //처음 로드시 나올 화면 구성

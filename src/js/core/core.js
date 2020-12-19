@@ -1,3 +1,13 @@
+import {
+  createTodoElement,
+  removeCategoryBorderBottom,
+  deleteAllTodoLists,
+  todoListEditDisplayToggle,
+  deleteTodoListClickHandeler,
+  changeDateElementTextToDate,
+  changeTodoListOfCategory,
+} from "../util/util.todo.common";
+
 //처음에 나올 화면 함수 [core]
 const todoCategoryElements = Array.from(document.querySelectorAll(".category"));
 const firstDefaultActions = () => {
@@ -116,4 +126,12 @@ const lookForTodoListsClickHandeler = () => {
     //체크 후 인풋 포커스 없애기
     lookForInput.value = "";
   });
+};
+
+export {
+  firstDefaultActions,
+  resetTodoListByCategoryClickHandeler,
+  addNewListclickHandeler,
+  editTodoListClickHandeler,
+  lookForTodoListsClickHandeler,
 };
