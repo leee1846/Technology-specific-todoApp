@@ -1,4 +1,5 @@
 //처음에 나올 화면 함수 [core]
+const todoCategoryElements = Array.from(document.querySelectorAll(".category"));
 const firstDefaultActions = () => {
   const isYear = thisYear;
   const isMonth = thisMonth;
@@ -37,6 +38,7 @@ const resetTodoListByCategoryClickHandeler = () => {
 
 //리스트 추가 함수 [core]
 const addNewListclickHandeler = () => {
+  const inputAddButtonElement = document.querySelector("#todo-add-container>i");
   inputAddButtonElement.addEventListener("click", () => {
     const todoInputElement = document.querySelector(
       "#todo-add-container > input"
@@ -77,7 +79,8 @@ const addNewListclickHandeler = () => {
 
 //투두리스트 삭제 함수 [core]
 const editTodoListClickHandeler = () => {
-  todoListContainerElement.addEventListener("click", (event) => {
+  const todoListContainerTag = document.querySelector("#todo-lists");
+  todoListContainerTag.addEventListener("click", (event) => {
     //투두리스트 삭제주머니 디스플레이 유/무
     todoListEditDisplayToggle(event);
 
@@ -88,6 +91,9 @@ const editTodoListClickHandeler = () => {
 
 //투두리스트 찾기 함수
 const lookForTodoListsClickHandeler = () => {
+  const lookForTodoListsButtonElement = document.querySelector(
+    "#todo-find-container>i"
+  );
   lookForTodoListsButtonElement.addEventListener("click", () => {
     const lookForInput = document.querySelector("#todo-find-container>input");
     const lookForInpuValue = lookForInput.value;

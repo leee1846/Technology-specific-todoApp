@@ -1,4 +1,5 @@
 //todo리스트 추가 엘리먼트 함수 [todoList 공통]
+const todoListContainerElement = document.querySelector("#todo-lists");
 const createTodoElement = (contents, id, year, month, date) => {
   const _createTagAndAppendChild = (tagName, className, tagToAppend) => {
     childElement = document.createElement(tagName);
