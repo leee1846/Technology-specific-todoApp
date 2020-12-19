@@ -1,3 +1,6 @@
+import "../css/reset.css";
+import "../css/index.css";
+
 const initApp = () => {
   //처음 로드시 나올 화면 구성
   firstDefaultActions();
