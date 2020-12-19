@@ -2,7 +2,7 @@
 const todoListContainerElement = document.querySelector("#todo-lists");
 const createTodoElement = (contents, id, year, month, date) => {
   const _createTagAndAppendChild = (tagName, className, tagToAppend) => {
-    childElement = document.createElement(tagName);
+    const childElement = document.createElement(tagName);
 
     if (className) {
       childElement.className = className;
@@ -13,7 +13,7 @@ const createTodoElement = (contents, id, year, month, date) => {
   };
 
   const _createTagAndAfter = (tagName, text, tagToAfter) => {
-    childElement = document.createElement(tagName);
+    const childElement = document.createElement(tagName);
     if (text) {
       childElement.textContent = text;
     }
@@ -43,7 +43,7 @@ const createTodoElement = (contents, id, year, month, date) => {
     todoListContentTag
   );
   todoListDateContentTag.className = "TODOS-dates";
-  const todoListIdTag = _createTagAndAfter("span", id, childElement);
+  const todoListIdTag = _createTagAndAfter("span", id, todoListDateContentTag);
   todoListIdTag.className = "TODOS-id";
   const todoListEditContainerTag = _createTagAndAfter(
     "div",
