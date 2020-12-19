@@ -1,3 +1,5 @@
+import { TODOS } from "../../data/todo.data.js";
+import { thisYear, thisMonth, thisDate } from "../util/util.common.js";
 import {
   createTodoElement,
   removeCategoryBorderBottom,
@@ -6,7 +8,7 @@ import {
   deleteTodoListClickHandeler,
   changeDateElementTextToDate,
   changeTodoListOfCategory,
-} from "../util/util.todo.common";
+} from "../util/util.todo.common.js";
 
 //처음에 나올 화면 함수 [core]
 const todoCategoryElements = Array.from(document.querySelectorAll(".category"));

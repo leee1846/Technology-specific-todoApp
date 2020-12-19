@@ -49,3 +49,5 @@ let TODOS = [
     contents: "throttle 공부",
   },
 ];
+
+export { TODOS };

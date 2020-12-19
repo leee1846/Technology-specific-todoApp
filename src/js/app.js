@@ -6,7 +6,7 @@ import {
   addNewListclickHandeler,
   editTodoListClickHandeler,
   lookForTodoListsClickHandeler,
-} from "./core/core";
+} from "./core/core.js";
 
 const initApp = () => {
   //처음 로드시 나올 화면 구성
