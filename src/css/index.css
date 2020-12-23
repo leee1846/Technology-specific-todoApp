@@ -30,7 +30,7 @@ body #container #todo-container #todo-categories {
           justify-content: space-between;
   width: 100%;
   height: 40px;
-  padding: 0 130px;
+  padding: 0 160px;
 }
 
 body #container #todo-container #todo-categories .category {
