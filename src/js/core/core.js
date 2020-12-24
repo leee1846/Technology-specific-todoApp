@@ -1,4 +1,4 @@
-import { TODOS } from "../../data/todo.data.js";
+import { TODOS } from "../../data/todo.data";
 import { thisYear, thisMonth, thisDate } from "../util/util.common.js";
 import {
   createTodoElement,

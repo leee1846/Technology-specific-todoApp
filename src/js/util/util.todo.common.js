@@ -1,5 +1,5 @@
 import { thisYear, thisMonth, thisDate } from "./util.common.js";
-import { TODOS } from "../../data/todo.data.js";
+import { TODOS } from "../../data/todo.data";
 
 //todo리스트 추가 엘리먼트 함수 [todoList 공통]
 const todoListContainerElement = document.querySelector("#todo-lists");
