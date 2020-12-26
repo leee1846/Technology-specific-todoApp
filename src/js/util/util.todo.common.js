@@ -1,5 +1,5 @@
 import { thisYear, thisMonth, thisDate } from "./util.common.js";
-import { TODOS } from "../../data/todo.data";
+import { TODOS, fixTODOSFunc } from "../../data/todo.data";
 
 //todo리스트 추가 엘리먼트 함수 [todoList 공통]
 const todoListContainerElement = document.querySelector("#todo-lists");
@@ -140,12 +140,9 @@ const DeleteListFromTODOS = (event) => {
   const currentDeleteContainer = event.currentTarget;
   const currentListContent =
     currentDeleteContainer.parentNode.parentNode.previousSibling;
+  const currentListIdNumber = Number(currentListContent.textContent);
 
-  const newTODOS = TODOS.filter(function ({ id }) {
-    return Number(currentListContent.textContent) !== id;
-  });
-
-  TODOS = [...newTODOS];
+  fixTODOSFunc(currentListIdNumber);
 };
 
 //HTML에서 리스트 삭제 함수 [todoList 공통]

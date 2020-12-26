@@ -50,4 +50,9 @@ let TODOS = [
   },
 ];
 
-export { TODOS };
+const fixTODOSFunc = (idNumber) => {
+  const newTODOS = TODOS.filter((TODO) => TODO.id !== idNumber);
+  TODOS = [...newTODOS];
+};
+
+export { TODOS, fixTODOSFunc };
