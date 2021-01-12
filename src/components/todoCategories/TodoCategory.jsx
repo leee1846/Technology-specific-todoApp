@@ -22,9 +22,11 @@ function TodoCategory() {
   const categoryClickHandeler = (e) => {
     setCategory(
       category.map((category) => {
-        return category.text === e.target.textContent
-          ? { text: category.text, clicked: true }
-          : { text: category.text, clicked: false };
+        if (category.text === e.target.textContent) {
+          return (category = { ...category, clicked: true });
+        } else {
+          return (category = { ...category, clicked: false });
+        }
       })
     );
   };

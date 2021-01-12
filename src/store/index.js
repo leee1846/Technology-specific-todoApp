@@ -36,7 +36,9 @@ export const searchList = createAction("SEARCH");
 export const deleteList = createAction("DELETE");
 
 const todoReducer = createReducer(todos, {
-  [createList]: (state) => {},
+  [createList]: (state, { payload }) => {
+    state.push(payload.list);
+  },
   [searchList]: (state) => {},
   [deleteList]: (state) => {},
 });
