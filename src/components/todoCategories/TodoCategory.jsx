@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import * as Styled from "./TodoCategory.style";
 
 const categories = [
   {
     text: "Day",
-    clicked: true,
+    clicked: false,
   },
   {
     text: "Month",
-    clicked: false,
+    clicked: true,
   },
   {
     text: "Year",
@@ -17,13 +17,33 @@ const categories = [
 ];
 
 function TodoCategory() {
+  const [category, setCategory] = useState(categories);
+
+  const categoryClickHandeler = (e) => {
+    setCategory(
+      category.map((category) => {
+        return category.text === e.target.textContent
+          ? { text: category.text, clicked: true }
+          : { text: category.text, clicked: false };
+      })
+    );
+  };
+
   return (
     <Styled.Categories>
-      {categories.map((category, index) => (
-        <Styled.Category key={index}>
-          <Styled.CategoryText>{category.text}</Styled.CategoryText>
-        </Styled.Category>
-      ))}
+      {category.map((category, index) => {
+        return (
+          <Styled.Category
+            key={index}
+            onClick={categoryClickHandeler}
+            clicked={category.clicked}
+          >
+            <Styled.CategoryText clicked={category.clicked}>
+              {category.text}
+            </Styled.CategoryText>
+          </Styled.Category>
+        );
+      })}
     </Styled.Categories>
   );
 }

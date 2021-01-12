@@ -27,7 +27,7 @@ export const todos = [
     month: 3,
     date: 12,
     year: 2021,
-    content: "공부 합시다",
+    content: "공부 합시다4",
   },
 ];
 

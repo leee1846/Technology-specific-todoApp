@@ -1,9 +1,12 @@
 import React from "react";
 import * as Styled from "./TodoLists.style";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 function TodoLists() {
-  const todos = useSelector((state = todos) => state);
+  let todos = useSelector((state) => {
+    // console.log(state);
+    return state;
+  });
 
   return (
     <Styled.ListContainer>
