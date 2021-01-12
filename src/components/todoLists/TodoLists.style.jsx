@@ -4,7 +4,7 @@ import { grayFontColor } from "./../common/Common.style";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
-export const ListContainer = Styled.div`
+export const ListContainer = Styled.ul`
   width:100%;
   padding:0 45px;
   margin:40px 0;
