@@ -1,7 +1,7 @@
 import Styled from "styled-components";
 
 export const Container = Styled.div`
-  position:relative;
+  position:absolute;
   top:100px;
   left:50%;
   transform: translateX(-50%);
