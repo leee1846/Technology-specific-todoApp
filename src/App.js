@@ -1,24 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from "./style/GlobalStyle";
+import Output from "./style/Output";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <Output />
+      {/* <h1>s</h1> */}
+    </>
   );
 }
 
