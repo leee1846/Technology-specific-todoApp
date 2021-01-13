@@ -68,11 +68,18 @@ export const clickCategory = createAction("CLICK_CATEGORY");
 
 const todoReducer = createReducer(todos, {
   [createList]: (state, { payload }) => {
-    state.push(payload.list);
+    if (payload.content) {
+      state.push(payload.list);
+    } else {
+      window.alert("내용을 입력하여 주세요.");
+    }
   },
+
   [searchList]: (state) => {},
+
   [deleteList]: (state, { payload }) =>
     state.filter((list) => list.id !== payload.id),
+
   [toggleDeleteList]: (state, { payload }) =>
     state.forEach((list) => {
       list.clicked = false;
@@ -80,6 +87,7 @@ const todoReducer = createReducer(todos, {
         list.clicked = !list.clicked;
       }
     }),
+
   [toggleDoneList]: (state, { payload }) =>
     state.forEach((list) => {
       if (list.id === Number(payload.id)) {
@@ -87,10 +95,6 @@ const todoReducer = createReducer(todos, {
       }
     }),
 });
-
-// if (list.id === payload.id) {
-//   return (list.clicked = !list.clicked);
-// }
 
 const categoryReducer = createReducer(categories, {
   [clickCategory]: (state, { payload }) =>

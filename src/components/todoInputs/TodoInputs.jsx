@@ -28,6 +28,7 @@ function TodoInputs() {
           clicked: false,
           done: false,
         },
+        content: searchValue,
       })
     );
     nextId.current += 1;
