@@ -15,6 +15,7 @@ export const List = Styled.li`
   display:flex;
   justify-content:space-between;
   align-items:center;
+  position:relative;
 `;
 
 export const ListLeft = Styled.div`
@@ -46,18 +47,22 @@ export const DeleteIcon = Styled(DeleteForeverIcon)`
   }
 `;
 
-export const DeleteContainer = Styled.div`
+export const MoreContainer = Styled.div`
   background-color: rgb(58, 58, 58);
   position:absolute;
-  right:40px;
-  bottom:-7px;
-  display:flex;
-  align-items:center;
+  right:-4px;
+  bottom:-50px;
   padding: 11px 12px;
   border-radius: 5px;
   box-shadow: 0 0 3px rgb(36, 36, 36);
   cursor:pointer;
-  display:none;
+  z-index:1;
+
+  ${({ clicked }) =>
+    !clicked &&
+    css`
+      display: none;
+    `}
 
   &:before {
     content:"";
@@ -69,7 +74,12 @@ export const DeleteContainer = Styled.div`
     transform:rotate(45deg);
     background-color: rgb(58, 58, 58);
   }
-  
+`;
+
+export const DeleteBox = Styled.div`
+  display:flex;
+  align-items:center;
+
   &:hover {
     p {
       color:${whiteFontColor};

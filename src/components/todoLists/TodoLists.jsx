@@ -1,12 +1,21 @@
-import React from "react";
 import * as Styled from "./TodoLists.style";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleDeleteList, deleteList } from "../../store/index";
 
 function TodoLists() {
+  const dispatch = useDispatch();
+
   let todos = useSelector((state) => {
-    // console.log(state);
-    return state;
+    return state.todoReducer;
   });
+
+  const moreOnClick = (currentId) => {
+    dispatch(toggleDeleteList({ id: currentId }));
+  };
+
+  const onDelete = (currentId) => {
+    dispatch(deleteList({ id: currentId }));
+  };
 
   return (
     <Styled.ListContainer>
@@ -22,11 +31,16 @@ function TodoLists() {
                 </span>
               </p>
             </Styled.ListLeft>
-            <Styled.MoreIcon fontSize='small' />
-            <Styled.DeleteContainer>
-              <Styled.DeleteIcon fontSize='small' />
-              <p>Delete</p>
-            </Styled.DeleteContainer>
+            <Styled.MoreIcon
+              fontSize='small'
+              onClick={(e) => moreOnClick(data.id)}
+            />
+            <Styled.MoreContainer clicked={data.clicked}>
+              <Styled.DeleteBox onClick={() => onDelete(data.id)}>
+                <Styled.DeleteIcon fontSize='small' />
+                <p>Delete</p>
+              </Styled.DeleteBox>
+            </Styled.MoreContainer>
           </Styled.List>
         );
       })}

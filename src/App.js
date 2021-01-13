@@ -4,6 +4,7 @@ import Output from "./style/Output";
 import TodoListContainer from "./pages/TodoListContainer";
 import { Provider } from "react-redux";
 import { store } from "./store/index";
+import Prac from "./Prac";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Output>
         <TodoListContainer />
       </Output>
+      <Prac />
     </Provider>
   );
 }

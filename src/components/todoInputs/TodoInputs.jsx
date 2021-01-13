@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import * as Styled from "./TodoInputs.style";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createList } from "./../../store/index";
 
 function TodoInputs() {

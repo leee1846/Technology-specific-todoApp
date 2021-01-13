@@ -36,40 +36,18 @@ export const todos = [
     date: 12,
     year: 2021,
     content: "공부 합시다4",
-    clicked: true,
+    clicked: false,
   },
 ];
-
-export const createList = createAction("CREATE");
-export const searchList = createAction("SEARCH");
-export const deleteList = createAction("DELETE");
-export const toggleDeleteList = createAction("TOGGLE");
-
-const todoReducer = createReducer(todos, {
-  [createList]: (state, { payload }) => {
-    state.push(payload.list);
-  },
-  [searchList]: (state) => {},
-  [deleteList]: (state) => {},
-  [toggleDeleteList]: (state, { payload }) => {},
-  // state.map((list) => {
-  //   if (list.clicked === true) {
-  //     list.clicked = false;
-  //     if (list.id === Number(payload.id)) {
-  //       list.clicked = true;
-  //     }
-  //   }
-  // }),
-});
 
 const categories = [
   {
     text: "Day",
-    clicked: false,
+    clicked: true,
   },
   {
     text: "Month",
-    clicked: true,
+    clicked: false,
   },
   {
     text: "Year",
@@ -77,7 +55,31 @@ const categories = [
   },
 ];
 
+export const createList = createAction("CREATE");
+export const searchList = createAction("SEARCH");
+export const deleteList = createAction("DELETE");
+export const toggleDeleteList = createAction("TOGGLE");
 export const clickCategory = createAction("CLICK_CATEGORY");
+
+const todoReducer = createReducer(todos, {
+  [createList]: (state, { payload }) => {
+    state.push(payload.list);
+  },
+  [searchList]: (state) => {},
+  [deleteList]: (state, { payload }) =>
+    state.filter((list) => list.id !== payload.id),
+  [toggleDeleteList]: (state, { payload }) =>
+    state.forEach((list) => {
+      list.clicked = false;
+      if (list.id === Number(payload.id)) {
+        list.clicked = !list.clicked;
+      }
+    }),
+});
+
+// if (list.id === payload.id) {
+//   return (list.clicked = !list.clicked);
+// }
 
 const categoryReducer = createReducer(categories, {
   [clickCategory]: (state, { payload }) =>
