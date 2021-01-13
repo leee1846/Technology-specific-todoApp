@@ -82,8 +82,11 @@ const todoReducer = createReducer(todos, {
 
   [toggleDeleteList]: (state, { payload }) =>
     state.forEach((list) => {
-      list.clicked = false;
-      if (list.id === Number(payload.id)) {
+      if (!list.clicked) {
+        if (list.id === Number(payload.id)) {
+          list.clicked = true;
+        }
+      } else {
         list.clicked = !list.clicked;
       }
     }),
