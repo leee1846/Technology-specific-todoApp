@@ -30,6 +30,7 @@ function TodoInputs() {
       })
     );
     nextId.current += 1;
+    setSearchValue("");
   };
 
   return (
@@ -43,6 +44,7 @@ function TodoInputs() {
           type='text'
           placeholder='리스트를 추가하세요...'
           onChange={onChange}
+          value={searchValue}
         />
         <Styled.IconAdd fontSize='small' onClick={onClick} />
       </Styled.AddInput>
