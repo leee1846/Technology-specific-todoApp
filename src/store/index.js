@@ -13,6 +13,7 @@ export const todos = [
     year: 2021,
     content: "공부 합시다",
     clicked: false,
+    done: false,
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ export const todos = [
     year: 2021,
     content: "공부 합시다2",
     clicked: false,
+    done: false,
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ export const todos = [
     year: 2021,
     content: "공부 합시다3",
     clicked: false,
+    done: false,
   },
   {
     id: 4,
@@ -37,6 +40,7 @@ export const todos = [
     year: 2021,
     content: "공부 합시다4",
     clicked: false,
+    done: false,
   },
 ];
 
@@ -58,7 +62,8 @@ const categories = [
 export const createList = createAction("CREATE");
 export const searchList = createAction("SEARCH");
 export const deleteList = createAction("DELETE");
-export const toggleDeleteList = createAction("TOGGLE");
+export const toggleDeleteList = createAction("TOGGLE_DELETE");
+export const toggleDoneList = createAction("TOGGLE_DONE");
 export const clickCategory = createAction("CLICK_CATEGORY");
 
 const todoReducer = createReducer(todos, {
@@ -73,6 +78,12 @@ const todoReducer = createReducer(todos, {
       list.clicked = false;
       if (list.id === Number(payload.id)) {
         list.clicked = !list.clicked;
+      }
+    }),
+  [toggleDoneList]: (state, { payload }) =>
+    state.forEach((list) => {
+      if (list.id === Number(payload.id)) {
+        list.done = !list.done;
       }
     }),
 });

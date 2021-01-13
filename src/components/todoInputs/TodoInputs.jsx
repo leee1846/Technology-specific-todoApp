@@ -26,6 +26,7 @@ function TodoInputs() {
           year: today.getFullYear(),
           content: searchValue,
           clicked: false,
+          done: false,
         },
       })
     );

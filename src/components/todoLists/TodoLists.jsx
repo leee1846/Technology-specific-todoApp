@@ -1,6 +1,10 @@
 import * as Styled from "./TodoLists.style";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleDeleteList, deleteList } from "../../store/index";
+import {
+  toggleDeleteList,
+  deleteList,
+  toggleDoneList,
+} from "../../store/index";
 
 function TodoLists() {
   const dispatch = useDispatch();
@@ -13,6 +17,10 @@ function TodoLists() {
     dispatch(toggleDeleteList({ id: currentId }));
   };
 
+  const doneOnClick = (currentId) => {
+    dispatch(toggleDoneList({ id: currentId }));
+  };
+
   const onDelete = (currentId) => {
     dispatch(deleteList({ id: currentId }));
   };
@@ -21,15 +29,15 @@ function TodoLists() {
     <Styled.ListContainer>
       {todos.map((data) => {
         return (
-          <Styled.List>
+          <Styled.List done={data.done}>
             <Styled.ListLeft>
               <input type='checkbox' />
-              <p>
+              <Styled.TodoContent done={data.done}>
                 {data.content}
                 <span>
                   {data.year}년 {data.month}월 {data.date}일
                 </span>
-              </p>
+              </Styled.TodoContent>
             </Styled.ListLeft>
             <Styled.MoreIcon
               fontSize='small'
@@ -40,6 +48,10 @@ function TodoLists() {
                 <Styled.DeleteIcon fontSize='small' />
                 <p>Delete</p>
               </Styled.DeleteBox>
+              <Styled.DoneBox onClick={() => doneOnClick(data.id)}>
+                <Styled.CheckIcon fontSize='small' />
+                <p>Done</p>
+              </Styled.DoneBox>
             </Styled.MoreContainer>
           </Styled.List>
         );

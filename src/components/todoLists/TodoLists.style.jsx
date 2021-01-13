@@ -3,6 +3,7 @@ import { whiteFontColor } from "../common/Common.style";
 import { grayFontColor } from "./../common/Common.style";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import DoneIcon from "@material-ui/icons/Done";
 
 export const ListContainer = Styled.ul`
   width:100%;
@@ -24,8 +25,6 @@ export const ListLeft = Styled.div`
     margin-right:10px;
   }
   p {
-    color:${whiteFontColor};
-    font-size:0.65rem;
     span {
       color: ${grayFontColor};
       font-size:0.51rem;
@@ -34,24 +33,56 @@ export const ListLeft = Styled.div`
   }
 `;
 
+export const TodoContent = Styled.p`
+  color:${whiteFontColor};
+  font-size:0.65rem;
+  position:relative;
+
+  :after {
+    content:'';
+    width:0;
+    height:1px;
+    position:absolute;
+    background-color:${whiteFontColor};
+    top:50%;
+    left:0;
+    transition:.2s linear;
+    ${({ done }) =>
+      done &&
+      css`
+        width: 100%;
+      `}
+  }
+
+  ${({ done }) =>
+    done &&
+    css`
+      color: ${grayFontColor};
+    `}
+`;
+
 export const MoreIcon = Styled(MoreHorizIcon)`
   color: ${grayFontColor};
   cursor:pointer;
 `;
 
-export const DeleteIcon = Styled(DeleteForeverIcon)`
+const iconStyle = css`
   color: #aab0b6;
-  margin-right:5px;
-  &&{
+  margin-right: 5px;
+  && {
     transition: 0.1s linear;
   }
+`;
+
+export const DeleteIcon = Styled(DeleteForeverIcon)`
+  ${iconStyle}
 `;
 
 export const MoreContainer = Styled.div`
   background-color: rgb(58, 58, 58);
   position:absolute;
   right:-4px;
-  bottom:-50px;
+  bottom:-72px;
   padding: 11px 12px;
   border-radius: 5px;
   box-shadow: 0 0 3px rgb(36, 36, 36);
@@ -76,16 +107,16 @@ export const MoreContainer = Styled.div`
   }
 `;
 
-export const DeleteBox = Styled.div`
-  display:flex;
-  align-items:center;
+const moreListStyle = css`
+  display: flex;
+  align-items: center;
 
   &:hover {
     p {
-      color:${whiteFontColor};
+      color: ${whiteFontColor};
     }
     ${DeleteIcon} {
-      color:${whiteFontColor};
+      color: ${whiteFontColor};
     }
   }
 
@@ -94,4 +125,16 @@ export const DeleteBox = Styled.div`
     color: #aab0b6;
     transition: 0.1s linear;
   }
+`;
+
+export const DeleteBox = Styled.div`
+  ${moreListStyle}
+`;
+
+export const DoneBox = Styled.div`
+  ${moreListStyle}
+`;
+
+export const CheckIcon = Styled(DoneIcon)`
+  ${iconStyle}
 `;
