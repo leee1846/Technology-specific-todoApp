@@ -1,39 +1,28 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import * as Styled from "./TodoCategory.style";
-
-const categories = [
-  {
-    text: "Day",
-    clicked: false,
-  },
-  {
-    text: "Month",
-    clicked: true,
-  },
-  {
-    text: "Year",
-    clicked: false,
-  },
-];
+import { useSelector, useDispatch } from "react-redux";
+import { clickCategory } from "../../store/index";
 
 function TodoCategory() {
-  const [category, setCategory] = useState(categories);
+  const categories = useSelector((state) => state.categoryReducer);
+  const dispatch = useDispatch();
 
   const categoryClickHandeler = (e) => {
-    setCategory(
-      category.map((category) => {
-        if (category.text === e.target.textContent) {
-          return (category = { ...category, clicked: true });
-        } else {
-          return (category = { ...category, clicked: false });
-        }
-      })
-    );
+    // setCategory(
+    //   category.map((category) => {
+    //     if (category.text === e.target.textContent) {
+    //       return (category = { ...category, clicked: true });
+    //     } else {
+    //       return (category = { ...category, clicked: false });
+    //     }
+    //   })
+    // );
+    dispatch(clickCategory({ name: e.target.textContent }));
   };
 
   return (
     <Styled.Categories>
-      {category.map((category, index) => {
+      {categories.map((category, index) => {
         return (
           <Styled.Category
             key={index}
