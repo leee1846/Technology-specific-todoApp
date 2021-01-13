@@ -8,8 +8,14 @@ export const InputContainer = Styled.div`
 `;
 
 const iconStyle = css`
-  color: ${grayFontColor};
-  margin-right: 10px;
+  && {
+    color: ${grayFontColor};
+    margin-right: 10px;
+    transition: 0.1s linear;
+  }
+  &:hover {
+    color: ${whiteFontColor};
+  }
 `;
 
 const SearchStyle = css`

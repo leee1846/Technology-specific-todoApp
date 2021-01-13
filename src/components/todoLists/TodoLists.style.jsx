@@ -62,8 +62,14 @@ export const TodoContent = Styled.p`
 `;
 
 export const MoreIcon = Styled(MoreHorizIcon)`
+  &&{
   color: ${grayFontColor};
   cursor:pointer;
+  transition:.1s linear;
+  }
+  &:hover {
+    color:${whiteFontColor}
+  }
 `;
 
 const iconStyle = css`
