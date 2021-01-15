@@ -15,14 +15,14 @@ export const todos = [
   },
   {
     id: 2,
-    dates: "2021 - 01 - 15",
+    dates: "2021 - 1 - 15",
     content: "공부 합시다2",
     clicked: false,
     done: false,
   },
   {
     id: 3,
-    dates: "2021 - 01 - 14",
+    dates: "2021 - 1 - 14",
     content: "공부 합시다3",
     clicked: false,
     done: false,
@@ -98,7 +98,14 @@ const todoReducer = createReducer(todos, {
   [createList]: (state, { payload }) => {
     state.push(payload.list);
   },
-  [searchList]: (state) => {},
+  [searchList]: (state, { payload }) => {
+    const newState = state.filter((list) => list.content === payload.content);
+    if (newState.length > 0) {
+      return newState;
+    } else {
+      return state;
+    }
+  },
   [deleteList]: (state, { payload }) =>
     state.filter((list) => list.id !== payload.id),
   [toggleDeleteList]: (state, { payload }) => {

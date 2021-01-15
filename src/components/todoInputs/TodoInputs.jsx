@@ -1,16 +1,20 @@
 import React, { useState, useRef } from "react";
 import * as Styled from "./TodoInputs.style";
 import { useDispatch } from "react-redux";
-import { createList } from "./../../store/index";
+import { createList, searchList } from "./../../store/index";
 
 function TodoInputs() {
+  const [createValue, setCreateValue] = useState("");
   const [searchValue, setSearchValue] = useState("");
 
   const nextId = useRef(5);
 
   const dispatch = useDispatch();
 
-  const onChange = (e) => {
+  const onChangeAddInput = (e) => {
+    setCreateValue(e.target.value);
+  };
+  const onChangeSearchInput = (e) => {
     setSearchValue(e.target.value);
   };
 
@@ -20,38 +24,50 @@ function TodoInputs() {
     const thisMonth = today.getMonth() + 1;
     const thisDate = today.getDate();
 
-    if (searchValue) {
+    if (createValue) {
       dispatch(
         createList({
           list: {
             id: nextId.current,
             dates: `${thisYear}-${thisMonth}-${thisDate}`,
-            content: searchValue,
+            content: createValue,
             clicked: false,
             done: false,
           },
-          content: searchValue,
+          content: createValue,
         })
       );
       nextId.current += 1;
-      setSearchValue("");
+      setCreateValue("");
     } else {
       window.alert("내용을 입력하여 주세요.");
+    }
+  };
+
+  const onSearch = () => {
+    if (searchValue) {
+      dispatch(searchList({ content: searchValue }));
+    } else {
+      window.alert("내용을 입력하세요.");
     }
   };
 
   return (
     <Styled.InputContainer>
       <Styled.SearchInput>
-        <input type='text' placeholder='리스트를 찾아보세요...' />
-        <Styled.IconSearch fontSize='small' />
+        <input
+          type='text'
+          placeholder='리스트를 찾아보세요...'
+          onChange={onChangeSearchInput}
+        />
+        <Styled.IconSearch fontSize='small' onClick={onSearch} />
       </Styled.SearchInput>
       <Styled.AddInput>
         <input
           type='text'
           placeholder='리스트를 추가하세요...'
-          onChange={onChange}
-          value={searchValue}
+          onChange={onChangeAddInput}
+          value={createValue}
         />
         <Styled.IconAdd fontSize='small' onClick={onClick} />
       </Styled.AddInput>
