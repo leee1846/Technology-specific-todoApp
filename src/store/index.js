@@ -8,36 +8,28 @@ import {
 export const todos = [
   {
     id: 1,
-    month: 1,
-    date: 12,
-    year: 2021,
+    dates: "2021 - 12 - 15",
     content: "공부 합시다",
     clicked: false,
     done: false,
   },
   {
     id: 2,
-    month: 1,
-    date: 12,
-    year: 2021,
+    dates: "2021 - 01 - 15",
     content: "공부 합시다2",
     clicked: false,
     done: false,
   },
   {
     id: 3,
-    month: 2,
-    date: 12,
-    year: 2021,
+    dates: "2021 - 01 - 14",
     content: "공부 합시다3",
     clicked: false,
     done: false,
   },
   {
     id: 4,
-    month: 3,
-    date: 12,
-    year: 2021,
+    dates: "2020 - 11 - 15",
     content: "공부 합시다4",
     clicked: false,
     done: false,
@@ -59,44 +51,83 @@ const categories = [
   },
 ];
 
-export const createList = createAction("CREATE");
-export const searchList = createAction("SEARCH");
-export const deleteList = createAction("DELETE");
+export const createList = createAction("CREATE_LIST");
+export const searchList = createAction("SEARCH_LIST");
+export const deleteList = createAction("DELETE_LIST");
 export const toggleDeleteList = createAction("TOGGLE_DELETE");
 export const toggleDoneList = createAction("TOGGLE_DONE");
+export const categoryList = createAction("CATEGORY_LIST");
+
 export const clickCategory = createAction("CLICK_CATEGORY");
+
+const today = new Date();
+
+let splitDates = null;
+
+const filterListByCategory = (categoryName, state) => {
+  const filteredDateList = state.filter((list) => {
+    splitDates = list.dates.split("-");
+    return (
+      Number(splitDates[0]) === today.getFullYear() &&
+      Number(splitDates[1]) === today.getMonth() + 1 &&
+      Number(splitDates[2]) === today.getDate()
+    );
+  });
+  const filteredMonthList = state.filter((list) => {
+    splitDates = list.dates.split("-");
+    return (
+      Number(splitDates[0]) === today.getFullYear() &&
+      Number(splitDates[1]) === today.getMonth() + 1
+    );
+  });
+  const filteredYearList = state.filter((list) => {
+    splitDates = list.dates.split("-");
+    return Number(splitDates[0]) === today.getFullYear();
+  });
+
+  if ("Day" === categoryName) {
+    return filteredDateList;
+  } else if ("Month" === categoryName) {
+    return filteredMonthList;
+  } else if ("Year" === categoryName) {
+    return filteredYearList;
+  }
+};
 
 const todoReducer = createReducer(todos, {
   [createList]: (state, { payload }) => {
-    if (payload.content) {
-      state.push(payload.list);
-    } else {
-      window.alert("내용을 입력하여 주세요.");
-    }
+    state.push(payload.list);
   },
-
   [searchList]: (state) => {},
-
   [deleteList]: (state, { payload }) =>
     state.filter((list) => list.id !== payload.id),
-
-  [toggleDeleteList]: (state, { payload }) =>
-    state.forEach((list) => {
+  [toggleDeleteList]: (state, { payload }) => {
+    state.map((list) => {
       if (!list.clicked) {
         if (list.id === Number(payload.id)) {
-          list.clicked = true;
+          return (list.clicked = true);
         }
       } else {
-        list.clicked = !list.clicked;
+        return (list.clicked = !list.clicked);
       }
-    }),
-
-  [toggleDoneList]: (state, { payload }) =>
-    state.forEach((list) => {
+    });
+  },
+  [toggleDoneList]: (state, { payload }) => {
+    state.map((list) => {
       if (list.id === Number(payload.id)) {
         list.done = !list.done;
       }
-    }),
+    });
+  },
+  [categoryList]: (state, { payload }) => {
+    if (payload.name === "Day") {
+      return filterListByCategory("Day", state);
+    } else if (payload.name === "Month") {
+      return filterListByCategory("Month", state);
+    } else if (payload.name === "Year") {
+      return filterListByCategory("Year", state);
+    }
+  },
 });
 
 const categoryReducer = createReducer(categories, {

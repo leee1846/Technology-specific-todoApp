@@ -8,31 +8,36 @@ function TodoInputs() {
 
   const nextId = useRef(5);
 
-  const today = new Date();
-
   const dispatch = useDispatch();
 
   const onChange = (e) => {
     setSearchValue(e.target.value);
   };
 
+  const today = new Date();
   const onClick = () => {
-    dispatch(
-      createList({
-        list: {
-          id: nextId.current,
-          month: today.getMonth() + 1,
-          date: today.getDate(),
-          year: today.getFullYear(),
+    const thisYear = today.getFullYear();
+    const thisMonth = today.getMonth() + 1;
+    const thisDate = today.getDate();
+
+    if (searchValue) {
+      dispatch(
+        createList({
+          list: {
+            id: nextId.current,
+            dates: `${thisYear}-${thisMonth}-${thisDate}`,
+            content: searchValue,
+            clicked: false,
+            done: false,
+          },
           content: searchValue,
-          clicked: false,
-          done: false,
-        },
-        content: searchValue,
-      })
-    );
-    nextId.current += 1;
-    setSearchValue("");
+        })
+      );
+      nextId.current += 1;
+      setSearchValue("");
+    } else {
+      window.alert("내용을 입력하여 주세요.");
+    }
   };
 
   return (

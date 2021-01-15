@@ -25,17 +25,24 @@ function TodoLists() {
     dispatch(deleteList({ id: currentId }));
   };
 
+  let dates = null;
+
   return (
     <Styled.ListContainer>
       {todos.map((data) => {
+        dates = data.dates.split("-");
+        const listYear = dates[0];
+        const listMonth = dates[1];
+        const listDate = dates[2];
+
         return (
-          <Styled.List done={data.done}>
+          <Styled.List done={data.done} key={data.id}>
             <Styled.ListLeft>
               <input type='checkbox' />
               <Styled.TodoContent done={data.done}>
                 {data.content}
                 <span>
-                  {data.year}년 {data.month}월 {data.date}일
+                  {listYear}년 {listMonth}월 {listDate}일
                 </span>
               </Styled.TodoContent>
             </Styled.ListLeft>

@@ -1,23 +1,19 @@
 import React from "react";
 import * as Styled from "./TodoCategory.style";
 import { useSelector, useDispatch } from "react-redux";
-import { clickCategory } from "../../store/index";
+import { categoryList, clickCategory } from "../../store/index";
 
 function TodoCategory() {
   const categories = useSelector((state) => state.categoryReducer);
   const dispatch = useDispatch();
 
-  const categoryClickHandeler = (e) => {
-    // setCategory(
-    //   category.map((category) => {
-    //     if (category.text === e.target.textContent) {
-    //       return (category = { ...category, clicked: true });
-    //     } else {
-    //       return (category = { ...category, clicked: false });
-    //     }
-    //   })
-    // );
-    dispatch(clickCategory({ name: e.target.textContent }));
+  const categoryClickHandeler = (event) => {
+    dispatch(clickCategory({ name: event.target.textContent }));
+    dispatch(
+      categoryList({
+        name: event.target.textContent,
+      })
+    );
   };
 
   return (
@@ -26,7 +22,7 @@ function TodoCategory() {
         return (
           <Styled.Category
             key={index}
-            onClick={categoryClickHandeler}
+            onClick={(event) => categoryClickHandeler(event)}
             clicked={category.clicked}
           >
             <Styled.CategoryText clicked={category.clicked}>
