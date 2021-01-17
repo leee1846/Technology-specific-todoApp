@@ -22,6 +22,6 @@
     </p>
   </li>
   <li>react-version
-    <p>react라이브러리를 이용하여 구현하였습니다. 상태관리로는 redux-toolkit을 사용해 보았습니다.</p>
+    <p>react라이브러리를 이용하여 구현하였습니다. 상태관리로는 redux-toolkit을 사용해 보았으며, styled-components로 스타일을 구현하였습니다.</p>
   </li>
 </ol>
