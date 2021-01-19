@@ -37,9 +37,7 @@ export const toggleDoneList = createAction("TOGGLE_DONE");
 export const toggleDeleteList = createAction("TOGGLE_DELETE");
 
 export const todoReducer = createReducer(todos, {
-  [createList]: (state, { payload }) => {
-    state.push(payload.list);
-  },
+  [createList]: (state, { payload }) => [...state, payload.list],
   [deleteList]: (state, { payload }) =>
     state.filter((list) => list.id !== payload.id),
   [toggleDeleteList]: (state, { payload }) => {
@@ -59,6 +57,5 @@ export const todoReducer = createReducer(todos, {
         list.done = !list.done;
       }
     });
-    console.log(1);
   },
 });

@@ -27,9 +27,7 @@ function TodoCategory({ todos, setCategoryClickTodoList }) {
     const today = new Date();
     let splitDates = null;
 
-    const filteredAllList = todos.filter((list) => {
-      return list;
-    });
+    const filteredAllList = todos.filter((list) => list);
     const filteredDateList = todos.filter((list) => {
       splitDates = list.dates.split("-");
       return (
@@ -50,15 +48,10 @@ function TodoCategory({ todos, setCategoryClickTodoList }) {
       return Number(splitDates[0]) === today.getFullYear();
     });
 
-    if ("Day" === categoryName) {
-      setCategoryClickTodoList(filteredDateList);
-    } else if ("Month" === categoryName) {
-      setCategoryClickTodoList(filteredMonthList);
-    } else if ("Year" === categoryName) {
-      setCategoryClickTodoList(filteredYearList);
-    } else if ("All" === categoryName) {
-      setCategoryClickTodoList(filteredAllList);
-    }
+    "Day" === categoryName && setCategoryClickTodoList(filteredDateList);
+    "Month" === categoryName && setCategoryClickTodoList(filteredMonthList);
+    "Year" === categoryName && setCategoryClickTodoList(filteredYearList);
+    "All" === categoryName && setCategoryClickTodoList(filteredAllList);
   };
 
   const categoryEventStyler = (categoryName) => {
