@@ -6,23 +6,23 @@ import {
   toggleDoneList,
 } from "../../store/reducers/todoReducer";
 
-function TodoLists({ categoryClickTodoList }) {
+function TodoLists({ categoryClickTodoList, setCategoryClickTodoList }) {
   const dispatch = useDispatch();
-
-  let todos = useSelector((state) => {
-    return state.todoReducer;
-  });
+  const todos = useSelector((state) => state.todoReducer);
 
   const moreOnClick = (currentId) => {
     dispatch(toggleDeleteList({ id: currentId }));
+    setCategoryClickTodoList(todos);
   };
 
   const doneOnClick = (currentId) => {
     dispatch(toggleDoneList({ id: currentId }));
+    setCategoryClickTodoList(todos);
   };
 
   const onDelete = (currentId) => {
     dispatch(deleteList({ id: currentId }));
+    setCategoryClickTodoList(todos);
   };
 
   let dates = null;

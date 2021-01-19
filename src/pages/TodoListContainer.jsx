@@ -22,7 +22,11 @@ function TodoList() {
         categoryClickTodoList={categoryClickTodoList}
         todos={todos}
       />
-      <TodoLists categoryClickTodoList={categoryClickTodoList} />
+      <TodoLists
+        categoryClickTodoList={categoryClickTodoList}
+        setCategoryClickTodoList={setCategoryClickTodoList}
+        todos={todos}
+      />
     </Styled.Container>
   );
 }

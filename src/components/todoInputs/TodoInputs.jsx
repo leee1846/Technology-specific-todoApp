@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import * as Styled from "./TodoInputs.style";
 import { useDispatch, useSelector } from "react-redux";
 import { createList } from "./../../store/reducers/todoReducer";
@@ -18,6 +18,7 @@ function TodoInputs({
   };
 
   const today = new Date();
+
   const onClick = () => {
     const thisYear = today.getFullYear();
     const thisMonth = today.getMonth() + 1;
@@ -38,7 +39,7 @@ function TodoInputs({
       );
       nextId.current += 1;
       setCreateValue("");
-      setCategoryClickTodoList(todos);
+      setCategoryClickTodoList((a) => todos);
     } else {
       window.alert("내용을 입력하여 주세요.");
     }

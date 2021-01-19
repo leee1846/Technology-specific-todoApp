@@ -59,5 +59,6 @@ export const todoReducer = createReducer(todos, {
         list.done = !list.done;
       }
     });
+    console.log(1);
   },
 });
