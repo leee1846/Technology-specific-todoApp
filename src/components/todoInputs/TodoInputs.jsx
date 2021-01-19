@@ -1,22 +1,21 @@
 import React, { useState, useRef } from "react";
 import * as Styled from "./TodoInputs.style";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createList } from "./../../store/reducers/todoReducer";
 
-function TodoInputs() {
+function TodoInputs({
+  setCategoryClickTodoList,
+  categoryClickTodoList,
+  todos,
+}) {
+  const dispatch = useDispatch();
   const [createValue, setCreateValue] = useState("");
-  // const [searchValue, setSearchValue] = useState("");
 
   const nextId = useRef(5);
-
-  const dispatch = useDispatch();
 
   const onChangeAddInput = (e) => {
     setCreateValue(e.target.value);
   };
-  // const onChangeSearchInput = (e) => {
-  //   setSearchValue(e.target.value);
-  // };
 
   const today = new Date();
   const onClick = () => {
@@ -39,18 +38,11 @@ function TodoInputs() {
       );
       nextId.current += 1;
       setCreateValue("");
+      setCategoryClickTodoList(todos);
     } else {
       window.alert("내용을 입력하여 주세요.");
     }
   };
-
-  // const onSearch = () => {
-  //   if (searchValue) {
-  //     dispatch(searchList({ content: searchValue }));
-  //   } else {
-  //     window.alert("내용을 입력하세요.");
-  //   }
-  // };
 
   return (
     <Styled.InputContainer>

@@ -27,11 +27,9 @@ function TodoLists({ categoryClickTodoList }) {
 
   let dates = null;
 
-  // const todoList = aa ? todos : categoryClickTodoList;
-
   return (
     <Styled.ListContainer>
-      {todos.map((data) => {
+      {categoryClickTodoList.map((data) => {
         dates = data.dates.split("-");
         const listYear = dates[0];
         const listMonth = dates[1];

@@ -3,21 +3,21 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 export const todos = [
   {
     id: 1,
-    dates: "2021 - 12 - 15",
+    dates: "2021 - 1 - 19",
     content: "공부 합시다",
     clicked: false,
     done: false,
   },
   {
     id: 2,
-    dates: "2021 - 1 - 15",
+    dates: "2021 - 1 - 14",
     content: "공부 합시다2",
     clicked: false,
     done: false,
   },
   {
     id: 3,
-    dates: "2021 - 1 - 14",
+    dates: "2021 - 1 - 13",
     content: "공부 합시다3",
     clicked: false,
     done: false,
