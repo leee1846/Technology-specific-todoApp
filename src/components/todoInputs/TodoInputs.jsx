@@ -39,7 +39,7 @@ function TodoInputs({
       );
       nextId.current += 1;
       setCreateValue("");
-      setCategoryClickTodoList((a) => todos);
+      // useEffect(setCategoryClickTodoList(todos), []);
     } else {
       window.alert("내용을 입력하여 주세요.");
     }

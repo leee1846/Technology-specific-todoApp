@@ -1,31 +1,32 @@
+import { useEffect } from "react";
 import * as Styled from "./TodoLists.style";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   toggleDeleteList,
   deleteList,
   toggleDoneList,
 } from "../../store/reducers/todoReducer";
 
-function TodoLists({ categoryClickTodoList, setCategoryClickTodoList }) {
+function TodoLists({ categoryClickTodoList, setCategoryClickTodoList, todos }) {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todoReducer);
 
   const moreOnClick = (currentId) => {
     dispatch(toggleDeleteList({ id: currentId }));
-    setCategoryClickTodoList(todos);
+    // setCategoryClickTodoList(todos);
   };
 
   const doneOnClick = (currentId) => {
     dispatch(toggleDoneList({ id: currentId }));
-    setCategoryClickTodoList(todos);
+    // setCategoryClickTodoList(todos);
   };
 
   const onDelete = (currentId) => {
     dispatch(deleteList({ id: currentId }));
-    setCategoryClickTodoList(todos);
+    // setCategoryClickTodoList(todos);
   };
 
   let dates = null;
+  useEffect(() => setCategoryClickTodoList(todos), [todos]);
 
   return (
     <Styled.ListContainer>
