@@ -6,7 +6,7 @@ import {
   toggleDoneList,
 } from "../../store/reducers/todoReducer";
 
-function TodoLists() {
+function TodoLists({ categoryClickTodoList }) {
   const dispatch = useDispatch();
 
   let todos = useSelector((state) => {
@@ -26,6 +26,8 @@ function TodoLists() {
   };
 
   let dates = null;
+
+  // const todoList = aa ? todos : categoryClickTodoList;
 
   return (
     <Styled.ListContainer>
