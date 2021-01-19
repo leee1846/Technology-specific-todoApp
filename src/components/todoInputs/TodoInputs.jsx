@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 import * as Styled from "./TodoInputs.style";
 import { useDispatch } from "react-redux";
-import { createList, searchList } from "./../../store/index";
+import { createList } from "./../../store/reducers/todoReducer";
 
 function TodoInputs() {
   const [createValue, setCreateValue] = useState("");
-  const [searchValue, setSearchValue] = useState("");
+  // const [searchValue, setSearchValue] = useState("");
 
   const nextId = useRef(5);
 
@@ -14,9 +14,9 @@ function TodoInputs() {
   const onChangeAddInput = (e) => {
     setCreateValue(e.target.value);
   };
-  const onChangeSearchInput = (e) => {
-    setSearchValue(e.target.value);
-  };
+  // const onChangeSearchInput = (e) => {
+  //   setSearchValue(e.target.value);
+  // };
 
   const today = new Date();
   const onClick = () => {
@@ -44,13 +44,13 @@ function TodoInputs() {
     }
   };
 
-  const onSearch = () => {
-    if (searchValue) {
-      dispatch(searchList({ content: searchValue }));
-    } else {
-      window.alert("내용을 입력하세요.");
-    }
-  };
+  // const onSearch = () => {
+  //   if (searchValue) {
+  //     dispatch(searchList({ content: searchValue }));
+  //   } else {
+  //     window.alert("내용을 입력하세요.");
+  //   }
+  // };
 
   return (
     <Styled.InputContainer>
@@ -58,9 +58,9 @@ function TodoInputs() {
         <input
           type='text'
           placeholder='리스트를 찾아보세요...'
-          onChange={onChangeSearchInput}
+          // onChange={onChangeSearchInput}
         />
-        <Styled.IconSearch fontSize='small' onClick={onSearch} />
+        <Styled.IconSearch fontSize='small' />
       </Styled.SearchInput>
       <Styled.AddInput>
         <input

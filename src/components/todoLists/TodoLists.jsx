@@ -4,7 +4,7 @@ import {
   toggleDeleteList,
   deleteList,
   toggleDoneList,
-} from "../../store/index";
+} from "../../store/reducers/todoReducer";
 
 function TodoLists() {
   const dispatch = useDispatch();

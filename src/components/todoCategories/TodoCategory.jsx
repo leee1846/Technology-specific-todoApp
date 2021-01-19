@@ -1,11 +1,15 @@
 import React from "react";
 import * as Styled from "./TodoCategory.style";
 import { useSelector, useDispatch } from "react-redux";
-import { categoryList, clickCategory } from "../../store/index";
+import { clickCategory } from "../../store/reducers/categoryStyleReducer";
+import { categoryList } from "../../store/reducers/categoryListReducer";
 
 function TodoCategory() {
   const categories = useSelector((state) => state.categoryReducer);
   const dispatch = useDispatch();
+  const categoryClickList = useSelector(
+    (state) => state.categoryClickListReducer
+  );
 
   const categoryClickHandeler = (event) => {
     dispatch(clickCategory({ name: event.target.textContent }));
@@ -14,6 +18,7 @@ function TodoCategory() {
         name: event.target.textContent,
       })
     );
+    console.log(categoryClickList);
   };
 
   return (
