@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Styled from "./TodoCategory.style";
-import { useSelector, useDispatch } from "react-redux";
-import { clickCategory } from "../../store/reducers/categoryStyleReducer";
 
-function TodoCategory({ filterListByCategory, categoryClickTodoList }) {
-  const categories = useSelector((state) => state.categoryReducer);
+const isCategories = [
+  {
+    text: "Day",
+    clicked: true,
+  },
+  {
+    text: "Month",
+    clicked: false,
+  },
+  {
+    text: "Year",
+    clicked: false,
+  },
+];
 
-  const dispatch = useDispatch();
+function TodoCategory({ filterListByCategory }) {
+  const [categories, setCategories] = useState(isCategories);
+
+  const categoryEventStyler = (categoryName) => {
+    setCategories(
+      categories.map((category) =>
+        category.text === categoryName
+          ? { ...category, clicked: true }
+          : { ...category, clicked: false }
+      )
+    );
+  };
 
   const categoryClickHandeler = (event, categoryName) => {
-    dispatch(clickCategory({ name: event.target.textContent }));
+    categoryEventStyler(event.target.textContent);
     filterListByCategory(categoryName);
   };
 
