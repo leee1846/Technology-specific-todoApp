@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import * as Styled from "./TodoLists.style";
 import { useDispatch } from "react-redux";
 import {
@@ -12,21 +12,18 @@ function TodoLists({ categoryClickTodoList, setCategoryClickTodoList, todos }) {
 
   const moreOnClick = (currentId) => {
     dispatch(toggleDeleteList({ id: currentId }));
-    // setCategoryClickTodoList(todos);
   };
 
   const doneOnClick = (currentId) => {
     dispatch(toggleDoneList({ id: currentId }));
-    // setCategoryClickTodoList(todos);
   };
 
   const onDelete = (currentId) => {
     dispatch(deleteList({ id: currentId }));
-    // setCategoryClickTodoList(todos);
   };
 
   let dates = null;
-  useEffect(() => setCategoryClickTodoList(todos), [todos]);
+  useMemo(() => setCategoryClickTodoList(todos), [todos]);
 
   return (
     <Styled.ListContainer>

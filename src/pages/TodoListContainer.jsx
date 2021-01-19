@@ -18,9 +18,8 @@ function TodoList() {
       />
       <TodoDates />
       <TodoInputs
-        setCategoryClickTodoList={setCategoryClickTodoList}
-        categoryClickTodoList={categoryClickTodoList}
         todos={todos}
+        setCategoryClickTodoList={setCategoryClickTodoList}
       />
       <TodoLists
         categoryClickTodoList={categoryClickTodoList}
