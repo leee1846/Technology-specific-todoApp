@@ -17,10 +17,10 @@ export const Left = Styled.div`
     transition:.3s linear;
     position:absolute;
     left:0;
-    bottom:40%;
+    bottom:35%;
     content:"";
     width:${({ done }) => (done ? "103%" : "0")};
-    height:1px;
+    height:2px;
     background-color:${({ theme }) => theme.gray_1};
   }
 `;

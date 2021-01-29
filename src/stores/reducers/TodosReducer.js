@@ -29,6 +29,15 @@ export const deleteTodo = createAsyncThunk("DELETE_TODO", async ({ id }) => {
   }
 });
 
+export const doneTodo = createAsyncThunk("DONE_TODO", async ({ id, done }) => {
+  try {
+    const response = await axios.put(`http://localhost:8000/todos/${id}`, done);
+    return { id, done };
+  } catch (e) {
+    console.log(e, "done 에러");
+  }
+});
+
 //reducer
 export const todoReducer = createSlice({
   name: "todos",
@@ -38,5 +47,9 @@ export const todoReducer = createSlice({
     [addTodo.fulfilled]: (state, { payload }) => [...state, payload],
     [deleteTodo.fulfilled]: (state, { payload }) =>
       state.filter((list) => list.id !== payload),
+    [doneTodo.fulfilled]: (state, { payload }) =>
+      state.map((list) =>
+        list.id === payload.id ? { ...list, done: !list.done } : list
+      ),
   },
 });
