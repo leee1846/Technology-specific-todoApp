@@ -1,10 +1,18 @@
 import React from "react";
 import * as Styled from "./MoreBox.style";
+import { useDispatch } from "react-redux";
+import { deleteTodo } from "../../stores/reducers/TodosReducer";
 
-const MoreBox = () => {
+const MoreBox = ({ todoItem }) => {
+  const dispatch = useDispatch();
+
+  const onDelete = () => {
+    dispatch(deleteTodo({ id: todoItem.id }));
+  };
+
   return (
     <Styled.Box>
-      <Styled.ListBox>
+      <Styled.ListBox onClick={onDelete}>
         <Styled.Text>Delete</Styled.Text>
         <Styled.Delete />
       </Styled.ListBox>

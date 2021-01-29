@@ -1,24 +1,6 @@
 {
   "todos": [
     {
-      "id": 1,
-      "dates": "2021-01-29",
-      "content": "ㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ",
-      "done": false
-    },
-    {
-      "id": 2,
-      "dates": "2021-01-28",
-      "content": "ㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ",
-      "done": false
-    },
-    {
-      "id": 3,
-      "dates": "2021-02-29",
-      "content": "ㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ",
-      "done": false
-    },
-    {
       "dates": "2021-01-29",
       "content": "sdfsdfsdfsdfsdf",
       "done": false,
@@ -47,18 +29,6 @@
       "content": "ss",
       "done": false,
       "id": 8
-    },
-    {
-      "dates": "2021-01-29",
-      "content": "asd",
-      "done": false,
-      "id": 9
-    },
-    {
-      "dates": "2021-01-29",
-      "content": "cx",
-      "done": false,
-      "id": 10
     }
   ]
 }

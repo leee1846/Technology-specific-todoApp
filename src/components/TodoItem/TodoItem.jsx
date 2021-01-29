@@ -14,7 +14,7 @@ const TodoItem = ({ todoItem, todoReducer }) => {
         <Styled.Date>{todoItem.dates}</Styled.Date>
       </Styled.Left>
       <Styled.More onClick={onMoreClick} />
-      <MoreBox />
+      <MoreBox todoItem={todoItem} />
     </Styled.ListContainer>
   );
 };
