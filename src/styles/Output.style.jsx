@@ -6,4 +6,5 @@ export const Output = Styled.div`
   background-color:dodgerblue;
   display:flex;
   justify-content:center;
+  align-items:flex-start;
 `;
