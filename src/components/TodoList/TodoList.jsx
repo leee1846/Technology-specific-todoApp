@@ -1,13 +1,14 @@
 import React from "react";
 import TodoItem from "./../TodoItem/TodoItem";
+import * as Styled from "./TodoList.style";
 
 const TodoList = ({ todoReducer }) => {
   return (
-    <div>
+    <Styled.ListContainer>
       {todoReducer.map((list) => (
-        <TodoItem todoItem={list} />
+        <TodoItem key={list.id} todoItem={list} />
       ))}
-    </div>
+    </Styled.ListContainer>
   );
 };
 
