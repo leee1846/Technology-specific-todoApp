@@ -6,7 +6,7 @@ const Date = ({ newDate }) => {
   // const today = newDate.getFullYear();
   return (
     <>
-      <Styled.Date></Styled.Date>
+      <Styled.Date>2021년 1월 29일</Styled.Date>
     </>
   );
 };

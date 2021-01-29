@@ -1,10 +1,11 @@
 import React from "react";
+import * as Styled from "./Input.style";
 
-const Input = () => {
+const Input = ({ placeholder }) => {
   return (
-    <div>
-      <h1>인풋</h1>
-    </div>
+    <>
+      <Styled.Input type='text' placeholder={placeholder} />
+    </>
   );
 };
 
