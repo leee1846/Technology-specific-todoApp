@@ -26,6 +26,7 @@ export const Box = Styled.ul`
 const textStyle = css`
   font-size: 13px;
   color: ${({ theme }) => theme.gray_1};
+  transition: 0.2s linear;
 `;
 
 export const Text = Styled.p`
@@ -35,6 +36,9 @@ export const Text = Styled.p`
 const iconStyle = css`
   color: ${({ theme }) => theme.gray_1};
   transform: scale(0.6);
+  && {
+    transition: 0.2s linear;
+  }
 `;
 
 export const Delete = Styled(DeleteOutlineIcon)`
@@ -52,7 +56,6 @@ export const ListBox = Styled.li`
   width:100%;
   justify-content:space-between;
   cursor:pointer;
-  transition: 0.2s linear;
 
   &:hover ${Text},
   &:hover ${Delete},
