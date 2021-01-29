@@ -27,4 +27,10 @@ export const More = Styled(MoreHorizIcon)`
   color:${({ theme }) => theme.gray_1};
   transform:scale(.8);
   cursor:pointer;
+  && {
+    transition: 0.2s linear;
+  }
+  &:hover {
+    color: ${({ theme }) => theme.white_1};
+  }
 `;

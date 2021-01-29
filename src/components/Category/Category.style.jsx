@@ -13,6 +13,10 @@ export const Text = Styled.p`
   color:${({ theme, clicked }) => (clicked ? theme.white_1 : theme.gray_1)};
   cursor:pointer;
 
+  &:hover {
+    color: ${({ theme }) => theme.white_1};
+  }
+
   &:after {
     transition: .3s linear;
     content:"";

@@ -17,6 +17,12 @@ const iconStyle = css`
   transform: scale(0.8);
   cursor: pointer;
   padding: 5px;
+  && {
+    transition: 0.2s linear;
+  }
+  &:hover {
+    color: ${({ theme }) => theme.white_1};
+  }
 `;
 
 export const Add = Styled(AddCircleOutlineIcon)`
