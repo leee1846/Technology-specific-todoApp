@@ -1,10 +1,17 @@
 import React from "react";
 import * as Styled from "./TodoContainer.style";
+import Categories from "./../components/Categories/Categories";
+import Date from "./../components/Date/Date";
+import Inputs from "../components/Inputs/Inputs";
+import TodoList from "./../components/TodoList/TodoList";
 
 const TodoContainer = () => {
   return (
     <Styled.TodoContainer>
-      <h1>ssss</h1>
+      <Categories />
+      <Date />
+      <Inputs />
+      <TodoList />
     </Styled.TodoContainer>
   );
 };
