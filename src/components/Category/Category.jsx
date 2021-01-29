@@ -1,15 +1,13 @@
 import React from "react";
 import * as Styled from "./Category.style";
+import { useDispatch } from "react-redux";
+import { categoryStyler } from "../../stores/reducers/CategoryReducer";
 
-const Category = ({ children, clicked, setCategoryList }) => {
+const Category = ({ children, clicked }) => {
+  const dispatch = useDispatch();
   const categoryClickHandeler = (e) => {
-    setCategoryList((categoryList) =>
-      categoryList.map((list) => {
-        return e.target.textContent === list.name
-          ? { ...list, clicked: true }
-          : { ...list, clicked: false };
-      })
-    );
+    const currentName = e.target.textContent;
+    dispatch(categoryStyler({ currentName }));
   };
 
   return (

@@ -6,4 +6,5 @@ export const TodoContainer = Styled.div`
   display:flex;
   flex-direction:column;
   align-items:center;
+  padding:0 30px;
 `;
