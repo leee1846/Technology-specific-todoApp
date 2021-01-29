@@ -1,7 +1,10 @@
 import React from "react";
 import * as Styled from "./TodoItem.style";
+import MoreBox from "./../MoreBox/MoreBox";
 
-const TodoItem = ({ todoItem }) => {
+const TodoItem = ({ todoItem, todoReducer }) => {
+  const onMoreClick = () => {};
+
   return (
     <Styled.ListContainer>
       <Styled.Left>
@@ -10,7 +13,8 @@ const TodoItem = ({ todoItem }) => {
         </Styled.Content>
         <Styled.Date>{todoItem.dates}</Styled.Date>
       </Styled.Left>
-      <Styled.More />
+      <Styled.More onClick={onMoreClick} />
+      <MoreBox />
     </Styled.ListContainer>
   );
 };

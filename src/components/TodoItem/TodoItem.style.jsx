@@ -5,6 +5,7 @@ export const ListContainer = Styled.div`
   display:flex;
   justify-content:space-between;
   align-items:center;
+  position:relative;
 `;
 
 export const Left = Styled.div`

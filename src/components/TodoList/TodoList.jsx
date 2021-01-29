@@ -6,7 +6,7 @@ const TodoList = ({ todoReducer }) => {
   return (
     <Styled.ListContainer>
       {todoReducer.map((list) => (
-        <TodoItem key={list.id} todoItem={list} />
+        <TodoItem key={list.id} todoItem={list} todoReducer={todoReducer} />
       ))}
     </Styled.ListContainer>
   );
