@@ -11,6 +11,18 @@ export const ListContainer = Styled.div`
 export const Left = Styled.div`
   display:flex;
   align-items:flex-end;
+  position:relative;
+
+  &:after {
+    transition:.3s linear;
+    position:absolute;
+    left:0;
+    bottom:40%;
+    content:"";
+    width:${({ done }) => (done ? "103%" : "0")};
+    height:1px;
+    background-color:${({ theme }) => theme.gray_1};
+  }
 `;
 
 export const Content = Styled.p`

@@ -7,7 +7,7 @@ const TodoItem = ({ todoItem, todoReducer }) => {
 
   return (
     <Styled.ListContainer>
-      <Styled.Left>
+      <Styled.Left done={todoItem.done}>
         <Styled.Content>
           {todoItem.id}. {todoItem.content}
         </Styled.Content>
