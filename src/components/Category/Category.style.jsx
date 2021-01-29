@@ -1,14 +1,14 @@
 import Styled from "styled-components";
 
 export const Category = Styled.li`
-  margin:0 15px;
+  margin:0 20px;
   position:relative;
   height:40px;
   line-height:40px;
 `;
 
 export const Text = Styled.p`
-  font-size:17px;
+  font-size:16px;
   transition: .3s linear;
   color:${({ theme, clicked }) => (clicked ? theme.white_1 : theme.gray_1)};
   cursor:pointer;
@@ -25,7 +25,7 @@ export const Text = Styled.p`
     left:50%;
     transform:translateX(-50%);
     width:${({ clicked }) => (clicked ? "100%" : "0px")};
-    height:1px;
+    height:2px;
     background-color:${({ clicked }) => clicked && "dodgerblue"};
   }
 `;

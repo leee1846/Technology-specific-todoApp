@@ -2,7 +2,9 @@ import React from "react";
 import * as Styled from "./Categories.style";
 import Category from "./../Category/Category";
 
-const Categories = ({ categoryList }) => {
+const Categories = ({ categoryList, todoReducer }) => {
+  const isDate = new Date();
+
   return (
     <Styled.CategoryContainer>
       {categoryList.map((list) => (
@@ -10,6 +12,8 @@ const Categories = ({ categoryList }) => {
           key={list.id}
           categoryList={categoryList}
           clicked={list.clicked}
+          todoReducer={todoReducer}
+          isDate={isDate}
         >
           {list.name}
         </Category>

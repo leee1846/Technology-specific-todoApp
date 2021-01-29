@@ -9,7 +9,9 @@ import { getTodos } from "./../stores/reducers/TodosReducer";
 
 const TodoContainer = () => {
   const dispatch = useDispatch();
+
   const categoryList = useSelector((state) => state.categoryReducer);
+
   const todoReducer = useSelector((state) => state.todoReducer);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const TodoContainer = () => {
 
   return (
     <Styled.TodoContainer>
-      <Categories categoryList={categoryList} />
+      <Categories categoryList={categoryList} todoReducer={todoReducer} />
       <Date />
       <Inputs />
       <TodoList todoReducer={todoReducer} />
