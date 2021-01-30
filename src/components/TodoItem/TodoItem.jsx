@@ -3,8 +3,6 @@ import * as Styled from "./TodoItem.style";
 import MoreBox from "./../MoreBox/MoreBox";
 
 const TodoItem = ({ todoItem, todoReducer }) => {
-  const onMoreClick = () => {};
-
   return (
     <Styled.ListContainer>
       <Styled.Left done={todoItem.done}>
@@ -13,7 +11,7 @@ const TodoItem = ({ todoItem, todoReducer }) => {
         </Styled.Content>
         <Styled.Date>{todoItem.dates}</Styled.Date>
       </Styled.Left>
-      <Styled.More onClick={onMoreClick} />
+      <Styled.More />
       <MoreBox todoItem={todoItem} />
     </Styled.ListContainer>
   );

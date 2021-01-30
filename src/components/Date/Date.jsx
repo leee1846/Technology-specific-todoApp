@@ -1,12 +1,16 @@
 import React from "react";
 import * as Styled from "./Date.style";
 
-const Date = ({ newDate }) => {
-  // const today = `${newDate(getFullYear())}년 ${1}월 ${1}일`
-  // const today = newDate.getFullYear();
+const Date = () => {
+  // const isDate = new Date();
+  // const thisYear = isDate.getFullYear();
+  // const thisMonth = isDate.getMonth() + 1;
+  // const thisDate = isDate.getDate();
+  // const today = `${thisYear}년 ${thisMonth}월 ${thisDate}일`;
+
   return (
     <>
-      <Styled.Date>2021년 1월 29일</Styled.Date>
+      <Styled.Date></Styled.Date>
     </>
   );
 };
