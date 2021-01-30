@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import TodoItem from "./../TodoItem/TodoItem";
 import * as Styled from "./TodoList.style";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { categoryAll } from "../../stores/reducers/CategoryReducer";
 
 const TodoList = ({ todoReducer }) => {
   const [categoryClicked, setCategoryClicked] = useState(false);
+
+  const dispatch = useDispatch();
 
   const listByCategory = useSelector((state) => state.filterListReducer);
 
@@ -14,6 +17,7 @@ const TodoList = ({ todoReducer }) => {
 
   useEffect(() => {
     setCategoryClicked(false);
+    dispatch(categoryAll());
   }, [todoReducer]);
 
   return (

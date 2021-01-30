@@ -33,7 +33,11 @@ export const categoryReducer = createSlice({
           ? { ...list, clicked: true }
           : { ...list, clicked: false };
       }),
+    categoryAll: (state) =>
+      state.map((list) =>
+        list.id === 4 ? { ...list, clicked: true } : { ...list, clicked: false }
+      ),
   },
 });
 
-export const { categoryStyler } = categoryReducer.actions;
+export const { categoryStyler, categoryAll } = categoryReducer.actions;
