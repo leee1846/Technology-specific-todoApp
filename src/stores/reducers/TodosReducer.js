@@ -8,7 +8,7 @@ export const getTodos = createAsyncThunk(
     try {
       const response = await axios.get("http://localhost:8000/todos");
 
-      const filteredList = response.data.filter((list) => {
+      return response.data.filter((list) => {
         const date = list.dates.split("-");
         const currentYear = Number(date[0]);
         const currentMonth = Number(date[1]);
@@ -28,7 +28,6 @@ export const getTodos = createAsyncThunk(
           return list;
         }
       });
-      return filteredList;
     } catch (e) {
       console.log(e, "get 에러");
     }

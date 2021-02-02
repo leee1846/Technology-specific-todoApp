@@ -5,6 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 import { categoryReducer } from "./reducers/CategoryReducer";
 import { todoReducer } from "./reducers/TodosReducer";
+import logger from "redux-logger";
 
 const reducer = combineReducers({
   categoryReducer: categoryReducer.reducer,
@@ -13,7 +14,7 @@ const reducer = combineReducers({
 
 const store = configureStore({
   reducer,
-  middleware: [...getDefaultMiddleware()],
+  middleware: [...getDefaultMiddleware(), logger],
 });
 
 export default store;

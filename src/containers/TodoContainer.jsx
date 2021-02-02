@@ -15,7 +15,14 @@ const TodoContainer = () => {
   const todoReducer = useSelector((state) => state.todoReducer);
 
   useEffect(() => {
-    dispatch(getTodos());
+    dispatch(
+      getTodos({
+        currentName: null,
+        thisYear: null,
+        thisMonth: null,
+        thisDate: null,
+      })
+    );
   }, []);
 
   return (
