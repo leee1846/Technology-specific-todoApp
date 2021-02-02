@@ -5,5 +5,6 @@ export const CategoryContainer = Styled.ul`
   display:flex;
   justify-content:center;
   align-items:center;
-  border-bottom:1px solid rgb(40, 40, 40)
+  border-bottom:1px solid rgb(40, 40, 40);
+  width:100%;
 `;

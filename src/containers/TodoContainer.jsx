@@ -19,12 +19,14 @@ const TodoContainer = () => {
   }, []);
 
   return (
-    <Styled.TodoContainer>
+    <Styled.TotalContainer>
       <Categories categoryList={categoryList} todoReducer={todoReducer} />
+      <Styled.TodoContainer>
       <Date />
       <Inputs />
       <TodoList todoReducer={todoReducer} />
-    </Styled.TodoContainer>
+      </Styled.TodoContainer>
+    </Styled.TotalContainer>
   );
 };
 
