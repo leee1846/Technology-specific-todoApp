@@ -2,48 +2,6 @@
   "todos": [
     {
       "dates": "2021-01-29",
-      "content": "asdasdassad",
-      "done": false,
-      "id": 7
-    },
-    {
-      "dates": "2021-01-29",
-      "content": "ss",
-      "done": false,
-      "id": 8
-    },
-    {
-      "id": 4,
-      "dates": "2021-1-27",
-      "content": "asdasd",
-      "done": false
-    },
-    {
-      "id": 5,
-      "dates": "2021-2-27",
-      "content": "asdasd",
-      "done": false
-    },
-    {
-      "dates": "2022-2-27",
-      "content": "asdasd",
-      "done": false,
-      "id": 10
-    },
-    {
-      "dates": "2021-01-29",
-      "content": "asdasd",
-      "done": false,
-      "id": 11
-    },
-    {
-      "dates": "2021-01-29",
-      "content": "asdasd",
-      "done": false,
-      "id": 12
-    },
-    {
-      "dates": "2021-01-29",
       "content": "asdasd",
       "done": false,
       "id": 13
@@ -59,6 +17,18 @@
       "content": "asdasd",
       "done": false,
       "id": 15
+    },
+    {
+      "dates": "2021-01-29",
+      "content": "ㄴㅁㅇㅁㄴㅇㅁㄴㅇ",
+      "done": false,
+      "id": 16
+    },
+    {
+      "dates": "2021-02-02",
+      "content": "ㅁㄴㅇㅁㄴㅇ",
+      "done": true,
+      "id": 17
     }
   ]
 }

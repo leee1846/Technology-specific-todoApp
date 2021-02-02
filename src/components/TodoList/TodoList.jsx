@@ -5,30 +5,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { categoryAll } from "../../stores/reducers/CategoryReducer";
 
 const TodoList = ({ todoReducer }) => {
-  const [categoryClicked, setCategoryClicked] = useState(false);
-
   const dispatch = useDispatch();
-
-  const listByCategory = useSelector((state) => state.filterListReducer);
-
-  useEffect(() => {
-    setCategoryClicked(true);
-  }, [listByCategory]);
-
-  useEffect(() => {
-    setCategoryClicked(false);
-    dispatch(categoryAll());
-  }, [todoReducer]);
 
   return (
     <Styled.ListContainer>
-      {!categoryClicked
-        ? todoReducer.map((list) => (
-            <TodoItem key={list.id} todoItem={list} todoReducer={todoReducer} />
-          ))
-        : listByCategory.map((list) => (
-            <TodoItem key={list.id} todoItem={list} todoReducer={todoReducer} />
-          ))}
+      {todoReducer.map((list) => (
+        <TodoItem key={list.id} todoItem={list} todoReducer={todoReducer} />
+      ))}
     </Styled.ListContainer>
   );
 };

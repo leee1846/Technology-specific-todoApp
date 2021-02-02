@@ -20,7 +20,7 @@ const Inputs = () => {
 
   const onAddClick = (e) => {
     const newList = {
-      dates: "2021-01-29",
+      dates: "2021-02-02",
       content: addInputValue,
       done: false,
     };

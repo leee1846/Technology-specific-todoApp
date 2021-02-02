@@ -2,10 +2,11 @@ import React from "react";
 import * as Styled from "./Category.style";
 import { useDispatch } from "react-redux";
 import { categoryStyler } from "../../stores/reducers/CategoryReducer";
-import { filterList } from "./../../stores/reducers/CategoryFilterReducer";
+import { getTodos } from "./../../stores/reducers/TodosReducer";
 
 const Category = ({ children, clicked, todoReducer, isDate }) => {
   const dispatch = useDispatch();
+
   const categoryClickHandeler = (e) => {
     const currentName = e.target.textContent;
     dispatch(categoryStyler({ currentName }));
@@ -15,9 +16,8 @@ const Category = ({ children, clicked, todoReducer, isDate }) => {
     const thisDate = isDate.getDate();
 
     dispatch(
-      filterList({
+      getTodos({
         currentName,
-        todoList: todoReducer,
         thisYear,
         thisMonth,
         thisDate,

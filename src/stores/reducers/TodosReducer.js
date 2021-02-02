@@ -2,14 +2,38 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 //thunk
-export const getTodos = createAsyncThunk("GET-todos", async () => {
-  try {
-    const response = await axios.get("http://localhost:8000/todos");
-    return response.data;
-  } catch (e) {
-    console.log(e, "get 에러");
+export const getTodos = createAsyncThunk(
+  "GET-todos",
+  async ({ currentName, thisYear, thisMonth, thisDate }) => {
+    try {
+      const response = await axios.get("http://localhost:8000/todos");
+
+      const filteredList = response.data.filter((list) => {
+        const date = list.dates.split("-");
+        const currentYear = Number(date[0]);
+        const currentMonth = Number(date[1]);
+        const currentDate = Number(date[2]);
+
+        if (currentName === "Day") {
+          return (
+            currentYear === thisYear &&
+            currentMonth === thisMonth &&
+            currentDate === thisDate
+          );
+        } else if (currentName === "Month") {
+          return currentYear === thisYear && currentMonth === thisMonth;
+        } else if (currentName === "Year") {
+          return currentYear === thisYear;
+        } else {
+          return list;
+        }
+      });
+      return filteredList;
+    } catch (e) {
+      console.log(e, "get 에러");
+    }
   }
-});
+);
 
 export const addTodo = createAsyncThunk("ADD_TODO", async ({ newList }) => {
   try {

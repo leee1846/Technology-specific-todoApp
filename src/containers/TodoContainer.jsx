@@ -22,9 +22,9 @@ const TodoContainer = () => {
     <Styled.TotalContainer>
       <Categories categoryList={categoryList} todoReducer={todoReducer} />
       <Styled.TodoContainer>
-      <Date />
-      <Inputs />
-      <TodoList todoReducer={todoReducer} />
+        <Date />
+        <Inputs />
+        <TodoList todoReducer={todoReducer} />
       </Styled.TodoContainer>
     </Styled.TotalContainer>
   );
