@@ -34,6 +34,21 @@ export const getTodos = createAsyncThunk(
   }
 );
 
+export const findTodo = createAsyncThunk(
+  "FIND_TODO",
+  async ({ inputContent }) => {
+    try {
+      const response = await axios.get("http://localhost:8000/todos");
+
+      return response.data.filter((list) => {
+        return list.content === inputContent;
+      });
+    } catch (e) {
+      console.log(e, "search 에러");
+    }
+  }
+);
+
 export const addTodo = createAsyncThunk("ADD_TODO", async ({ newList }) => {
   try {
     const response = await axios.post("http://localhost:8000/todos", newList);
@@ -67,6 +82,7 @@ export const todoReducer = createSlice({
   initialState: [],
   extraReducers: {
     [getTodos.fulfilled]: (state, { payload }) => [...payload],
+    [findTodo.fulfilled]: (state, { payload }) => [...payload],
     [addTodo.fulfilled]: (state, { payload }) => [...state, payload],
     [deleteTodo.fulfilled]: (state, { payload }) =>
       state.filter((list) => list.id !== payload),

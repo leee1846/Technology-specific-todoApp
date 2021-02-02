@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "./../Input/Input";
 import * as Styled from "./Inputs.style";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../stores/reducers/TodosReducer";
+import { addTodo, findTodo } from "../../stores/reducers/TodosReducer";
 
 const Inputs = () => {
   const dispatch = useDispatch();
@@ -12,6 +12,12 @@ const Inputs = () => {
 
   const onSearchInputChange = (e) => {
     setSearchInputValue(e.target.value);
+  };
+
+  const onSearchClick = () => {
+    dispatch(findTodo({ inputContent: searchInputValue }));
+
+    setSearchInputValue("");
   };
 
   const onAddInputChange = (e) => {
@@ -38,7 +44,7 @@ const Inputs = () => {
           onChangeHandeler={onSearchInputChange}
           value={searchInputValue}
         />
-        <Styled.Search />
+        <Styled.Search onClick={onSearchClick} />
       </Styled.InputBox>
       <Styled.InputBox>
         <Input

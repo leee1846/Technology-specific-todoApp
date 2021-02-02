@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Styled from "./TodoItem.style";
 import MoreBox from "./../MoreBox/MoreBox";
 
-const TodoItem = ({ todoItem, todoReducer }) => {
+const TodoItem = ({ todoItem }) => {
   return (
     <Styled.ListContainer>
       <Styled.Left done={todoItem.done}>
