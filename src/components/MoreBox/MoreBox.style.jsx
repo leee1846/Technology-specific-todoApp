@@ -10,7 +10,7 @@ export const Box = Styled.ul`
   background-color:${({ theme }) => theme.input_bg};
   padding:5px 3px 5px 10px;
   z-index:1000;
-  /* display:${({ isShow }) => (isShow ? "block" : "none")}; */
+  display:${({ isShow }) => (isShow ? "block" : "none")};
 
 
   &:after{

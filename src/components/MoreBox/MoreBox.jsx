@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { deleteTodo } from "../../stores/reducers/TodosReducer";
 import { doneTodo } from "../../stores/reducers/TodosReducer";
 
-const MoreBox = ({ todoItem }) => {
+const MoreBox = ({ todoItem, isShow }) => {
   const dispatch = useDispatch();
 
   const onDelete = () => {
@@ -22,7 +22,7 @@ const MoreBox = ({ todoItem }) => {
   };
 
   return (
-    <Styled.Box>
+    <Styled.Box isShow={isShow}>
       <Styled.ListBox onClick={onDelete}>
         <Styled.Text>Delete</Styled.Text>
         <Styled.Delete />
