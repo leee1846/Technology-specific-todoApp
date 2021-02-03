@@ -21,7 +21,7 @@
       웹팩의 기본적이 구동원리를 파악하기 위하여 진행하였습니다. 모듈시스템을 적용하였스며, es6문법인 import/export문법을 사용하여 나눈 파일들의 기능을 불러 구현하였습니다. 
     </p>
   </li>
-  <li>react-version
-    <p>react라이브러리를 이용하여 구현하였습니다. 상태관리로는 redux-toolkit을 사용해 보았으며, styled-components로 스타일을 구현하였습니다.</p>
+  <li>react-axios
+    <p>react라이브러리를 이용하여 구현하였습니다. 상태관리로는 redux-toolkit을 사용해 보았으며, styled-components로 스타일을 구현하였습니다. 또한 server와의 연동으로는 axios를 사용하였습니다.</p>
   </li>
 </ol>
