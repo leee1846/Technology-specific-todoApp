@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import * as Styled from "./TodoContainer.style";
 import Categories from "./../components/Categories/Categories";
-import Date from "./../components/Date/Date";
+import IsDate from "../components/IsDate/IsDate";
 import Inputs from "../components/Inputs/Inputs";
 import TodoList from "./../components/TodoList/TodoList";
 import { useSelector, useDispatch } from "react-redux";
@@ -29,7 +29,7 @@ const TodoContainer = () => {
     <Styled.TotalContainer>
       <Categories categoryList={categoryList} todoReducer={todoReducer} />
       <Styled.TodoContainer>
-        <Date />
+        <IsDate />
         <Inputs />
         <TodoList todoReducer={todoReducer} />
       </Styled.TodoContainer>
