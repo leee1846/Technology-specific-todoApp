@@ -25,8 +25,17 @@ const Inputs = () => {
   };
 
   const onAddClick = (e) => {
+    const newDate = new Date();
+    const thisYear = newDate.getFullYear();
+    const isMonth = newDate.getMonth() + 1;
+    const isDate = newDate.getDate();
+
+    const thisMonth = isMonth < 10 ? "0" + isMonth : isMonth;
+    const thisDate = isDate < 10 ? "0" + isDate : isDate;
+    console.log(thisMonth);
+
     const newList = {
-      dates: "2021-02-02",
+      dates: `${thisYear}-${thisMonth}-${thisDate}`,
       content: addInputValue,
       done: false,
     };

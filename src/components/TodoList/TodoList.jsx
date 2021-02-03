@@ -4,7 +4,7 @@ import * as Styled from "./TodoList.style";
 
 const TodoList = ({ todoReducer }) => {
   const [currentIndex, setCurrentIndex] = useState(-1);
-  console.log(currentIndex);
+
   return (
     <Styled.ListContainer>
       {todoReducer.map((list, index) => {
