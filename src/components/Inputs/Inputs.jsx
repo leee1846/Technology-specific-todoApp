@@ -3,25 +3,27 @@ import Input from "./../Input/Input";
 import * as Styled from "./Inputs.style";
 import { useDispatch } from "react-redux";
 import { addTodo, findTodo } from "../../stores/reducers/TodosReducer";
+import useInput from "./../../hooks/useInput";
 
 const Inputs = () => {
   const dispatch = useDispatch();
 
-  const [searchInputValue, setSearchInputValue] = useState("");
-  const [addInputValue, setAddInputValue] = useState("");
+  const [addInputValue, addInputValueHandeler, addInputClear] = useInput("");
+  const [
+    searchInputValue,
+    searchInputValueHandeler,
+    searchInputClear,
+  ] = useInput("");
+  // const [searchInputValue, setSearchInputValue] = useState("");
 
-  const onSearchInputChange = (e) => {
-    setSearchInputValue(e.target.value);
-  };
+  // const onSearchInputChange = (e) => {
+  //   setSearchInputValue(e.target.value);
+  // };
 
   const onSearchClick = () => {
     dispatch(findTodo({ inputContent: searchInputValue }));
 
-    setSearchInputValue("");
-  };
-
-  const onAddInputChange = (e) => {
-    setAddInputValue(e.target.value);
+    searchInputClear("");
   };
 
   const onAddClick = (e) => {
@@ -42,7 +44,7 @@ const Inputs = () => {
 
     dispatch(addTodo({ newList }));
 
-    setAddInputValue("");
+    addInputClear();
   };
 
   return (
@@ -50,7 +52,7 @@ const Inputs = () => {
       <Styled.InputBox>
         <Input
           placeholder='리스트를 찾아보세요...'
-          onChangeHandeler={onSearchInputChange}
+          onChangeHandeler={searchInputValueHandeler}
           value={searchInputValue}
         />
         <Styled.Search onClick={onSearchClick} />
@@ -58,7 +60,7 @@ const Inputs = () => {
       <Styled.InputBox>
         <Input
           placeholder='리스트를 추가하세요...'
-          onChangeHandeler={onAddInputChange}
+          onChangeHandeler={addInputValueHandeler}
           value={addInputValue}
         />
         <Styled.Add onClick={onAddClick} />
