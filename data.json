@@ -1,24 +1,6 @@
 {
   "todos": [
     {
-      "dates": "2021-02-04",
-      "content": "시작해",
-      "done": false,
-      "id": 2
-    },
-    {
-      "dates": "2021-02-04",
-      "content": "볼까요??",
-      "done": false,
-      "id": 3
-    },
-    {
-      "dates": "2021-02-04",
-      "content": "아자아자!!",
-      "done": false,
-      "id": 4
-    },
-    {
       "dates": "2021-02-11",
       "content": "ㅁㄴㅇㅁㄴㅇ",
       "done": false,
@@ -28,7 +10,7 @@
       "dates": "2021-02-11",
       "content": "ㅁㄴㅇㅁㄴㅇ",
       "done": false,
-      "id": 6
+      "id": 7
     }
   ]
 }

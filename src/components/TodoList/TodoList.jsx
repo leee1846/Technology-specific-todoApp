@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoItem from "./../TodoItem/TodoItem";
 import * as Styled from "./TodoList.style";
 
 const TodoList = ({ todoReducer }) => {
   const [currentIndex, setCurrentIndex] = useState(-1);
+
+  useEffect(() => {
+    setCurrentIndex(-1);
+  }, [todoReducer]);
 
   return (
     <Styled.ListContainer>
