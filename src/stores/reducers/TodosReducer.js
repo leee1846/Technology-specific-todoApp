@@ -80,6 +80,12 @@ export const doneTodo = createAsyncThunk("DONE_TODO", async ({ id, done }) => {
 export const todoReducer = createSlice({
   name: "todos",
   initialState: [],
+  reducers: {
+    listMove: (state, { payload }) => {
+      state.splice(payload.startTagIndex, 1);
+      state.splice(payload.destinationTagIndex, 0, payload.startTag);
+    },
+  },
   extraReducers: {
     [getTodos.fulfilled]: (state, { payload }) => [...payload],
     [findTodo.fulfilled]: (state, { payload }) => [...payload],
@@ -92,3 +98,5 @@ export const todoReducer = createSlice({
       ),
   },
 });
+
+export const { listMove } = todoReducer.actions;

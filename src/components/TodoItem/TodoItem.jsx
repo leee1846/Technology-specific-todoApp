@@ -8,6 +8,7 @@ const TodoItem = ({
   index,
   isShow,
   setCurrentIndex,
+  provided,
 }) => {
   const onMoreButtonClick = (e, index, isShow) => {
     if (isShow) {
@@ -18,7 +19,11 @@ const TodoItem = ({
   };
 
   return (
-    <Styled.ListContainer>
+    <Styled.ListContainer
+      ref={provided.innerRef}
+      {...provided.draggableProps}
+      {...provided.dragHandleProps}
+    >
       <Styled.Left done={todoItem.done}>
         <Styled.Content>
           {currentNumber}. {todoItem.content}
