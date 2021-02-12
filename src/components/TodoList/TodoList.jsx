@@ -2,19 +2,13 @@ import React, { useState, useEffect } from "react";
 import TodoItem from "./../TodoItem/TodoItem";
 import * as Styled from "./TodoList.style";
 import { useDispatch } from "react-redux";
-import {
-  DragDropContext,
-  Droppable,
-  Draggable,
-  resetServerContext,
-} from "react-beautiful-dnd";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { listMove } from "../../stores/reducers/TodosReducer";
 
 const TodoList = ({ todoReducer }) => {
   const [currentIndex, setCurrentIndex] = useState(-1);
 
   const dispatch = useDispatch();
-  resetServerContext();
 
   //리스트 내용 변경시 morebox off
   useEffect(() => {
