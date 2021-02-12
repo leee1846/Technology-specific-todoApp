@@ -14,11 +14,6 @@ const Inputs = () => {
     searchInputValueHandeler,
     searchInputClear,
   ] = useInput("");
-  // const [searchInputValue, setSearchInputValue] = useState("");
-
-  // const onSearchInputChange = (e) => {
-  //   setSearchInputValue(e.target.value);
-  // };
 
   const onSearchClick = () => {
     dispatch(findTodo({ inputContent: searchInputValue }));
@@ -34,7 +29,6 @@ const Inputs = () => {
 
     const thisMonth = isMonth < 10 ? "0" + isMonth : isMonth;
     const thisDate = isDate < 10 ? "0" + isDate : isDate;
-    console.log(thisMonth);
 
     const newList = {
       dates: `${thisYear}-${thisMonth}-${thisDate}`,

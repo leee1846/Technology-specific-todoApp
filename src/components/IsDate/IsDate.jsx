@@ -15,4 +15,4 @@ const IsDate = () => {
   );
 };
 
-export default IsDate;
+export default React.memo(IsDate);
