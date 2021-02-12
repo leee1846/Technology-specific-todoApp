@@ -1,16 +1,28 @@
 {
   "todos": [
     {
-      "dates": "2021-02-11",
-      "content": "ㅁㄴㅇㅁㄴㅇ",
+      "dates": "2021-01-11",
+      "content": "css 연습",
+      "done": false,
+      "id": 2
+    },
+    {
+      "dates": "2021-01-12",
+      "content": "react.js 연습",
+      "done": false,
+      "id": 4
+    },
+    {
+      "dates": "2021-02-12",
+      "content": "redux 연습",
       "done": false,
       "id": 5
     },
     {
-      "dates": "2021-02-11",
-      "content": "ㅁㄴㅇㅁㄴㅇ",
+      "dates": "2021-02-12",
+      "content": "axios 연습",
       "done": false,
-      "id": 7
+      "id": 6
     }
   ]
 }
