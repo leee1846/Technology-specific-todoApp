@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as Styled from "./TodoContainer.style";
 import Categories from "./../components/Categories/Categories";
 import IsDate from "../components/IsDate/IsDate";
@@ -8,6 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTodos } from "./../stores/reducers/TodosReducer";
 
 const TodoContainer = () => {
+  const [searchInputValue, setSearchInputValue] = useState("");
+
   const dispatch = useDispatch();
 
   const categoryList = useSelector((state) => state.categoryReducer);
@@ -30,8 +32,14 @@ const TodoContainer = () => {
       <Categories categoryList={categoryList} todoReducer={todoReducer} />
       <Styled.TodoContainer>
         <IsDate />
-        <Inputs />
-        <TodoList todoReducer={todoReducer} />
+        <Inputs
+          searchInputValue={searchInputValue}
+          setSearchInputValue={setSearchInputValue}
+        />
+        <TodoList
+          todoReducer={todoReducer}
+          searchInputValue={searchInputValue}
+        />
       </Styled.TodoContainer>
     </Styled.TotalContainer>
   );

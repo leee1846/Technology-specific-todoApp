@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { listMove } from "../../stores/reducers/TodosReducer";
 
-const TodoList = ({ todoReducer }) => {
+const TodoList = ({ todoReducer, searchInputValue }) => {
   const [currentIndex, setCurrentIndex] = useState(-1);
 
   const dispatch = useDispatch();
@@ -35,24 +35,36 @@ const TodoList = ({ todoReducer }) => {
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              {todoReducer.map((list, index) => (
-                <Draggable
-                  key={list.id}
-                  draggableId={`${list.id}`}
-                  index={index}
-                >
-                  {(provided) => (
-                    <TodoItem
-                      provided={provided}
-                      todoItem={list}
-                      currentNumber={index + 1}
-                      isShow={index === currentIndex ? true : false}
-                      index={index}
-                      setCurrentIndex={setCurrentIndex}
-                    />
-                  )}
-                </Draggable>
-              ))}
+              {todoReducer
+                .filter((list) => {
+                  if (searchInputValue == "") {
+                    return list;
+                  } else if (
+                    list.content
+                      .toLowerCase()
+                      .includes(searchInputValue.toLowerCase())
+                  ) {
+                    return list;
+                  }
+                })
+                .map((list, index) => (
+                  <Draggable
+                    key={list.id}
+                    draggableId={`${list.id}`}
+                    index={index}
+                  >
+                    {(provided) => (
+                      <TodoItem
+                        provided={provided}
+                        todoItem={list}
+                        currentNumber={index + 1}
+                        isShow={index === currentIndex ? true : false}
+                        index={index}
+                        setCurrentIndex={setCurrentIndex}
+                      />
+                    )}
+                  </Draggable>
+                ))}
               {provided.placeholder}
             </Styled.ListContainer>
           );

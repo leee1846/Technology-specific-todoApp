@@ -41,7 +41,13 @@ export const findTodo = createAsyncThunk(
       const response = await axios.get("http://localhost:8000/todos");
 
       return response.data.filter((list) => {
-        return list.content === inputContent;
+        if (inputContent == "") {
+          return list;
+        } else if (
+          list.content.toLowerCase().includes(inputContent.toLowerCase())
+        ) {
+          return list;
+        }
       });
     } catch (e) {
       console.log(e, "search 에러");
