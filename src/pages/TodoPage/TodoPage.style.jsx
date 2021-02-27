@@ -11,4 +11,4 @@ export const TotalContainer = Styled.div`
 export const TodoContainer = Styled.div`
 padding:0 50px;
 
-`
+`;

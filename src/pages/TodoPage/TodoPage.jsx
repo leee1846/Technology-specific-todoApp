@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import * as Styled from "./TodoContainer.style";
+import * as Styled from "./TodoPage.style";
 import Categories from "../../components/Categories/Categories";
 import IsDate from "../../components/IsDate/IsDate";
 import Inputs from "../../components/Inputs/Inputs";
@@ -7,7 +7,7 @@ import TodoList from "../../components/TodoList/TodoList";
 import { useSelector, useDispatch } from "react-redux";
 import { getTodos } from "../../stores/reducers/TodosReducer";
 
-const TodoContainer = () => {
+const TodoPage = () => {
   const [searchInputValue, setSearchInputValue] = useState("");
 
   const dispatch = useDispatch();
@@ -45,4 +45,4 @@ const TodoContainer = () => {
   );
 };
 
-export default TodoContainer;
+export default TodoPage;
