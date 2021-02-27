@@ -4,12 +4,14 @@ import LoginPage from "./LoginPage/LoginPage";
 import TodoPage from "./TodoPage/TodoPage";
 
 const PageRouter = () => {
+  const [user, setUser] = useState("");
+
   return (
     <Router>
       <Switch>
-        {!localStorage.getItem("kakaoToken") ? (
+        {!localStorage.getItem("loginToken") ? (
           <Route exact path='/'>
-            <LoginPage />
+            <LoginPage setUser={setUser} />
           </Route>
         ) : (
           <Route exact path='/'>

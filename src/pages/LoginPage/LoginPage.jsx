@@ -1,11 +1,12 @@
 import React from "react";
+import * as Styled from "./LoginPage.style";
 import KakaoLogin from "./../../components/KakaoLogin/KakaoLogin";
 
-const LoginPage = () => {
+const LoginPage = ({ setUser }) => {
   return (
-    <div>
-      <KakaoLogin />
-    </div>
+    <Styled.LoginContainer>
+      <KakaoLogin setUser={setUser} />
+    </Styled.LoginContainer>
   );
 };
 
