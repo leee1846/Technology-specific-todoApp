@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TodoItem from "./../TodoItem/TodoItem";
-import * as Styled from "./TodoList.style";
+import * as Styled from "./TodoList.style.js";
 import { useDispatch } from "react-redux";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { listMove } from "../../stores/reducers/TodosReducer";

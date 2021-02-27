@@ -1,5 +1,5 @@
-import { GlobalStyle } from "./styles/GlobalStyle";
-import { Output } from "./styles/Output.style";
+import { GlobalStyle } from "./styles/GlobalStyle.js";
+import { Output } from "./styles/Output.style.js";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme/theme";
 import { Provider } from "react-redux";

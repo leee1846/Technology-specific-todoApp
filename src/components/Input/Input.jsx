@@ -1,5 +1,5 @@
 import React from "react";
-import * as Styled from "./Input.style";
+import * as Styled from "./Input.style.js";
 
 const Input = ({ placeholder, onChangeHandeler, value }) => {
   return (

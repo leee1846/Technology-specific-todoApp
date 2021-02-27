@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import * as Styled from "./TodoPage.style";
+import * as Styled from "./TodoPage.style.js";
 import Categories from "../../components/Categories/Categories";
 import IsDate from "../../components/IsDate/IsDate";
 import Inputs from "../../components/Inputs/Inputs";

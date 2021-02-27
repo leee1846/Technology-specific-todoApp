@@ -1,5 +1,5 @@
 import React from "react";
-import * as Styled from "./MoreBox.style";
+import * as Styled from "./MoreBox.style.js";
 import { useDispatch } from "react-redux";
 import { deleteTodo } from "../../stores/reducers/TodosReducer";
 import { doneTodo } from "../../stores/reducers/TodosReducer";

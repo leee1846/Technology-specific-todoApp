@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Input from "./../Input/Input";
-import * as Styled from "./Inputs.style";
+import * as Styled from "./Inputs.style.js";
 import { useDispatch } from "react-redux";
 import { addTodo, findTodo } from "../../stores/reducers/TodosReducer";
 import useInput from "./../../hooks/useInput";

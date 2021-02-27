@@ -1,5 +1,5 @@
 import React from "react";
-import * as Styled from "./Category.style";
+import * as Styled from "./Category.style.js";
 import { useDispatch } from "react-redux";
 import { categoryStyler } from "../../stores/reducers/CategoryReducer";
 import { getTodos } from "./../../stores/reducers/TodosReducer";

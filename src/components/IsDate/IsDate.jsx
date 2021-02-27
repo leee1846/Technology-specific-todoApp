@@ -1,5 +1,5 @@
 import React from "react";
-import * as Styled from "./IsDate.style";
+import * as Styled from "./IsDate.style.js";
 
 const IsDate = () => {
   const isDate = new Date();

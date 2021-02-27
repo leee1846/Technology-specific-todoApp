@@ -1,5 +1,5 @@
 import React from "react";
-import * as Styled from "./Categories.style";
+import * as Styled from "./Categories.style.js";
 import Category from "./../Category/Category";
 
 const Categories = ({ categoryList, todoReducer }) => {
