@@ -9,7 +9,7 @@ const PageRouter = () => {
   return (
     <Router>
       <Switch>
-        {!localStorage.getItem("loginToken") ? (
+        {!sessionStorage.getItem("loginToken") ? (
           <Route exact path='/'>
             <LoginPage setUser={setUser} />
           </Route>

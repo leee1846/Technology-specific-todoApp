@@ -7,7 +7,7 @@ const KakaoLogin = ({ setUser }) => {
     window.Kakao.Auth.login({
       scope: "profile, account_email",
       success: function (response) {
-        localStorage.setItem("loginToken", response.access_token);
+        sessionStorage.setItem("loginToken", response.access_token);
         console.log(response);
         window.Kakao.API.request({
           url: "/v2/user/me",
