@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Input from "./../Input/Input";
 import * as Styled from "./Inputs.style.js";
 import { useDispatch } from "react-redux";

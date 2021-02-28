@@ -37,7 +37,7 @@ const TodoList = ({ todoReducer, searchInputValue }) => {
             >
               {todoReducer
                 .filter((list) => {
-                  if (searchInputValue == "") {
+                  if (searchInputValue === "") {
                     return list;
                   } else if (
                     list.content

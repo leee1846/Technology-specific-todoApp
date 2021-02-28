@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import * as Styled from "./TodoItem.style.js";
 import MoreBox from "./../MoreBox/MoreBox";
 

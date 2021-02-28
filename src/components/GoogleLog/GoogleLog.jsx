@@ -1,5 +1,4 @@
 import React from "react";
-import { GoogleLogin } from "react-google-login";
 import * as Styled from "./GoogleLog.style";
 
 const GoogleLog = ({ setUser }) => {

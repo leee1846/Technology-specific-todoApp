@@ -1,4 +1,3 @@
-import { useState } from "react";
 import * as Styled from "./KakaoLogin.style";
 import kakaoImage from "../../images/kakaoLogin.png";
 
@@ -8,11 +7,11 @@ const KakaoLogin = ({ setUser }) => {
       scope: "profile, account_email",
       success: function (response) {
         sessionStorage.setItem("loginToken", response.access_token);
-        console.log(response);
         window.Kakao.API.request({
           url: "/v2/user/me",
-          success: (res) => setUser(res.id),
+          success: (res) => console.log(res),
         });
+        setUser(123);
       },
       fail: function (error) {
         console.log(error);
