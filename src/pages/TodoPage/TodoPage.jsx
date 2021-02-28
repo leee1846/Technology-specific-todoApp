@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTodos } from "../../stores/reducers/TodosReducer";
 import { getUserName } from "../../stores/reducers/Login.js";
 
-const TodoPage = () => {
+const TodoPage = ({ userName }) => {
   const [searchInputValue, setSearchInputValue] = useState("");
 
   const dispatch = useDispatch();
@@ -16,8 +16,6 @@ const TodoPage = () => {
   const categoryList = useSelector((state) => state.categoryReducer);
 
   const todoReducer = useSelector((state) => state.todoReducer);
-
-  const userName = useSelector((state) => state.loginReducer.name);
 
   useEffect(() => {
     dispatch(
@@ -42,7 +40,9 @@ const TodoPage = () => {
 
   return (
     <Styled.TotalContainer>
-      <div>안녕하세요{userName}님</div>
+      <Styled.UserContainer>
+        <p>안녕하세요 {userName}님</p>
+      </Styled.UserContainer>
       <Categories categoryList={categoryList} todoReducer={todoReducer} />
       <Styled.TodoContainer>
         <IsDate />

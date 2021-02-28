@@ -1,9 +1,14 @@
 import React from "react";
 import * as Styled from "./GoogleLog.style";
+import { useDispatch } from "react-redux";
+import { getUserName } from "../../stores/reducers/Login";
 
 const GoogleLog = () => {
+  const dispatch = useDispatch();
+
   const responseGoogle = (response) => {
     sessionStorage.setItem("loginToken", response.accessToken);
+    dispatch(getUserName({ user: { name: response.Fs.sd, id: 1 } }));
   };
 
   return (

@@ -6,9 +6,16 @@ export const TotalContainer = Styled.div`
   display:flex;
   flex-direction:column;
   align-items:center;
+  position:relative;
 `;
 
 export const TodoContainer = Styled.div`
-padding:0 50px;
+  padding:0 50px;
+`;
 
+export const UserContainer = Styled.div`
+  position:absolute;
+  top:-50px;
+  font-size:18px;
+  color:${({ theme }) => theme.input_bg}
 `;
