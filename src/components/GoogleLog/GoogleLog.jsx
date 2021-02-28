@@ -1,10 +1,9 @@
 import React from "react";
 import * as Styled from "./GoogleLog.style";
 
-const GoogleLog = ({ setUser }) => {
+const GoogleLog = () => {
   const responseGoogle = (response) => {
     sessionStorage.setItem("loginToken", response.accessToken);
-    setUser(response.Fs.sd);
   };
 
   return (

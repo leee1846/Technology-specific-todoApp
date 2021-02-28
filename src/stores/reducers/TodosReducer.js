@@ -6,7 +6,7 @@ export const getTodos = createAsyncThunk(
   "GET-todos",
   async ({ currentName, thisYear, thisMonth, thisDate }) => {
     try {
-      const response = await axios.get("http://localhost:8000/todos");
+      const response = await axios.get("http://localhost:5000/todos");
 
       return response.data.filter((list) => {
         const date = list.dates.split("-");
@@ -38,7 +38,7 @@ export const findTodo = createAsyncThunk(
   "FIND_TODO",
   async ({ inputContent }) => {
     try {
-      const response = await axios.get("http://localhost:8000/todos");
+      const response = await axios.get("http://localhost:5000/todos");
 
       return response.data.filter((list) => {
         if (inputContent == "") {
@@ -57,7 +57,7 @@ export const findTodo = createAsyncThunk(
 
 export const addTodo = createAsyncThunk("ADD_TODO", async ({ newList }) => {
   try {
-    const response = await axios.post("http://localhost:8000/todos", newList);
+    const response = await axios.post("http://localhost:5000/todos", newList);
     return response.data;
   } catch (e) {
     console.log(e, "add 에러");
@@ -66,7 +66,7 @@ export const addTodo = createAsyncThunk("ADD_TODO", async ({ newList }) => {
 
 export const deleteTodo = createAsyncThunk("DELETE_TODO", async ({ id }) => {
   try {
-    const response = await axios.delete(`http://localhost:8000/todos/${id}`);
+    const response = await axios.delete(`http://localhost:5000/todos/${id}`);
     return id;
   } catch (e) {
     console.log(e, "delete 에러");
@@ -75,7 +75,7 @@ export const deleteTodo = createAsyncThunk("DELETE_TODO", async ({ id }) => {
 
 export const doneTodo = createAsyncThunk("DONE_TODO", async ({ id, done }) => {
   try {
-    const response = await axios.put(`http://localhost:8000/todos/${id}`, done);
+    const response = await axios.put(`http://localhost:5000/todos/${id}`, done);
     return { id, done };
   } catch (e) {
     console.log(e, "done 에러");
