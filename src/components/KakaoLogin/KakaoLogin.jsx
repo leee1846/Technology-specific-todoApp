@@ -13,20 +13,13 @@ const KakaoLogin = ({ user }) => {
       scope: "profile, account_email",
       success: function (response) {
         sessionStorage.setItem("loginToken", response.access_token);
-        window.Kakao.API.request({
-          url: "/v2/user/me",
-          success: (res) => {
-            console.log(res);
-            console.log(response);
-            const token = sessionStorage.getItem("loginToken");
-            dispatch(
-              getUser({
-                user: token ? true : false,
-              })
-            );
-            history.push("/logedin");
-          },
-        });
+        const token = sessionStorage.getItem("loginToken");
+        dispatch(
+          getUser({
+            user: token ? true : false,
+          })
+        );
+        history.push("/logedin");
       },
       fail: function (error) {
         console.log(error);

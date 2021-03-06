@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 const TodoPage = () => {
   const history = useHistory();
   const [searchInputValue, setSearchInputValue] = useState("");
+  const [userInfo, setUserInfo] = useState("");
 
   const dispatch = useDispatch();
 
@@ -29,6 +30,17 @@ const TodoPage = () => {
         thisDate: null,
       })
     );
+
+    window.Kakao.API.request({
+      url: "/v1/api/talk/profile",
+      success: (res) => {
+        console.log(res);
+        setUserInfo(
+          (userInfo) =>
+            (userInfo = { username: res.nickName, image: res.profileImageURL })
+        );
+      },
+    });
   }, []);
 
   if (!user) {
@@ -37,7 +49,8 @@ const TodoPage = () => {
     return (
       <Styled.TotalContainer>
         <Styled.UserContainer>
-          <p>안녕하세요 님</p>
+          <p>안녕하세요 {userInfo.username}님</p>
+          <Styled.UserImage src={userInfo.image} />
         </Styled.UserContainer>
         <Categories categoryList={categoryList} todoReducer={todoReducer} />
         <Styled.TodoContainer>

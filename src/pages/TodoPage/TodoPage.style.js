@@ -14,8 +14,18 @@ export const TodoContainer = Styled.div`
 `;
 
 export const UserContainer = Styled.div`
+  display:flex;
+  align-items:center;
   position:absolute;
   top:-50px;
   font-size:18px;
-  color:${({ theme }) => theme.input_bg}
+  color:${({ theme }) => theme.input_bg};
+`;
+
+export const UserImage = Styled.img`
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-left:15px;
 `;
