@@ -6,7 +6,7 @@ export const getTodos = createAsyncThunk(
   "GET-todos",
   async ({ currentName, thisYear, thisMonth, thisDate }) => {
     try {
-      const response = await axios.get("http://localhost:5000/todos");
+      const response = await axios.get(`http://localhost:5000/todos`);
 
       return response.data.filter((list) => {
         const date = list.dates.split("-");

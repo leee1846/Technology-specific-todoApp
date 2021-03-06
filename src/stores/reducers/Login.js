@@ -1,29 +1,19 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
 
-export const getUserName = createAsyncThunk(
-  "GET_USERNAME",
-  async ({ user }) => {
-    try {
-      const response = await axios.put(`http://localhost:5000/user/${1}`, user);
-      return response.data;
-    } catch (e) {
-      console.log(e);
-    }
-  }
-);
+let initialState;
 
-const initialState = {
-  name: null,
-  id: 1,
-};
-
+if (sessionStorage.getItem("loginToken")) {
+  initialState = true;
+} else {
+  initialState = false;
+}
+console.log("여기는 로그인 리듀서" + initialState);
 export const loginReducer = createSlice({
   name: "login",
   initialState,
-  extraReducers: {
-    [getUserName.fulfilled]: (state, { payload }) => {
-      return { name: payload.name, id: 1 };
-    },
+  reducers: {
+    getUser: (state, { payload: { user } }) => user,
   },
 });
+
+export const { getUser } = loginReducer.actions;

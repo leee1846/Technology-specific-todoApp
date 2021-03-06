@@ -7,15 +7,18 @@ import TodoList from "../../components/TodoList/TodoList";
 import { useSelector, useDispatch } from "react-redux";
 import { getTodos } from "../../stores/reducers/TodosReducer";
 import { getUserName } from "../../stores/reducers/Login.js";
+import { useGoogleLogin } from "react-google-login";
+import { useHistory } from "react-router-dom";
 
-const TodoPage = ({ userName }) => {
+const TodoPage = () => {
+  const history = useHistory();
   const [searchInputValue, setSearchInputValue] = useState("");
 
   const dispatch = useDispatch();
 
   const categoryList = useSelector((state) => state.categoryReducer);
-
   const todoReducer = useSelector((state) => state.todoReducer);
+  const user = useSelector((state) => state.loginReducer);
 
   useEffect(() => {
     dispatch(
@@ -28,35 +31,29 @@ const TodoPage = ({ userName }) => {
     );
   }, []);
 
-  useEffect(() => {
-    window.Kakao.API.request({
-      url: "/v2/user/me",
-      success: (res) =>
-        dispatch(
-          getUserName({ user: { name: res.properties.nickname, id: 1 } })
-        ),
-    });
-  }, []);
-
-  return (
-    <Styled.TotalContainer>
-      <Styled.UserContainer>
-        <p>안녕하세요 {userName}님</p>
-      </Styled.UserContainer>
-      <Categories categoryList={categoryList} todoReducer={todoReducer} />
-      <Styled.TodoContainer>
-        <IsDate />
-        <Inputs
-          searchInputValue={searchInputValue}
-          setSearchInputValue={setSearchInputValue}
-        />
-        <TodoList
-          todoReducer={todoReducer}
-          searchInputValue={searchInputValue}
-        />
-      </Styled.TodoContainer>
-    </Styled.TotalContainer>
-  );
+  if (!user) {
+    history.push("/");
+  } else {
+    return (
+      <Styled.TotalContainer>
+        <Styled.UserContainer>
+          <p>안녕하세요 님</p>
+        </Styled.UserContainer>
+        <Categories categoryList={categoryList} todoReducer={todoReducer} />
+        <Styled.TodoContainer>
+          <IsDate />
+          <Inputs
+            searchInputValue={searchInputValue}
+            setSearchInputValue={setSearchInputValue}
+          />
+          <TodoList
+            todoReducer={todoReducer}
+            searchInputValue={searchInputValue}
+          />
+        </Styled.TodoContainer>
+      </Styled.TotalContainer>
+    );
+  }
 };
 
 export default TodoPage;
