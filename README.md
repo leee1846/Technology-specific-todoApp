@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# toDoList
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p>html,css 기초부터 프론트엔드 개발자가되기위한 과정을 단계별로 학습하면서 todoList를 만들어보았습니다. 총4가지 버전으로 브랜치를 나눠서 만들었으며, 최종 react-axios브랜치에서는 OAuth개념도 적용시켜서 최종본을 만들어보았습니다.</p>
+<img src="./final.gif" width="400px"></img>
 
-## Available Scripts
+## 설명
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p>브랜치별로 기술코드를 확인할 수 있습니다.</p>
+<h3>브랜치</h3>
+<ol>
+  <li>main
+    <p>main브랜치는 default로서 코드가 없습니다.</p>
+  </li>
+  <li>pure-javascript
+    <p>html, css, varnilla-javascript로만 구현하기 위하여 노력하였으며, javascript코드는 app.js파일 한곳에 모두 코딩하였습니다. </p>
+  </li>
+  <li>pure-javascript-refactoring
+    <p>기능별로 파일을 분할하여 유지보수가 가능하도록 리팩토링 하였으며, 폴더트리를 util과core로 나누어보았습니다. 또한 최대한 재사용 함수를 만들어서 사용하였습니다.</p>
+  </li>
+  <li>pure-javascript-webpack
+    <p>
+      웹팩의 기본적이 구동원리를 파악하기 위하여 진행하였습니다. 모듈시스템을 적용하였스며, es6문법인 import/export문법을 사용하여 나눈 파일들의 기능을 불러 구현하였습니다. 
+    </p>
+  </li>
+  <li>react-axios
+    <p>react라이브러리를 이용하여 구현하였습니다. 상태관리로는 redux-toolkit을 사용해 보았으며, styled-components로 스타일을 구현하였습니다. 또한 server와의 연동으로는 axios를 사용하였고 kakao 로그인 서비스를 적용하였습니다.</p>
+  </li>
+</ol>
